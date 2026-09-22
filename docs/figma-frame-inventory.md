@@ -1,7 +1,7 @@
 # InstaCard — Figma Conversion Frame Inventory
 
 ## Purpose
-This is the final presentation/frame list for converting the BCA test from the static HTML project into Figma.
+This is the retained presentation/frame list for the BCA test. The previous runtime implementation has been removed; frames 10–11 must be sourced from the new local implementation after it is uploaded.
 
 The goal is a **short recruiter-facing case presentation**, not a long portfolio case study.
 
@@ -9,17 +9,17 @@ The goal is a **short recruiter-facing case presentation**, not a long portfolio
 
 | # | Figma frame | Purpose | Source |
 |---|---|---|---|
-| **01** | **Project Overview** | Brief, product, role, scope, deliverables | `design-notes.html` intro + brief |
-| **02** | **Problem & Consumer Insight** | Pain points, JTBD, core insight; clearly marked as hypotheses | `design-notes.html` section 01 + `docs/ux-research.md` |
-| **03** | **Competitive Landscape & Design Implications** | Bizz Card, WorldCard Mobile, Linktree → opportunity → landing decisions | `docs/ux-research.md` + `design-notes.html` section 02 |
-| **04** | **Sitemap** | Proposed information architecture for public site, owner area and recipient card | `design-notes.html` sitemap + `docs/ux-strategy.md` |
-| **05** | **User Flow — Early Access** | Landing → evaluate → email intent → validation/confirmation concept | `design-notes.html` acquisition flow |
-| **06** | **User Flow — Core Product** | Create → customize → preview/share → recipient opens → save contact | `design-notes.html` core flow + `docs/ux-strategy.md` |
-| **07** | **Concept & Visual Direction** | “Less exchanging. More connecting.”, Clear/Personal/Effortless, art direction and visual rationale | `design-notes.html` + `docs/design-contract.md` |
+| **01** | **Project Overview** | Brief, product, role, scope, deliverables | `docs/ux-strategy.md` + retained brief context |
+| **02** | **Problem & Consumer Insight** | Pain points, JTBD, core insight; clearly marked as hypotheses | `docs/ux-research.md` + `docs/ux-strategy.md` |
+| **03** | **Competitive Landscape & Design Implications** | Bizz Card, WorldCard Mobile, Linktree → opportunity → landing decisions | `docs/ux-research.md` |
+| **04** | **Sitemap** | Proposed information architecture for public site, owner area and recipient card | `docs/ux-strategy.md` |
+| **05** | **User Flow — Early Access** | Landing → evaluate → email intent → validation/confirmation concept | `docs/ux-strategy.md` |
+| **06** | **User Flow — Core Product** | Create → customize → preview/share → recipient opens → save contact | `docs/ux-strategy.md` |
+| **07** | **Concept & Visual Direction** | “Less exchanging. More connecting.”, Clear/Personal/Effortless, art direction and visual rationale | `docs/design-contract.md` + `docs/ux-strategy.md` |
 | **08** | **UI Foundations — Typography & Tokens** | Font families, type scale, font sizes, line-height, tracking, color palette, grid, spacing, radius and shadow styles | `docs/figma-design-system-spec.md` |
-| **09** | **Components & UI Styles** | Buttons, Early Access field, cards, chips, icons, nav patterns, states and hover behavior | `docs/figma-design-system-spec.md` + `styles.css` |
-| **10** | **Final Landing — Desktop 1440** | Main desktop UI deliverable | `index.html` at 1440px / `evidence/desktop-1440.png` |
-| **11** | **Final Landing — Mobile 390** | Responsive mobile UI deliverable | `index.html` at 390px / `evidence/mobile-390.png` |
+| **09** | **Components & UI Styles** | Buttons, Early Access field, cards, chips, icons, nav patterns, states and hover behavior | `docs/figma-design-system-spec.md` — revalidate against new implementation after upload |
+| **10** | **Final Landing — Desktop 1440** | Main desktop UI deliverable | **NEW IMPLEMENTATION REQUIRED** — capture/build from the uploaded local version at 1440px |
+| **11** | **Final Landing — Mobile 390** | Responsive mobile UI deliverable | **NEW IMPLEMENTATION REQUIRED** — capture/build from the uploaded local version at 390px |
 
 ## Optional appendix — only if there is time
 Do not put these before the final UI screens.
@@ -66,13 +66,12 @@ If time is limited, the must-have sequence is:
 Frame 06 is valuable because it demonstrates product thinking beyond the marketing page, but it is secondary to the brief’s required Early Access user flow.
 
 
-### Static conversion URL
+### HTML → Figma source
 
-Use the static motion override when importing the landing frames:
+The old GitHub Pages implementation has been removed.
 
-`https://ngh1aa.github.io/BCA_Test/?figma=1`
+After the new local build is uploaded, define the fresh HTML → Figma conversion URL here. Do not use the previous `?figma=1` URL until the new implementation recreates that static-capture mode.
 
-The query parameter disables marquee, float, pulse and reveal transitions while preserving the exact final layout and editable HTML/CSS/SVG structure.
 
 
 ## Design-system export checklist

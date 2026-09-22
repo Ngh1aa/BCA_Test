@@ -1,0 +1,98 @@
+name: Pinned GSAP hands QA
+
+on:
+  push:
+    branches:
+      - fix/pinned-gsap-hands-visible
+
+permissions:
+  contents: write
+
+jobs:
+  qa:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix/pinned-gsap-hands-visible
+          fetch-depth: 0
+
+      - name: Start site
+        run: |
+          python3 -m http.server 4173 >/tmp/server.log 2>&1 &
+          for i in {1..20}; do
+            if curl -fsS http://127.0.0.1:4173/ >/dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/server.log
+          exit 1
+
+      - name: Install Playwright
+        run: |
+          npm init -y >/dev/null 2>&1
+          npm install --no-save playwright@1.55.0 >/dev/null
+          npx playwright install --with-deps chromium
+
+      - name: Verify pinned scrub
+        run: |
+          cat > qa.mjs <<'EOF'
+          import { chromium } from 'playwright';
+          import { writeFileSync } from 'node:fs';
+
+          const browser=await chromium.launch({headless:true});
+          const page=await browser.newPage({viewport:{width:1440,height:1000}});
+          const errors=[];
+          page.on('pageerror',e=>errors.push(String(e)));
+
+          await page.goto('http://127.0.0.1:4173/',{waitUntil:'networkidle'});
+          await page.waitForTimeout(900);
+
+          const triggerStart=await page.evaluate(()=>{
+            const c=document.querySelector('.hands-container');
+            return window.scrollY+c.getBoundingClientRect().top-90;
+          });
+
+          const state=()=>page.evaluate(()=>{
+            const c=document.querySelector('.hands-container');
+            const l=document.querySelector('.left-hand');
+            const r=document.querySelector('.right-hand');
+            return {
+              scrollY:window.scrollY,
+              top:c.getBoundingClientRect().top,
+              position:getComputedStyle(c).position,
+              left:getComputedStyle(l).transform,
+              right:getComputedStyle(r).transform,
+              overflow:[document.documentElement.scrollWidth,document.documentElement.clientWidth]
+            };
+          });
+
+          const report={errors,triggerStart,states:{}};
+
+          for(const [label,offset] of [['start',0],['mid',380],['end',760]]){
+            await page.evaluate(y=>window.scrollTo(0,y),triggerStart+offset);
+            await page.waitForTimeout(1200);
+            report.states[label]=await state();
+            await page.screenshot({path:`evidence/pinned-hands-${label}.png`,fullPage:false});
+          }
+
+          if(errors.length) throw new Error(errors.join(' | '));
+          if(report.states.start.left===report.states.mid.left) throw new Error('left hand did not move');
+          if(report.states.start.right===report.states.mid.right) throw new Error('right hand did not move');
+          if(report.states.mid.left===report.states.end.left) throw new Error('left hand did not finish moving');
+          if(Math.abs(report.states.mid.top-90)>6) throw new Error(`stage not pinned at mid: ${report.states.mid.top}`);
+          if(report.states.mid.overflow[0]!==report.states.mid.overflow[1]) throw new Error('horizontal overflow');
+
+          writeFileSync('evidence/pinned-hands-qa.json',JSON.stringify(report,null,2)+'\n');
+          console.log(JSON.stringify(report,null,2));
+          await browser.close();
+          EOF
+          node qa.mjs
+
+      - name: Commit evidence
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add evidence/pinned-hands-*.png evidence/pinned-hands-qa.json
+          git commit -m "Add pinned hands QA evidence [skip ci]" || exit 0
+          git push origin HEAD:fix/pinned-gsap-hands-visible

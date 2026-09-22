@@ -22,7 +22,7 @@ The goal is a **short recruiter-facing case presentation**, not a long portfolio
 ## Optional appendix — only if there is time
 Do not put these before the final UI screens.
 
-- Supplied Product Evidence — original InstaCard screenshots
+- Supplied Product Evidence — original InstaCard screenshots (**reference only; not part of main landing UI**)
 - Extended product flows — Premium / Print / Settings
 - QA / responsive notes
 
@@ -45,10 +45,10 @@ BCA — InstaCard
 For frames 01–07, use editable text, frames, tables and vectors.
 
 For frames 08–09:
-- keep all marketing copy and UI blocks editable where the converter supports it;
-- preserve the original client-provided product screenshots as image layers;
+- keep all marketing copy and product visuals editable where the converter supports it;
+- the hero digital identity, recipient preview, QR/share rail and Card Builder are HTML/CSS/SVG—not client screenshot bitmaps;
 - preserve the InstaCard logo as vector;
-- do not rebuild or alter screenshot pixels merely to make their internal text editable.
+- do **not** bring the six legacy app screenshots into the main landing frames. Keep them only in an optional reference/evidence appendix.
 
 ## Submission priority
 If time is limited, the must-have sequence is:

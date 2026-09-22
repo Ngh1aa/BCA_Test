@@ -43,8 +43,10 @@ No build command or output directory is required.
 
 ## Design documentation
 
-- `design-notes.html` — concept, sitemap and user-flow presentation
+- `design-notes.html` — recruiter-facing concept, competitor, sitemap and user-flow presentation
+- `docs/ux-research.md` — competitive landscape, pain-point hypotheses and design implications
 - `docs/ux-strategy.md` — UX strategy and complete user flows
+- `docs/figma-frame-inventory.md` — final list of frames to convert/build in Figma
 - `docs/design-contract.md` — design/system decisions
 - `docs/qa.md` — QA notes
 - `evidence/` — desktop/mobile visual evidence
@@ -66,3 +68,20 @@ The public landing is intentionally structured for HTML → Figma import:
 - screenshot pixels are intentionally not rebuilt or modified; only the surrounding HTML/CSS is conversion-safe.
 
 This reduces flattening in tools such as html.to.design / Dmaya, while preserving the GitHub Pages static deployment.
+
+
+## Final Figma frame list
+
+The BCA submission should be converted into these recruiter-facing frames:
+
+1. Project Overview
+2. Problem & Consumer Insight
+3. **Competitive Landscape & Design Implications**
+4. Sitemap
+5. User Flow — Early Access
+6. User Flow — Core Product
+7. Concept & Visual Direction
+8. Final Landing — Desktop 1440
+9. Final Landing — Mobile 390
+
+Full conversion notes: `docs/figma-frame-inventory.md`.

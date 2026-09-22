@@ -7,6 +7,14 @@
   <meta name="description" content="Your contact details, social links and personal brand. One digital business card. Discover InstaCard and get early access.">
   <link rel="icon" href="./assets/logo.svg" type="image/svg+xml">
   <link rel="preload" href="./assets/fonts/InstrumentSans-Regular.ttf" as="font" type="font/ttf" crossorigin>
+  <script>
+    (() => {
+      const root = document.documentElement;
+      const isFigma = new URLSearchParams(location.search).get('figma') === '1';
+      const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      root.classList.add(isFigma ? 'figma-static' : (reduceMotion ? 'motion-reduced' : 'motion-enhanced'));
+    })();
+  </script>
   <link rel="stylesheet" href="./styles.css">
   <script src="./script.js" defer></script>
 </head>

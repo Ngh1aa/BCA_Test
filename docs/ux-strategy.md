@@ -16,6 +16,8 @@
 JTBD ưu tiên: **Khi gặp một người có thể hợp tác, tôi muốn chia sẻ đủ thông tin trong lúc trò chuyện, để hai bên có thể liên hệ lại mà không mất công nhập lại.** Đây là tổng hợp giả thuyết, không phải trích dẫn phỏng vấn.
 
 ## 3. Benchmark / truy cập 22-09-2026
+
+> Detailed competitive research for the three brief-mandated references (Bizz Card, WorldCard Mobile, Linktree), plus direct design implications, is maintained in [`docs/ux-research.md`](./ux-research.md).
 | Nguồn | Quan sát có căn cứ | Áp dụng / giới hạn |
 |---|---|---|
 | [Linktree](https://linktr.ee/) | Gom nhiều nội dung vào một link, cá nhân hóa và chia sẻ bằng URL/QR | Giải thích “One link. All of you.”; không lấy commerce/analytics vào scope |

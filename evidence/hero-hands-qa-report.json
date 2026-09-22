@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-22T20:38:08.355Z",
+  "generated_at": "2026-09-22T20:39:14.408Z",
   "default": [
     {
       "width": 1440,
@@ -40,8 +40,8 @@
       "errors": [],
       "before": {
         "rootClass": "motion-enhanced",
-        "leftTransform": "matrix(0.975179, 0, 0, 0.975179, -29.5183, 0)",
-        "rightTransform": "matrix(0.975179, 0, 0, 0.975179, 29.5183, 0)",
+        "leftTransform": "matrix(0.975178, 0, 0, 0.975178, -29.5193, 0)",
+        "rightTransform": "matrix(0.975178, 0, 0, 0.975178, 29.5193, 0)",
         "scrollWidth": 390,
         "clientWidth": 390,
         "images": [

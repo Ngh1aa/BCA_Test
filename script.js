@@ -1,4 +1,33 @@
-// Minimal behavior only. The page is intentionally conversion-safe for HTML → Figma tools.
+// Progressive enhancement only: core content stays visible and usable without JavaScript.
+const root = document.documentElement;
+const isMotionEnhanced = root.classList.contains('motion-enhanced') && !root.classList.contains('figma-static');
+
+// Competitor-inspired scroll reveal:
+// BOVA-style step sequencing + CamCard-style feature entrances, recreated from scratch.
+if (isMotionEnhanced) {
+  const revealElements = [...document.querySelectorAll('[data-reveal]')];
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      });
+    }, {
+      threshold: 0.14,
+      rootMargin: '0px 0px -8% 0px'
+    });
+
+    revealElements.forEach(element => observer.observe(element));
+  } else {
+    revealElements.forEach(element => element.classList.add('is-visible'));
+  }
+} else {
+  document.querySelectorAll('[data-reveal]').forEach(element => element.classList.add('is-visible'));
+}
+
+// Mobile navigation.
 const toggle = document.querySelector('.menu-toggle');
 const nav = document.querySelector('#main-nav');
 

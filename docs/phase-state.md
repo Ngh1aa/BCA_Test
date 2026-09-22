@@ -1,18 +1,26 @@
 # Delivery state
 
-Source: UIUX Factory + skills_UIUX at `a0343ac3dba7fa10eb937664e2a076305ed453ff`.
+## Current repository mode
+**DOCUMENTATION_ONLY**
 
-| Requirement | Status | Evidence / owner |
+The previous runtime implementation, assets and evidence were intentionally removed so the user can upload a new local implementation cleanly.
+
+## Preserved deliverables
+
+| Requirement | Status | Source |
 |---|---|---|
-| Quick audit, product references, 21st.dev synthesis | DONE_VERIFIED | design-contract.md, ux-strategy.md |
-| Concept, pain points, consumer-insight hypotheses | DONE_VERIFIED | design-notes.html; hypotheses explicitly labeled |
-| Whole-product sitemap and 7 user flows | DONE_VERIFIED | ux-strategy.md; app routes explicitly proposed |
-| One landing option desktop/mobile | DONE_VERIFIED | index.html, desktop/mobile PNGs |
-| Six benefits, header, hero and footer signup | DONE_VERIFIED | rendered landing |
-| Responsive and rendered QA | DONE_VERIFIED | qa.md, browser-report.json, inspected screenshots |
-| App prototype | N/A_JUSTIFIED | User explicitly does not require prototype |
-| Production endpoint, payment, auth, privacy approval | N/A_JUSTIFIED | Static design scope |
-| Real-user validation and business metrics | PENDING_FUTURE_PHASE | Product owner: planned tests in ux-strategy.md |
-| Live deployment | N/A_JUSTIFIED | GitHub design/source handoff; no deployment requested |
+| Competitor research | RETAINED | `ux-research.md` |
+| UX strategy / sitemap / user flows | RETAINED | `ux-strategy.md` |
+| Design contract / rationale | RETAINED_REFERENCE | `design-contract.md` |
+| Figma frame inventory | RETAINED_OFFICIAL | `figma-frame-inventory.md` |
+| Typography / UI design-system spec | RETAINED_OFFICIAL | `figma-design-system-spec.md` |
+| Motion direction | RETAINED_REFERENCE | `motion-direction.md` |
+| Old HTML/CSS/JS implementation | REMOVED | awaiting new local upload |
+| Old assets | REMOVED | awaiting new local upload if needed |
+| Old rendered evidence | REMOVED | regenerate after new upload |
+| QA | STALE_REFERENCE | `qa.md`; must rerun after new upload |
+| Final Landing — Desktop 1440 | PENDING_NEW_UPLOAD | Figma frame 10 |
+| Final Landing — Mobile 390 | PENDING_NEW_UPLOAD | Figma frame 11 |
 
-Due-now design blockers: 0. No claims of production launch or measured UX improvement.
+## Next action
+Upload the new local implementation, then reconnect the preserved documentation to the new code and rerun visual/responsive QA.

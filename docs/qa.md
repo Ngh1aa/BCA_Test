@@ -1,3 +1,5 @@
+> **Documentation-only reset:** The implementation this document originally described has been removed from the repository. Keep this file as a design/reference artifact and revalidate implementation-specific details after the new local build is uploaded.
+
 # InstaCard — Final QA and motion evidence
 
 ## Status — 23 September 2026

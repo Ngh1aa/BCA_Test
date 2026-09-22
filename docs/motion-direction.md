@@ -1,125 +1,144 @@
 # InstaCard — Motion Direction
 
 ## Goal
-Use motion to make the landing feel like a modern digital-card product without turning the BCA test into an animation showcase.
+Use motion to make the landing feel like a real digital-card exchange, not an animation showcase.
 
-The implementation recreates **motion patterns**, not competitor source code.
+The implementation recreates **motion patterns** from the research/reference set. No competitor JavaScript or component source is copied into the project.
 
-## Reference synthesis
+## Hero signature — scroll-scrubbed “Meet in the Middle”
 
-### CamCard → sharing rail + feature-card motion
-CamCard gives “Unlimited card sharing” its own section and repeats multiple sharing options such as QR code, email/SMS and WhatsApp. That content pattern supports an always-moving sharing rail for InstaCard.
+The final hero uses the two transparent hand/phone renders supplied for the design exercise.
 
-Adaptation:
-- InstaCard keeps only brief-supported sharing outcomes: QR code, one link and save-to-contacts.
-- The rail loops horizontally as supporting motion.
-- The same facts remain available elsewhere on the page, so the marquee is not the only source of important information.
+Interaction:
+- the contact-profile phone enters from the left;
+- the QR/share phone enters from the right;
+- both move toward the center as the user scrolls;
+- a small **Connection made** state appears as the two sides converge.
 
-Reference:
-- https://www.camcard.com/
+Product meaning:
 
-### BOVAcard → staggered How It Works reveal
-BOVAcard uses a three-step homepage story: Create Your Profile → Add Your Information → Share and Connect.
+**Show your card → Scan / open → Save contact**
 
-Adaptation:
-- InstaCard keeps its own three-step flow: Make it yours → Share in the moment → Keep the connection.
-- Steps reveal sequentially as they enter the viewport.
-- The animation reinforces order; it does not change the flow content.
+This is intentionally more product-specific than the previous generic floating-card composition because the motion demonstrates the core exchange moment.
 
-Reference:
-- https://bovacard.com/en
+### Implementation
+The reference snippet used GSAP ScrollTrigger. The final project recreates the same scroll-scrub behavior with:
+- native `scroll` events;
+- `requestAnimationFrame` throttling;
+- percentage-based `translate3d()` transforms;
+- a clamped 0→1 progress value;
+- a small ease-out curve.
 
-### CloudCard → floating card choreography
-CloudCard places digital-business-card and sharing outcomes near the top of the homepage and explicitly frames sharing through QR, personalised link, email/text and wallet surfaces.
+No GSAP, Framer Motion, Motion, WebGL or animation runtime is shipped.
 
-Adaptation:
-- InstaCard hero cards float with opposing low-amplitude vertical motion.
-- The QR/share rail remains visually anchored.
-- No Wallet/NFC capability is invented for InstaCard.
+Desktop progress is tied to the first portion of the hero scroll. Mobile progress is tied to the hand stage entering the viewport so the motion does not run while the visual is still off-screen.
 
-Reference:
-- https://cloudcard.digital/
+## Other reference synthesis
 
-### 21st.dev → implementation pattern reference
-21st.dev was used only to benchmark common patterns such as:
+### CamCard → sharing rail
+CamCard gives card sharing its own prominent content block and presents multiple sharing methods.
+
+InstaCard adaptation:
+- keep only brief-supported outcomes: QR code, one link and save-to-contacts;
+- loop the three methods in a slow horizontal marquee;
+- keep the same information elsewhere so the marquee is supporting motion, not the only source of content.
+
+### BOVAcard → How It Works sequence
+BOVAcard communicates the product with a short multi-step story.
+
+InstaCard adaptation:
+- **Make it yours → Share in the moment → Keep the connection**;
+- reveal the three steps sequentially when they enter the viewport;
+- motion reinforces order without changing the flow.
+
+### CloudCard → continuous product movement
+CloudCard uses continuous product/card movement to make a static digital-card concept feel tangible.
+
+InstaCard adaptation:
+- keep continuous motion restrained;
+- use the strongest continuous motion only for the sharing rail and the Card Builder preview;
+- do not invent NFC, Apple Wallet or Google Wallet capabilities.
+
+### 21st.dev → pattern benchmark
+21st.dev was used only to benchmark implementation patterns such as:
 - marquee / infinite rail;
-- stacking/floating cards;
-- scroll-triggered reveal.
+- scroll reveal;
+- lightweight card motion.
 
-No React component or third-party source code was copied into this static HTML/CSS/JS project.
-
-References:
-- https://21st.dev/community/components/explore/react-marquee
-- https://21st.dev/community/components/explore/card-animation-react
-- https://21st.dev/community/components/explore/scroll-animation-component
+No third-party React component was copied.
 
 ## Motion map
 
-| InstaCard surface | Motion | Purpose |
+| Surface | Motion | Purpose |
 |---|---|---|
-| Hero copy | fade + rise | establish hierarchy on entry |
-| Hero identity card | slow float | give the digital identity object presence |
-| Recipient preview | inverse slow float | create a subtle two-object conversation |
-| Ready state | soft pulse | signal connection readiness |
-| Sharing strip | infinite horizontal marquee | communicate “share your way” continuously |
-| How it works | 90ms staggered reveal | make the 3-step sequence legible |
-| Benefits | staggered reveal + hover lift | improve scan rhythm without hiding content |
-| Card Builder | reveal + preview float | imply live customization |
-| FAQ / Closing CTA | simple reveal | maintain rhythm without excessive effects |
+| Hero copy | fade + rise | establish entry hierarchy |
+| Hero hands | **scroll-scrubbed convergence** | demonstrate the exchange moment |
+| Connection state | opacity + scale tied to hero progress | communicate successful connection |
+| Sharing strip | infinite horizontal marquee | reinforce “share your way” |
+| How it works | 90ms staggered reveal | clarify sequence |
+| Benefits | reveal + hover lift | improve scan rhythm |
+| Card Builder preview | low-amplitude float | imply live customization |
+| FAQ / Closing CTA | simple reveal | maintain page rhythm |
 
 ## Motion tokens
 
-- Reveal duration: **640ms**
+- Reveal: **640ms**
 - Reveal easing: **cubic-bezier(.22, 1, .36, 1)**
 - Step stagger: **90ms**
 - Benefit stagger: **80ms**
-- Hero float: **5.8s / 6.4s**
-- Preview float: **6.2s**
 - Sharing marquee: **26s linear infinite**
+- Card Builder float: **6.2s**
 - Hover response: **180ms**
-- Float amplitude: **6–7px**
+- Hero convergence:
+  - desktop roughly **-52% / +52% → -8% / +8%**
+  - mobile roughly **-50% / +50% → -6% / +6%**
+  - scale roughly **0.88/0.90 → 1/0.98**
+- Connection state appears during the final ~42% of convergence.
 
-## Accessibility and control
+## Accessibility and conversion controls
 
 ### Reduced motion
 When `prefers-reduced-motion: reduce` is active:
-- reveal transitions are removed;
-- continuous marquee stops;
-- floating cards stop;
-- pulse stops;
-- core content stays visible.
+- hero hands render directly in the final connected pose;
+- sharing marquee stops;
+- scroll reveals are removed;
+- Card Builder float stops;
+- all content remains visible.
 
 ### Figma conversion mode
 Use:
 
-`?figma=1`
-
-Example:
-
 `https://ngh1aa.github.io/BCA_Test/?figma=1`
 
-This adds `figma-static` to the document root and disables reveal/floating/marquee motion while keeping the exact final layout visible. This prevents HTML → Figma tools from capturing an in-between animation frame.
+The `figma-static` mode:
+- freezes the hands in the connected pose;
+- shows **Connection made**;
+- stops marquee/float/reveal motion;
+- preserves the exact final page composition.
+
+The two hand/phone renders are intentionally raster image layers in Figma. Surrounding hero copy, labels, CTA, layout, benefits and Card Builder remain normal HTML/CSS/SVG structure.
 
 ## Performance rules
-- No GSAP, Motion, Framer Motion or animation runtime dependency.
-- CSS transforms/opacity are used for compositor-friendly motion.
-- IntersectionObserver triggers reveal only once, then unobserves the element.
-- No canvas/WebGL/video background.
-- Marquee pauses on pointer hover/focus-within.
-- Content remains visible without JavaScript.
+- no animation framework/runtime dependency;
+- scroll work is throttled with `requestAnimationFrame`;
+- transforms are used instead of layout-changing left/right animation;
+- IntersectionObserver reveals each below-fold block only once;
+- no canvas/WebGL/video background;
+- marquee pauses on hover/focus;
+- core content still exists without JavaScript.
 
 ## Do / Do not
 
 ### Do
-- use motion to explain sharing, sequence and live identity;
+- use movement to explain connection;
+- keep hand convergence controlled and legible;
 - keep continuous motion slow;
-- keep amplitudes small;
-- use one motion language across the page;
-- preserve readable static states.
+- preserve a strong static pose for screenshots/Figma;
+- respect reduced motion.
 
 ### Do not
-- add particle/shader backgrounds;
-- add 3D perspective just for spectacle;
-- animate every piece of text independently;
-- add NFC/Wallet animations that imply unsupported InstaCard features;
-- make conversion to Figma depend on stopping animation manually.
+- add particle/shader effects;
+- add unrelated 3D motion;
+- animate every text fragment;
+- imply unsupported Wallet/NFC features;
+- require a converter/reviewer to manually stop animation.

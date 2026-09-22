@@ -58,11 +58,11 @@ The landing page is a static UI deliverable. Early-access email submission is in
 
 The public landing is intentionally structured for HTML → Figma import:
 
-- visible UI mockups are HTML/CSS, not PNG screenshots;
 - marketing and product copy stays as real DOM text;
 - native forms and `details/summary` were replaced with static editable layout blocks;
 - absolute positioning and decorative transforms were removed from the landing;
-- inline SVG is used only for vector icons / the illustrative QR code;
-- supplied PNG screenshots remain in `assets/` as source evidence, but are not embedded in the landing or editable design-notes presentation.
+- inline SVG is used for vector icons;
+- the original client-provided Logo.svg and six PNG product screenshots are preserved byte-for-byte and remain visible as image/vector layers;
+- screenshot pixels are intentionally not rebuilt or modified; only the surrounding HTML/CSS is conversion-safe.
 
 This reduces flattening in tools such as html.to.design / Dmaya, while preserving the GitHub Pages static deployment.

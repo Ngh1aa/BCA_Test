@@ -556,112 +556,33 @@ p{color:var(--muted)}
   gap:92px;
   align-items:center;
 }
-.personal-demo{
+.personal-art{
   display:flex;
   flex-direction:column;
+  align-items:center;
   gap:16px;
   padding:30px;
   border-radius:28px;
   background:#eaf3fb;
 }
-.phone-shell{
-  max-width:360px;
+.sample-label{
   width:100%;
-  margin:0 auto;
-  overflow:hidden;
-  border:6px solid #fff;
-  border-radius:24px;
-  background:#fff;
-  box-shadow:0 14px 36px #193b661f;
-}
-.phone-topbar{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:20px;
-  padding:14px 18px;
-  border-bottom:1px solid #e5edf4;
-  font-size:12px;
-  font-weight:700;
-}
-.phone-cover{
-  min-height:110px;
-  display:flex;
-  flex-direction:column;
-  justify-content:flex-end;
-  gap:4px;
-  padding:18px;
-  background:#163a5d;
-  color:#fff;
-}
-.phone-cover span:first-child{font-size:12px;font-weight:700;letter-spacing:.09em}
-.phone-cover span:last-child{font-size:11px;color:#cfe2f5}
-.phone-body{padding:20px}
-.phone-avatar{
-  width:58px;
-  height:58px;
-  display:grid;
-  place-items:center;
-  border-radius:50%;
-  background:#cfe9ff;
-  color:#255889;
-  font-size:26px;
-  font-weight:700;
-}
-.phone-kicker{
-  margin-top:14px;
-  color:#5e7081;
-  font-size:9px;
+  color:#516e86;
+  font-size:10px;
   font-weight:700;
   letter-spacing:.1em;
 }
-.phone-body h3{margin-top:4px;font-size:28px}
-.phone-body>p:last-of-type{margin-top:4px;font-size:12px}
-.phone-contact-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-  margin-top:18px;
+.personal-art>img{
+  width:min(100%,360px);
+  height:auto;
+  object-fit:contain;
+  border:6px solid #fff;
+  border-radius:20px;
+  background:#fff;
+  box-shadow:0 14px 36px #193b661f;
 }
-.phone-contact-grid div{
-  display:flex;
-  flex-direction:column;
-  gap:3px;
-  padding:10px;
-  border:1px solid #e1e8ef;
-  border-radius:10px;
-}
-.phone-contact-grid strong{font-size:10px}
-.phone-contact-grid span{color:#607183;font-size:9px}
-.phone-actions{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:8px;
-  margin-top:14px;
-}
-.phone-actions span{
-  min-height:38px;
-  display:grid;
-  place-items:center;
-  border-radius:9px;
-  font-size:11px;
-  font-weight:700;
-}
-.phone-actions span:first-child{border:1px solid #d7e3ed;color:#355f87}
-.phone-actions span:last-child{background:var(--blue);color:#fff}
-.qr-row{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  margin-top:16px;
-  padding-top:16px;
-  border-top:1px solid #e6edf3;
-}
-.qr-code{width:72px;height:72px;flex:none}
-.qr-row div{display:flex;flex-direction:column;gap:3px}
-.qr-row strong{font-size:12px}
-.qr-row span{color:#617285;font-size:10px}
 .personal-tag{
+  width:100%;
   display:flex;
   align-items:center;
   gap:12px;
@@ -678,6 +599,7 @@ p{color:var(--muted)}
   border-radius:10px;
   background:var(--pale);
   color:var(--blue);
+  font-size:11px;
   font-weight:700;
 }
 .personal-tag div{display:flex;flex-direction:column}
@@ -824,7 +746,7 @@ p{color:var(--muted)}
   .benefit{min-height:350px}
   .personal{grid-template-columns:1fr;gap:36px}
   .personal-copy{order:-1}
-  .personal-demo{padding:22px}
+  .personal-art{padding:22px}
   .faq{grid-template-columns:1fr;gap:30px}
   .faq h2{font-size:38px}
   .closing h2{font-size:48px}
@@ -840,7 +762,7 @@ p{color:var(--muted)}
   h1{font-size:48px}
   .button{width:100%}
   .nav-cta{width:auto}
-  .phone-contact-grid{grid-template-columns:1fr}
+  .personal-art>img{width:min(100%,330px)}
   .closing h2{font-size:42px}
 }
 

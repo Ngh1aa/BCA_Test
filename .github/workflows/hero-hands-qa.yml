@@ -19,6 +19,14 @@ jobs:
           ref: feat/hero-hands-scroll
           fetch-depth: 0
 
+      - name: Restore supplied hero hand assets
+        run: |
+          curl -fL --retry 3 "https://static-cdn.camcard.com/camcard/_nuxt/hand_right.BjGXbOwM.png" -o assets/hand_right.png
+          curl -fL --retry 3 "https://static-cdn.camcard.com/camcard/_nuxt/hand_left.D-uvv2vR.png" -o assets/hand_left.png
+          test -s assets/hand_right.png
+          test -s assets/hand_left.png
+          file assets/hand_right.png assets/hand_left.png
+
       - name: Start site
         run: |
           python3 -m http.server 4173 >/tmp/hero-hands-server.log 2>&1 &
@@ -162,7 +170,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           mv evidence/desktop-1440-or-390.png evidence/desktop-1440.png
           mv evidence/mobile-1440-or-390.png evidence/mobile-390.png
-          git add evidence/desktop-1440.png evidence/mobile-390.png evidence/desktop-hero-hands.png evidence/mobile-hero-hands.png evidence/desktop-hero-hands.b64.txt evidence/mobile-hero-hands.b64.txt evidence/hero-hands-qa-report.json
+          git add assets/hand_right.png assets/hand_left.png evidence/desktop-1440.png evidence/mobile-390.png evidence/desktop-hero-hands.png evidence/mobile-hero-hands.png evidence/desktop-hero-hands.b64.txt evidence/mobile-hero-hands.b64.txt evidence/hero-hands-qa-report.json
           if git diff --cached --quiet; then
             echo "Evidence already current."
           else

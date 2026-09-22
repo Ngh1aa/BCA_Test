@@ -47,6 +47,7 @@ No build command or output directory is required.
 - `docs/ux-research.md` — competitive landscape, pain-point hypotheses and design implications
 - `docs/ux-strategy.md` — UX strategy and complete user flows
 - `docs/figma-frame-inventory.md` — final list of frames to convert/build in Figma
+- `docs/figma-design-system-spec.md` — typography, type scale, colors, spacing, radius, effects and component specs for Figma
 - `docs/design-contract.md` — design/system decisions
 - `docs/qa.md` — QA notes
 - `evidence/` — desktop/mobile visual evidence
@@ -82,10 +83,15 @@ The BCA submission should be converted into these recruiter-facing frames:
 5. User Flow — Early Access
 6. User Flow — Core Product
 7. Concept & Visual Direction
-8. Final Landing — Desktop 1440
-9. Final Landing — Mobile 390
+8. **UI Foundations — Typography & Tokens**
+9. **Components & UI Styles**
+10. Final Landing — Desktop 1440
+11. Final Landing — Mobile 390
+
+Frames 08–09 contain the reusable Figma system: typography/font sizes, color variables, spacing, radius, shadows, buttons, cards, fields, chips, icons and component states.
 
 Full conversion notes: `docs/figma-frame-inventory.md`.
+Full design-system values: `docs/figma-design-system-spec.md`.
 
 
 ## Final visual direction

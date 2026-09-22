@@ -53,11 +53,12 @@ jobs:
             await page.waitForTimeout(500);
 
             const metrics=await page.evaluate(()=>{
-              const hero=document.querySelector('.hero-camcard');
-              const stage=document.querySelector('.hands-container');
+              const shell=document.querySelector('[data-hands-shell]');
+              const pinTop=window.innerWidth<=760?74:90;
               return {
                 rootClass:document.documentElement.className,
-                startY:hero.offsetTop+stage.offsetTop-(window.innerWidth<=760?74:90),
+                startY:window.scrollY+shell.getBoundingClientRect().top-pinTop,
+                pinTop,
                 travel:window.innerWidth<=760?520:760
               };
             });
@@ -95,6 +96,8 @@ jobs:
             if(a.right===b.right || b.right===c.right) throw new Error(`${mode}: right hand does not scrub`);
             if(b.overflow[0]!==b.overflow[1]) throw new Error(`${mode}: horizontal overflow`);
             if(b.stagePosition!=='sticky') throw new Error(`${mode}: stage is not sticky`);
+            if(Math.abs(b.stageTop-metrics.pinTop)>4) throw new Error(`${mode}: mid stage not pinned: ${b.stageTop}`);
+            if(Math.abs(c.stageTop-metrics.pinTop)>4) throw new Error(`${mode}: end stage not pinned: ${c.stageTop}`);
 
             await page.close();
           }

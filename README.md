@@ -1,31 +1,45 @@
 # InstaCard — BCA UI/UX Design Test
 
-Static landing page built with **plain HTML, CSS and JavaScript**.
+Static landing page built with **plain HTML, CSS and JavaScript** and prepared for **GitHub Pages**.
 
 ## Runtime files
 
 - `index.html` — landing page markup
-- `styles.css` — all responsive styling
-- `script.js` — mobile navigation, FAQ/form interaction
+- `styles.css` — responsive styling
+- `script.js` — mobile navigation and form interaction
 - `assets/` — logo, screenshots and local fonts
+- `.nojekyll` — keeps GitHub Pages in plain static-file mode
 
-There is **no React, Vue, Next.js, Vite, npm build step or framework runtime**.
+There is no React, Vue, Next.js, Vite, npm build step or framework runtime.
 
-## Run the interface
+## Run locally
 
-### Option 1 — Open directly
-Double-click `index.html`.
-
-### Option 2 — Local static server
 ```bash
 python3 -m http.server 4173
 ```
 
-Then open:
+Open:
 
 ```text
 http://localhost:4173/
 ```
+
+## Deploy with GitHub Pages
+
+This repository is safe to publish from the repository root and all CSS, JS, fonts and images use relative paths so they work under the project subpath:
+
+```text
+https://ngh1aa.github.io/BCA_Test/
+```
+
+In GitHub:
+
+1. Open **Settings → Pages**.
+2. Under **Build and deployment**, choose **Deploy from a branch**.
+3. Select branch **main** and folder **/(root)**.
+4. Save.
+
+No build command or output directory is required.
 
 ## Design documentation
 

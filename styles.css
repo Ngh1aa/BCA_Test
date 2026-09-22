@@ -1136,12 +1136,12 @@ html.figma-static .hands-signal{
 .hero-camcard .hand-from-left{
   left:-6%;
   right:auto;
-  transform:translate3d(-44%,0,0) scale(.84);
+  transform:translate3d(-28%,0,0) scale(.88);
 }
 .hero-camcard .hand-from-right{
   right:-6%;
   left:auto;
-  transform:translate3d(44%,0,0) scale(.84);
+  transform:translate3d(28%,0,0) scale(.88);
 }
 
 @media(max-width:760px){

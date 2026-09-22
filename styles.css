@@ -1395,3 +1395,33 @@ html.motion-enhanced .hands-container.native-hands-pin{
     top:74px;
   }
 }
+
+
+/* Native scroll-scrub hero hands: always driven by user scroll except Figma static mode. */
+.hero.hero-camcard.hands-scroll-active{
+  overflow:visible;
+  padding-bottom:760px;
+}
+.hero-camcard .hero-hands-stage.hands-native-pin{
+  position:sticky;
+  top:90px;
+  z-index:2;
+}
+.hero-camcard .hands-motion-window{
+  overflow:hidden;
+}
+@media(max-width:760px){
+  .hero.hero-camcard.hands-scroll-active{
+    padding-bottom:520px;
+  }
+  .hero-camcard .hero-hands-stage.hands-native-pin{
+    top:74px;
+  }
+}
+html.figma-static .hero.hero-camcard.hands-scroll-active{
+  padding-bottom:0;
+}
+html.figma-static .hero-camcard .hero-hands-stage.hands-native-pin{
+  position:relative;
+  top:auto;
+}

@@ -1376,3 +1376,22 @@ html.motion-reduced .hero-camcard .right-hand{
     min-height:520px;
   }
 }
+
+
+/* Native fallback when GSAP/ScrollTrigger CDN is unavailable. */
+html.motion-enhanced .hero-camcard.native-hands-fallback{
+  padding-bottom:760px;
+}
+html.motion-enhanced .hands-container.native-hands-pin{
+  position:sticky;
+  top:90px;
+  z-index:2;
+}
+@media(max-width:760px){
+  html.motion-enhanced .hero-camcard.native-hands-fallback{
+    padding-bottom:520px;
+  }
+  html.motion-enhanced .hands-container.native-hands-pin{
+    top:74px;
+  }
+}

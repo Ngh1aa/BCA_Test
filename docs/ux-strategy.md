@@ -36,7 +36,7 @@ JTBD ưu tiên: **Khi gặp một người có thể hợp tác, tôi muốn chi
 - **Personal:** typography Bricolage Grotesque có cá tính; card Jolly Joe và social links biểu đạt nhiều mặt của một người.
 - **Effortless:** layout thoáng, tương phản rõ, form một trường, không chuyển động tự chạy.
 
-Logo SVG gốc được giữ nguyên. Xanh đậm dùng cho hành động, xanh nhạt cho vùng trình bày sản phẩm. Màu xanh lá chỉ xuất hiện ở lợi ích giảm giấy. Bricolage Grotesque + Instrument Sans được lưu local kèm giấy phép OFL. Native UI card trong hero là **marketing concept**, không phải screenshot của app đã phát hành. Screenshot gốc trong phần Your Card giữ nguyên nội dung.
+Logo SVG gốc được giữ nguyên. Xanh đậm dùng cho hành động, xanh nhạt cho vùng trình bày sản phẩm. Màu xanh lá chỉ xuất hiện ở lợi ích giảm giấy. Bricolage Grotesque + Instrument Sans được lưu local kèm giấy phép OFL. Hero và Card Builder là **marketing concept mới** dựng bằng HTML/CSS/SVG để minh họa identity, recipient view, QR/link sharing và customization. Sáu screenshot app gốc chỉ còn là reference evidence trong tài liệu, không xuất hiện trong landing chính.
 
 ## 5. Câu chuyện landing page
 | Thứ tự / anchor | Câu hỏi người xem | Nội dung / mục đích |
@@ -45,7 +45,7 @@ Logo SVG gốc được giữ nguyên. Xanh đậm dùng cho hành động, xanh
 | Hero | Nó có giúp tôi không? | Headline brief, product preview, email + CTA, no-app reassurance |
 | How it works | Nó hoạt động thế nào? | Make → Share → Save; giảm mơ hồ về danh thiếp số |
 | Why InstaCard | Vì sao đổi từ card giấy? | Đủ Simple, Accurate, Multilingual, Integrated, Green, Customized |
-| Your card | Có phù hợp bản thân? | App screenshot và thông tin cá nhân/social |
+| Your card | Có phù hợp bản thân? | Card Builder + live preview concept, minh họa profile, theme và social channels |
 | FAQs | Còn rào cản nào? | App cho người nhận, chia sẻ, social, customization, Early Access |
 | Early access / Footer | Tôi làm gì tiếp? | Lặp form/CTA sau khi đã đánh giá sản phẩm |
 
@@ -121,7 +121,7 @@ flowchart TD
   I -->|Lỗi mạng| K[Thông báo; Retry]
   K --> E
 ```
-Preview hiện tại chỉ có kiểm tra định dạng và thông báo không gửi/lưu. Production: chống submit trùng, không lộ trạng thái đăng ký của email người khác, thông báo chờ/retry, consent/privacy copy đã duyệt. Không yêu cầu tạo tài khoản để nhận early access.
+Bản UI hiện tại chỉ trình bày visual email field + CTA và không gửi/lưu dữ liệu. Production: cần validation, chống submit trùng, trạng thái chờ/retry, consent/privacy copy đã duyệt. Không yêu cầu tạo tài khoản để nhận early access.
 
 ### F02 — Tạo card lần đầu
 Entry sau đăng nhập → My Cards empty → Create card → nhập tên, chức danh, công ty, contact → thêm social link → chọn template → preview public fields → save/publish → owner preview → share.
@@ -166,15 +166,15 @@ Recovery: logo thấp độ phân giải cần thay; thiếu địa chỉ delive
 Sign in → reset password nếu cần → return-to intended card. Settings → chọn trường công khai → preview → save. Delete/unpublish card → xác nhận rõ hậu quả → thu hồi public access, cho quay lại trước xác nhận. Delete account → thông tin dữ liệu bị xóa + xác nhận; access denied phân biệt với not found mà không lộ dữ liệu người khác. Help có đường quay về card/task.
 
 ## 8. Responsive và component states
-Desktop: container 1248px, hero 2 cột, benefits 3 cột. Tablet: typography giảm, benefits 2 cột. Mobile: nội dung/CTA trước card scene, tất cả lợi ích giữ nguyên một cột, bước hướng dẫn theo chiều dọc, menu mở 2 cột, footer form full width. Form label programmatic, focus ring, reduced motion, anchor offset cho sticky nav.
+Desktop: container 1248px, hero 2 cột, benefits 3 cột. Tablet: typography giảm, benefits 2 cột. Mobile: nội dung/CTA trước product concept visual, tất cả lợi ích giữ nguyên một cột, bước hướng dẫn theo chiều dọc, hero card stack chuyển thành một cột, Card Builder chuyển thành controls → preview, menu mở 2 cột, footer CTA full width. Reduced-motion giữ scroll behavior đơn giản.
 
 | Component | States thuộc scope |
 |---|---|
 | CTA/link | Default, hover, focus-visible, active |
-| Email | Empty, focused, invalid, valid-preview feedback; không success giả |
+| Early Access field | Static presentation only; không giả submit/success |
 | Mobile nav | Closed/open, Escape close, close on anchor |
-| FAQ | Closed/open, keyboard native details/summary |
-| Card visual | Static presentation, không focusable giả |
+| FAQ | Static question/answer presentation |
+| Hero / Card Builder visuals | Static product concept, editable DOM/SVG; không dùng screenshot bitmap |
 
 ## 9. Validation tiếp theo — PLANNED, chưa thực hiện
 5-second comprehension: người xem mô tả digital business card và lợi ích recipient no-app. Task test: tìm cách chia sẻ card; cho người nhận lưu đúng contact và recovery khi trình duyệt không import được. Test privacy: owner dự đoán đúng field nào public. Test CTA: hiểu Early Access khác Create Card và không kỳ vọng truy cập tức thì. Test với tên Việt/Nhật, long email, 200% text, screen reader. Không dùng số conversion mục tiêu giả; đo baseline sau launch rồi mới đặt target.

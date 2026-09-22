@@ -1,8 +1,9 @@
 {
   "generated_at": "2026-09-23",
-  "source_ui_commit": "1e97af859fd1c8842cbee30a5666a78e5ba8b917",
-  "evidence_commit": "3d77dbb2da1b9131dd692b6d04f8d19483020bc3",
-  "workflow_run_id": 35772882361,
+  "direction": "Original logo → new editable marketing visuals → UX rationale → polished desktop/mobile UI",
+  "source_ui_commit": "bf963ca0e17801fa54ef0614b7efbaf11bf5aacd",
+  "evidence_commit": "f164aedd236e0bae9f726ff24134e0b321a34ce4",
+  "workflow_run_id": 35775059850,
   "workflow_run_status": "success",
   "renderer": "Playwright 1.55.0 / Chromium",
   "server": "python3 -m http.server 4173",
@@ -14,8 +15,11 @@
         "height": 1000
       },
       "full_page": true,
-      "blob_sha": "673ddc24e3d493a518ed5de0fe0cecb8014bc494",
-      "size_bytes": 591472
+      "blob_sha": "13b891ebc525b98a3024ad9547ee45d7cfc31cec",
+      "size_bytes": 503674,
+      "scroll_width": 1440,
+      "client_width": 1440,
+      "page_errors": 0
     },
     {
       "file": "evidence/mobile-390.png",
@@ -24,8 +28,11 @@
         "height": 844
       },
       "full_page": true,
-      "blob_sha": "60b4a58303ad63663185af7bfe344f0be7601108",
-      "size_bytes": 438623
+      "blob_sha": "5df7b91a5738d73663549b022b2b4ea9c90d5103",
+      "size_bytes": 462292,
+      "scroll_width": 390,
+      "client_width": 390,
+      "page_errors": 0
     }
   ],
   "source_checks": {
@@ -37,11 +44,16 @@
       "Green",
       "Customized"
     ],
-    "hero_uses_original_screen_view_card": true,
-    "your_card_uses_original_screen_my_card": true,
+    "original_logo_used": true,
+    "landing_client_screenshot_png_refs": 0,
+    "landing_png_img_tags": 0,
+    "hero_editable_visual_present": true,
+    "card_builder_editable_visual_present": true,
     "html_form_count": 0,
     "html_input_count": 0,
     "html_details_count": 0,
+    "html_canvas_count": 0,
+    "html_iframe_count": 0,
     "css_position_absolute_count": 0,
     "css_position_fixed_count": 0,
     "css_position_sticky_count": 0,
@@ -50,5 +62,5 @@
     "signup_validation_javascript": false,
     "mobile_navigation_javascript": true
   },
-  "note": "Original product screenshots are intentionally preserved as image layers; text inside those screenshots is not expected to become editable after HTML-to-Figma conversion."
+  "reference_asset_policy": "Six supplied app screenshots remain in assets/design-notes as reference evidence only; they are not used in the main landing."
 }

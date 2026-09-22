@@ -6,7 +6,7 @@ Static landing page built with **plain HTML, CSS and JavaScript** and prepared f
 
 - `index.html` — landing page markup
 - `styles.css` — responsive styling
-- `script.js` — mobile navigation and form interaction
+- `script.js` — mobile navigation only
 - `assets/` — logo, screenshots and local fonts
 - `.nojekyll` — keeps GitHub Pages in plain static-file mode
 
@@ -64,8 +64,9 @@ The public landing is intentionally structured for HTML → Figma import:
 - native forms and `details/summary` were replaced with static editable layout blocks;
 - absolute positioning and decorative transforms were removed from the landing;
 - inline SVG is used for vector icons;
-- the original client-provided Logo.svg and six PNG product screenshots are preserved byte-for-byte and remain visible as image/vector layers;
-- screenshot pixels are intentionally not rebuilt or modified; only the surrounding HTML/CSS is conversion-safe.
+- the original client-provided `logo.svg` remains the brand vector used in the landing;
+- the six legacy app screenshots remain in `assets/` and `design-notes.html` as **reference evidence only**;
+- the landing hero and Card Builder visuals are rebuilt as HTML/CSS/SVG so the main UI does not flatten into screenshot bitmaps.
 
 This reduces flattening in tools such as html.to.design / Dmaya, while preserving the GitHub Pages static deployment.
 
@@ -85,3 +86,10 @@ The BCA submission should be converted into these recruiter-facing frames:
 9. Final Landing — Mobile 390
 
 Full conversion notes: `docs/figma-frame-inventory.md`.
+
+
+## Final visual direction
+
+**Original logo → new marketing visuals → UX rationale → polished desktop/mobile UI.**
+
+The supplied app screenshots are product-context evidence, not mandatory landing-page artwork. The final landing uses a custom editable digital identity / recipient preview / QR-share composition in the hero and an editable Card Builder concept in the personalization section.

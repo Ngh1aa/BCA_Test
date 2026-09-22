@@ -1,111 +1,110 @@
 # InstaCard — Final QA and delivery evidence
 
 ## Final submission status — 23 September 2026
-**PASS for the final static design handoff.**
+**PASS for the polished static design handoff.**
 
-This QA record describes the current landing implementation after the final hero/product-image changes. It does **not** claim production readiness, WCAG conformance, real-device coverage, cross-browser certification, usability validation, or live backend functionality.
+This record describes the current screenshot-free marketing direction. It does **not** claim production readiness, WCAG conformance, cross-browser certification, usability validation, or live backend functionality.
 
-Final UI source baseline:
-`1e97af859fd1c8842cbee30a5666a78e5ba8b917`
+UI source used for final visual evidence:
+`bf963ca0e17801fa54ef0614b7efbaf11bf5aacd`
 
-Final evidence blobs:
-- desktop: `673ddc24e3d493a518ed5de0fe0cecb8014bc494`
-- mobile: `60b4a58303ad63663185af7bfe344f0be7601108`
+Evidence commit:
+`f164aedd236e0bae9f726ff24134e0b321a34ce4`
 
-## What changed in the final pass
-Documentation was synchronized with the current code:
-- hero uses the original client-provided `Screen View Card.png`;
-- Your Card uses the original `Screen My Card.png`;
-- Early Access fields are static visual UI, not HTML forms;
-- FAQ is a static presentation section, not `details/summary`;
-- JavaScript is limited to the mobile navigation behavior;
-- original product screenshots remain image layers by design for Figma conversion.
+## Final visual direction verified
+- Original `logo.svg` remains the brand asset.
+- Hero uses a new HTML/CSS/SVG digital identity + recipient preview + QR/share composition.
+- “Your card” uses a new HTML/CSS Card Builder + live preview concept.
+- The six supplied app screenshots remain reference evidence only and are **not embedded in the landing page**.
+- Early Access fields and FAQ remain static presentation UI.
+- JavaScript is limited to mobile navigation.
 
-## Final rendered evidence
-Fresh full-page screenshots were generated from the final-submission branch through GitHub Actions using Playwright Chromium against a local static HTTP server.
+## Rendered evidence
+Final full-page screenshots were generated using Playwright 1.55 / Chromium against a local static HTTP server.
 
-Workflow run:
-`35772882361` — **success**
+Successful workflow run:
+`35775059850`
 
-Current evidence:
-- `evidence/desktop-1440.png` — full landing at **1440 × 1000 viewport**, full-page capture.
-- `evidence/mobile-390.png` — full landing at **390 × 844 viewport**, full-page capture.
+Evidence:
+- `evidence/desktop-1440.png` — 1440 × 1000 viewport, full-page capture.
+- `evidence/mobile-390.png` — 390 × 844 viewport, full-page capture.
 
-The screenshots were regenerated after the original View Card screenshot replaced the earlier rebuilt hero mockup.
+Evidence blobs:
+- desktop: `13b891ebc525b98a3024ad9547ee45d7cfc31cec`
+- mobile: `5df7b91a5738d73663549b022b2b4ea9c90d5103`
+
+## Layout smoke-check result
+
+| Viewport | scrollWidth | clientWidth | Page errors | Image loading |
+|---|---:|---:|---:|---|
+| Desktop 1440 | 1440 | 1440 | 0 | PASS |
+| Mobile 390 | 390 | 390 | 0 | PASS |
+
+Both rendered states confirmed:
+- `.hero-visual` exists;
+- `.builder-visual` exists;
+- all six required benefit labels are present;
+- only the original InstaCard SVG logo is loaded as an external image (header + footer);
+- no horizontal page overflow was detected.
 
 ## Source consistency checks
-Current final branch scan confirms:
 
 | Check | Result |
 |---|---|
-| Required benefit labels | Simple, Accurate, Multilingual, Integrated, Green, Customized — all present |
-| Hero original product image | `Screen View Card.png` present |
-| Your Card original product image | `Screen My Card.png` present |
-| HTML `form` elements | 0 |
-| HTML `input` elements | 0 |
-| HTML `details` elements | 0 |
+| Required benefits | Simple, Accurate, Multilingual, Integrated, Green, Customized — all present |
+| Original logo used | YES |
+| Client screenshot PNG references in `index.html` | **0** |
+| Landing PNG `img` tags | **0** |
+| New hero concept | present |
+| New Card Builder concept | present |
+| HTML `form` | 0 |
+| HTML `input` | 0 |
+| HTML `details` | 0 |
+| HTML `canvas` | 0 |
+| HTML `iframe` | 0 |
 | CSS `position:absolute` | 0 |
 | CSS `position:fixed` | 0 |
 | CSS `position:sticky` | 0 |
 | CSS transforms | 0 |
 | CSS linear/radial gradients | 0 |
-| Signup validation JavaScript | none |
-| Mobile navigation JavaScript | present |
-
-Original supplied assets remain in `assets/`:
-- `logo.svg`
-- `Screen New Card.png`
-- `Screen Design Card.png`
-- `Screen My Card.png`
-- `Screen View Card.png`
-- `Screen Premium.png`
-- `ScreenPrinting.png`
-
-## Visual review targets
-The final evidence is intended to verify:
-- hero hierarchy and CTA visibility;
-- original supplied product UI shown without rebuilding the screenshot contents;
-- all six benefit cards;
-- responsive reading order;
-- Your Card screenshot section;
-- FAQ and final CTA presence;
-- footer completion;
-- no obvious horizontal-layout break at the two required submission widths.
+| Signup-validation JavaScript | none |
+| Mobile-navigation JavaScript | present |
 
 ## Figma-conversion expectations
-The surrounding landing copy and layout are HTML/CSS and should import as editable structure where supported by the conversion tool.
+The main landing is now strongly conversion-oriented:
+- marketing copy is DOM text;
+- profile/card content is DOM text;
+- buttons, chips, contact rows and builder controls are HTML/CSS;
+- QR artwork is inline SVG/vector;
+- original logo remains SVG/vector;
+- no legacy product screenshot flattens hero or personalization into one bitmap.
 
-Expected exceptions:
-- original PNG screenshots remain image layers;
-- the original SVG logo remains a vector layer;
-- text inside original PNG screenshots is intentionally not editable because the source asset must remain unchanged.
+The six original screenshots remain in `assets/` and in the optional **Supplied Product Evidence** section of `design-notes.html`. They should stay out of the primary Desktop/Mobile Figma landing frames unless BCA explicitly requests them.
 
 ## Interaction scope
-This is a design test, not a functional product prototype.
-
 Implemented:
-- anchor links;
+- anchor navigation;
 - mobile menu open/close;
-- standard link/button hover/focus behavior.
+- standard link/button hover/focus presentation.
 
 Not implemented:
 - email submission;
 - form validation;
-- FAQ accordion behavior;
+- FAQ accordion;
 - authentication;
 - payment;
-- contact saving/sync;
-- printing checkout;
+- real contact saving/sync;
+- print checkout;
 - analytics.
 
 ## Deferred validation
-Not performed in this final pass:
+Not performed:
 - Safari / Firefox comparison;
-- physical iOS / Android device testing;
+- physical iOS / Android device test;
 - screen-reader session;
 - formal accessibility-conformance audit;
-- Lighthouse performance audit;
-- real user interviews or usability sessions;
+- Lighthouse audit;
+- real user interviews/usability sessions;
 - production API/integration testing.
 
-These are intentionally outside the BCA design-test scope and must not be inferred from the static submission.
+These remain outside the BCA static design-test scope.

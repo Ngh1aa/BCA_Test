@@ -1278,3 +1278,101 @@ html.motion-reduced .hero-camcard .hero-hands-stage{
     min-height:380px;
   }
 }
+
+
+/* Final GSAP hands scene — exact left/right direction requested. */
+.hero.hero-camcard{
+  min-height:auto;
+  padding-bottom:0;
+}
+.hero-camcard .hero-hands-stage.hands-container{
+  position:relative;
+  top:auto;
+  display:block;
+  width:100%;
+  height:clamp(560px,58vw,760px);
+  min-height:560px;
+  margin-top:16px;
+  overflow:hidden;
+}
+.hero-camcard .hands-motion-window{
+  position:relative;
+  width:min(1320px,100%);
+  height:100%;
+  min-height:0;
+  margin:0 auto;
+  overflow:hidden;
+}
+.hero-camcard .hero-hand{
+  position:absolute;
+  z-index:2;
+  bottom:-5%;
+  width:clamp(500px,45vw,650px);
+  max-width:none;
+  height:auto;
+  pointer-events:none;
+  user-select:none;
+  will-change:transform;
+  transform:none;
+}
+.hero-camcard .left-hand{
+  left:50%;
+  right:auto;
+  margin-left:-590px;
+}
+.hero-camcard .right-hand{
+  right:50%;
+  left:auto;
+  margin-right:-590px;
+}
+
+/* Neutralize previous directional classes / sticky scene overrides. */
+.hero-camcard .hand-from-left,
+.hero-camcard .hand-from-right{
+  left:auto;
+  right:auto;
+  margin:0;
+}
+html.figma-static .hero.hero-camcard,
+html.motion-reduced .hero.hero-camcard{
+  min-height:auto;
+  padding-bottom:0;
+}
+html.figma-static .hero-camcard .hero-hands-stage,
+html.motion-reduced .hero-camcard .hero-hands-stage{
+  position:relative;
+  top:auto;
+  height:clamp(560px,58vw,760px);
+  min-height:560px;
+}
+html.figma-static .hero-camcard .left-hand,
+html.motion-reduced .hero-camcard .left-hand,
+html.figma-static .hero-camcard .right-hand,
+html.motion-reduced .hero-camcard .right-hand{
+  transform:translate3d(0,0,0)!important;
+}
+
+@media(max-width:760px){
+  .hero-camcard .hero-hands-stage.hands-container{
+    height:520px;
+    min-height:520px;
+    margin-top:10px;
+  }
+  .hero-camcard .hero-hand{
+    bottom:-2%;
+    width:420px;
+  }
+  .hero-camcard .left-hand{
+    left:50%;
+    margin-left:-355px;
+  }
+  .hero-camcard .right-hand{
+    right:50%;
+    margin-right:-355px;
+  }
+  html.figma-static .hero-camcard .hero-hands-stage,
+  html.motion-reduced .hero-camcard .hero-hands-stage{
+    height:520px;
+    min-height:520px;
+  }
+}

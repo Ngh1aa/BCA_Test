@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-22T20:29:38.566Z",
+  "generated_at": "2026-09-22T20:38:08.355Z",
   "default": [
     {
       "width": 1440,
@@ -13,15 +13,15 @@
         "clientWidth": 1440,
         "images": [
           {
-            "src": "./assets/hand_right.webp",
-            "naturalWidth": 700,
-            "naturalHeight": 707,
+            "src": "./assets/hand_right.png",
+            "naturalWidth": 1340,
+            "naturalHeight": 1354,
             "complete": true
           },
           {
-            "src": "./assets/hand_left.webp",
-            "naturalWidth": 700,
-            "naturalHeight": 707,
+            "src": "./assets/hand_left.png",
+            "naturalWidth": 1340,
+            "naturalHeight": 1354,
             "complete": true
           }
         ]
@@ -40,21 +40,21 @@
       "errors": [],
       "before": {
         "rootClass": "motion-enhanced",
-        "leftTransform": "matrix(0.975179, 0, 0, 0.975179, -29.5189, 0)",
-        "rightTransform": "matrix(0.975179, 0, 0, 0.975179, 29.5189, 0)",
+        "leftTransform": "matrix(0.975179, 0, 0, 0.975179, -29.5183, 0)",
+        "rightTransform": "matrix(0.975179, 0, 0, 0.975179, 29.5183, 0)",
         "scrollWidth": 390,
         "clientWidth": 390,
         "images": [
           {
-            "src": "./assets/hand_right.webp",
-            "naturalWidth": 700,
-            "naturalHeight": 707,
+            "src": "./assets/hand_right.png",
+            "naturalWidth": 1340,
+            "naturalHeight": 1354,
             "complete": true
           },
           {
-            "src": "./assets/hand_left.webp",
-            "naturalWidth": 700,
-            "naturalHeight": 707,
+            "src": "./assets/hand_left.png",
+            "naturalWidth": 1340,
+            "naturalHeight": 1354,
             "complete": true
           }
         ]

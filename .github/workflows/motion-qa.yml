@@ -153,11 +153,16 @@ jobs:
 
           node motion-check.mjs
 
+      - name: Prepare temporary visual inspection payloads
+        run: |
+          base64 -w0 evidence/desktop-1440.png > evidence/desktop-1440.b64.txt
+          base64 -w0 evidence/mobile-390.png > evidence/mobile-390.b64.txt
+
       - name: Commit refreshed evidence
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add evidence/desktop-1440.png evidence/mobile-390.png evidence/motion-qa-report.json
+          git add evidence/desktop-1440.png evidence/mobile-390.png evidence/motion-qa-report.json evidence/desktop-1440.b64.txt evidence/mobile-390.b64.txt
           if git diff --cached --quiet; then
             echo "Evidence already current."
           else

@@ -559,7 +559,7 @@ p{color:var(--muted)}
   .hero{gap:34px}
   h1{font-size:66px}
   
-  .identity-card{min-height:220px}
+  
   .connection-grid{grid-template-columns:1fr 1fr}
   .benefit-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .personal,.faq{gap:52px}

@@ -42,7 +42,7 @@ jobs:
 
       - name: Layout smoke check
         run: |
-          cat > /tmp/check.mjs <<'EOF'
+          cat > check.mjs <<'EOF'
           import { chromium } from 'playwright';
           const browser = await chromium.launch({headless:true});
           const results = [];
@@ -65,7 +65,7 @@ jobs:
           console.log(JSON.stringify(results,null,2));
           await browser.close();
           EOF
-          node /tmp/check.mjs
+          node check.mjs
 
       - name: Commit refreshed evidence
         run: |

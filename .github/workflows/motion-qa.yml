@@ -1,0 +1,161 @@
+name: Motion visual QA
+
+on:
+  push:
+    branches:
+      - feat/reference-motion-system
+
+permissions:
+  contents: write
+
+jobs:
+  motion-qa:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+        with:
+          ref: feat/reference-motion-system
+          fetch-depth: 0
+
+      - name: Start static site
+        run: |
+          python3 -m http.server 4173 >/tmp/bca-motion-server.log 2>&1 &
+          for i in {1..20}; do
+            if curl -fsS http://127.0.0.1:4173/ >/dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/bca-motion-server.log
+          exit 1
+
+      - name: Install Playwright
+        run: |
+          npm init -y >/dev/null 2>&1
+          npm install --no-save playwright@1.55.0 >/dev/null
+          npx playwright install --with-deps chromium
+
+      - name: Run motion and accessibility-mode smoke checks
+        run: |
+          cat > motion-check.mjs <<'EOF'
+          import { chromium } from 'playwright';
+          import { writeFileSync } from 'node:fs';
+
+          const browser = await chromium.launch({headless:true});
+          const report = {
+            generated_at: new Date().toISOString(),
+            renderer: 'Playwright 1.55.0 / Chromium',
+            default_motion: [],
+            figma_static: null,
+            reduced_motion: null
+          };
+
+          const assert = (condition, message) => {
+            if (!condition) throw new Error(message);
+          };
+
+          for (const [width,height] of [[1440,1000],[390,844]]) {
+            const page = await browser.newPage({viewport:{width,height}});
+            const errors = [];
+            page.on('pageerror', e => errors.push(String(e)));
+
+            await page.goto('http://127.0.0.1:4173/', {waitUntil:'networkidle'});
+            await page.waitForTimeout(900);
+
+            const top = await page.evaluate(() => ({
+              rootClass: document.documentElement.className,
+              scrollWidth: document.documentElement.scrollWidth,
+              clientWidth: document.documentElement.clientWidth,
+              heroVisual: !!document.querySelector('.hero-visual'),
+              builderVisual: !!document.querySelector('.builder-visual'),
+              marqueeAnimation: getComputedStyle(document.querySelector('.sharing-track')).animationName,
+              brandAnimation: getComputedStyle(document.querySelector('.brand-card')).animationName,
+              screenshotPngs: [...document.images].filter(i => /Screen.*\.png/i.test(i.getAttribute('src') || '')).length
+            }));
+
+            assert(errors.length === 0, `runtime errors at ${width}: ${errors.join(' | ')}`);
+            assert(top.scrollWidth === top.clientWidth, `horizontal overflow at ${width}: ${top.scrollWidth} > ${top.clientWidth}`);
+            assert(top.rootClass.includes('motion-enhanced'), `motion-enhanced missing at ${width}`);
+            assert(top.marqueeAnimation.includes('instacard-marquee'), `marquee animation missing at ${width}`);
+            assert(top.brandAnimation.includes('instacard-float-a'), `hero float missing at ${width}`);
+            assert(top.screenshotPngs === 0, `legacy screenshot PNG rendered at ${width}`);
+
+            await page.locator('#how-it-works').scrollIntoViewIfNeeded();
+            await page.waitForTimeout(900);
+            const steps = await page.locator('.steps article').evaluateAll(nodes => nodes.map(node => ({
+              visibleClass: node.classList.contains('is-visible'),
+              opacity: getComputedStyle(node).opacity,
+              transform: getComputedStyle(node).transform
+            })));
+            assert(steps.every(x => x.visibleClass && x.opacity === '1'), `step reveal failed at ${width}`);
+
+            await page.locator('#why-instacard').scrollIntoViewIfNeeded();
+            await page.waitForTimeout(900);
+            const benefits = await page.locator('.benefit').evaluateAll(nodes => nodes.map(node => ({
+              visibleClass: node.classList.contains('is-visible'),
+              opacity: getComputedStyle(node).opacity
+            })));
+            assert(benefits.length === 6 && benefits.every(x => x.visibleClass && x.opacity === '1'), `benefit reveal failed at ${width}`);
+
+            report.default_motion.push({width,height,errors,top,steps,benefits});
+
+            const screenshot = width === 1440 ? 'evidence/desktop-1440.png' : 'evidence/mobile-390.png';
+            await page.screenshot({path:screenshot,fullPage:true});
+            await page.close();
+          }
+
+          {
+            const page = await browser.newPage({viewport:{width:1440,height:1000}});
+            await page.goto('http://127.0.0.1:4173/?figma=1', {waitUntil:'networkidle'});
+            await page.waitForTimeout(250);
+            const data = await page.evaluate(() => ({
+              rootClass: document.documentElement.className,
+              marqueeAnimation: getComputedStyle(document.querySelector('.sharing-track')).animationName,
+              brandAnimation: getComputedStyle(document.querySelector('.brand-card')).animationName,
+              hiddenRevealCount: [...document.querySelectorAll('[data-reveal]')].filter(el => getComputedStyle(el).opacity !== '1').length
+            }));
+            assert(data.rootClass.includes('figma-static'), 'figma-static root class missing');
+            assert(data.marqueeAnimation === 'none', 'marquee still animates in Figma mode');
+            assert(data.brandAnimation === 'none', 'hero still animates in Figma mode');
+            assert(data.hiddenRevealCount === 0, 'reveals hidden in Figma mode');
+            report.figma_static = data;
+            await page.close();
+          }
+
+          {
+            const page = await browser.newPage({viewport:{width:1440,height:1000}});
+            await page.emulateMedia({reducedMotion:'reduce'});
+            await page.goto('http://127.0.0.1:4173/', {waitUntil:'networkidle'});
+            await page.waitForTimeout(250);
+            const data = await page.evaluate(() => ({
+              rootClass: document.documentElement.className,
+              marqueeAnimation: getComputedStyle(document.querySelector('.sharing-track')).animationName,
+              brandAnimation: getComputedStyle(document.querySelector('.brand-card')).animationName,
+              hiddenRevealCount: [...document.querySelectorAll('[data-reveal]')].filter(el => getComputedStyle(el).opacity !== '1').length
+            }));
+            assert(data.rootClass.includes('motion-reduced'), 'motion-reduced root class missing');
+            assert(data.marqueeAnimation === 'none', 'marquee still animates with reduced motion');
+            assert(data.brandAnimation === 'none', 'hero still animates with reduced motion');
+            assert(data.hiddenRevealCount === 0, 'reveals hidden with reduced motion');
+            report.reduced_motion = data;
+            await page.close();
+          }
+
+          writeFileSync('evidence/motion-qa-report.json', JSON.stringify(report,null,2) + '\n');
+          console.log(JSON.stringify(report,null,2));
+          await browser.close();
+          EOF
+
+          node motion-check.mjs
+
+      - name: Commit refreshed evidence
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add evidence/desktop-1440.png evidence/mobile-390.png evidence/motion-qa-report.json
+          if git diff --cached --quiet; then
+            echo "Evidence already current."
+          else
+            git commit -m "Refresh motion QA evidence [skip ci]"
+            git push origin HEAD:feat/reference-motion-system
+          fi

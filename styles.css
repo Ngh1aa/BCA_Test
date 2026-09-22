@@ -1203,3 +1203,78 @@ html.figma-static .hero-camcard .hand-from-right{
     transform:translate3d(-8%,0,0) scale(.98)!important;
   }
 }
+
+
+/* Strong visible scroll-scrub hero scene */
+.hero.hero-camcard{
+  min-height:175vh;
+  padding-bottom:52vh;
+}
+.hero-camcard .hero-hands-stage{
+  position:sticky;
+  top:76px;
+  min-height:calc(100vh - 76px);
+  height:calc(100vh - 76px);
+  margin-top:18px;
+  display:flex;
+  align-items:flex-end;
+  overflow:hidden;
+}
+.hero-camcard .hands-motion-window{
+  width:min(1320px,100%);
+  height:100%;
+  min-height:0;
+  margin:0 auto;
+  overflow:hidden;
+}
+.hero-camcard .hero-hand{
+  bottom:-8vh;
+  width:clamp(500px,47vw,700px);
+}
+.hero-camcard .hand-from-left{
+  left:-8%;
+}
+.hero-camcard .hand-from-right{
+  right:-8%;
+}
+
+@media(max-width:760px){
+  .hero.hero-camcard{
+    min-height:165vh;
+    padding-bottom:46vh;
+  }
+  .hero-camcard .hero-hands-stage{
+    top:74px;
+    height:calc(100vh - 74px);
+    min-height:calc(100vh - 74px);
+  }
+  .hero-camcard .hero-hand{
+    bottom:-2vh;
+    width:clamp(360px,98vw,500px);
+  }
+  .hero-camcard .hand-from-left{
+    left:-36%;
+  }
+  .hero-camcard .hand-from-right{
+    right:-36%;
+  }
+}
+
+html.figma-static .hero.hero-camcard,
+html.motion-reduced .hero.hero-camcard{
+  min-height:auto;
+  padding-bottom:0;
+}
+html.figma-static .hero-camcard .hero-hands-stage,
+html.motion-reduced .hero-camcard .hero-hands-stage{
+  position:relative;
+  top:auto;
+  height:auto;
+  min-height:470px;
+}
+@media(max-width:760px){
+  html.figma-static .hero-camcard .hero-hands-stage,
+  html.motion-reduced .hero-camcard .hero-hands-stage{
+    min-height:380px;
+  }
+}

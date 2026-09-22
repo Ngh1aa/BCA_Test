@@ -93,3 +93,27 @@ Full conversion notes: `docs/figma-frame-inventory.md`.
 **Original logo → new marketing visuals → UX rationale → polished desktop/mobile UI.**
 
 The supplied app screenshots are product-context evidence, not mandatory landing-page artwork. The final landing uses a custom editable digital identity / recipient preview / QR-share composition in the hero and an editable Card Builder concept in the personalization section.
+
+
+## Motion system
+
+The final landing uses a small, product-specific motion language inspired by patterns observed on CamCard, BOVAcard and CloudCard and benchmarked against 21st.dev motion patterns:
+
+- floating hero identity / recipient cards;
+- infinite sharing rail;
+- staggered scroll reveal for How It Works and benefits;
+- restrained hover lift;
+- floating Card Builder preview.
+
+Implementation is native CSS + IntersectionObserver. No animation framework was added.
+
+Accessibility / conversion:
+
+- `prefers-reduced-motion: reduce` disables continuous/reveal motion;
+- append `?figma=1` to the landing URL for a completely static HTML → Figma capture.
+
+Figma conversion URL:
+
+`https://ngh1aa.github.io/BCA_Test/?figma=1`
+
+Detailed rationale: `docs/motion-direction.md`.

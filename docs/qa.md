@@ -8,8 +8,9 @@ This QA record describes the current landing implementation after the final hero
 Final UI source baseline:
 `1e97af859fd1c8842cbee30a5666a78e5ba8b917`
 
-Final refreshed visual-evidence commit:
-`3d77dbb2da1b9131dd692b6d04f8d19483020bc3`
+Final evidence blobs:
+- desktop: `673ddc24e3d493a518ed5de0fe0cecb8014bc494`
+- mobile: `60b4a58303ad63663185af7bfe344f0be7601108`
 
 ## What changed in the final pass
 Documentation was synchronized with the current code:

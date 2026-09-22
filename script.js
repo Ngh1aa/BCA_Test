@@ -28,86 +28,65 @@ if (isMotionEnhanced) {
 }
 
 // Scroll-scrubbed “meet in the middle” hero hands.
-// Primary path: GSAP ScrollTrigger with pin + scrub.
-// Fallback path: native sticky + requestAnimationFrame if GSAP/CDN is unavailable.
+// Native implementation: no CDN/runtime dependency.
+// The scene is driven directly by scroll position so dragging the page up/down
+// visibly moves the hands apart/together. Only ?figma=1 disables this motion.
 const handsContainer = document.querySelector('.hands-container');
 
 if (handsContainer) {
   const leftHand = handsContainer.querySelector('.left-hand');
   const rightHand = handsContainer.querySelector('.right-hand');
   const hero = handsContainer.closest('.hero-camcard');
+  const handsShell = document.querySelector('[data-hands-shell]');
+  const isFigmaStatic = document.documentElement.classList.contains('figma-static');
 
-  const setNativeProgress = progress => {
-    const p = Math.min(1, Math.max(0, progress));
+  const clamp = value => Math.min(1, Math.max(0, value));
+
+  const setProgress = progress => {
+    const p = clamp(progress);
     const leftX = -100 + (100 * p);
     const rightX = 100 - (100 * p);
+
     if (leftHand) leftHand.style.transform = `translate3d(${leftX}%,0,0)`;
     if (rightHand) rightHand.style.transform = `translate3d(${rightX}%,0,0)`;
   };
 
-  const showFinalPose = () => setNativeProgress(1);
-
-  const setupNativeFallback = () => {
-    if (!leftHand || !rightHand || !hero) return;
-
-    hero.classList.add('native-hands-fallback');
-    handsContainer.classList.add('native-hands-pin');
-    setNativeProgress(0);
+  if (leftHand && rightHand && hero && handsShell && !isFigmaStatic) {
+    hero.classList.add('hands-scroll-active');
+    handsContainer.classList.add('hands-native-pin');
 
     let ticking = false;
-    const update = () => {
+
+    const updateHands = () => {
       ticking = false;
+
       const compact = window.innerWidth <= 760;
       const pinTop = compact ? 74 : 90;
-      const distance = compact ? 520 : 760;
-      const startY = hero.offsetTop + handsContainer.offsetTop - pinTop;
-      setNativeProgress((window.scrollY - startY) / distance);
+      const travel = compact ? 520 : 760;
+
+      const shellTop = window.scrollY + handsShell.getBoundingClientRect().top;
+      const startY = shellTop - pinTop;
+      const progress = (window.scrollY - startY) / travel;
+
+      setProgress(progress);
     };
+
     const requestUpdate = () => {
       if (ticking) return;
       ticking = true;
-      requestAnimationFrame(update);
+      requestAnimationFrame(updateHands);
     };
+
+    // Force the true start pose immediately before any scroll occurs.
+    setProgress(0);
+    requestAnimationFrame(updateHands);
 
     window.addEventListener('scroll', requestUpdate, { passive: true });
     window.addEventListener('resize', requestUpdate);
-    requestUpdate();
-  };
-
-  if (
-    isMotionEnhanced &&
-    window.gsap &&
-    window.ScrollTrigger &&
-    leftHand &&
-    rightHand
-  ) {
-    gsap.registerPlugin(ScrollTrigger);
-
-    gsap.set(leftHand, { xPercent: -100 });
-    gsap.set(rightHand, { xPercent: 100 });
-
-    const handsTimeline = gsap.timeline({
-      scrollTrigger: {
-        trigger: handsContainer,
-        start: () => window.innerWidth <= 760 ? 'top top+=74' : 'top top+=90',
-        end: () => '+=' + (window.innerWidth <= 760 ? 520 : 760),
-        scrub: 1,
-        pin: true,
-        pinSpacing: true,
-        anticipatePin: 1,
-        invalidateOnRefresh: true
-      }
-    });
-
-    handsTimeline
-      .to(leftHand, { xPercent: 0, ease: 'none' }, 0)
-      .to(rightHand, { xPercent: 0, ease: 'none' }, 0);
-
-    window.addEventListener('load', () => ScrollTrigger.refresh(), { once: true });
-  } else if (isMotionEnhanced) {
-    setupNativeFallback();
+    window.addEventListener('pageshow', requestUpdate);
   } else {
-    showFinalPose();
+    // Static export state.
+    setProgress(1);
   }
 }
 

@@ -1260,13 +1260,11 @@ html.figma-static .hero-camcard .hand-from-right{
   }
 }
 
-html.figma-static .hero.hero-camcard,
-html.motion-reduced .hero.hero-camcard{
+html.figma-static .hero.hero-camcard{
   min-height:auto;
   padding-bottom:0;
 }
-html.figma-static .hero-camcard .hero-hands-stage,
-html.motion-reduced .hero-camcard .hero-hands-stage{
+html.figma-static .hero-camcard .hero-hands-stage{
   position:relative;
   top:auto;
   height:auto;
@@ -1333,22 +1331,18 @@ html.motion-reduced .hero-camcard .hero-hands-stage{
   right:auto;
   margin:0;
 }
-html.figma-static .hero.hero-camcard,
-html.motion-reduced .hero.hero-camcard{
+html.figma-static .hero.hero-camcard{
   min-height:auto;
   padding-bottom:0;
 }
-html.figma-static .hero-camcard .hero-hands-stage,
-html.motion-reduced .hero-camcard .hero-hands-stage{
+html.figma-static .hero-camcard .hero-hands-stage{
   position:relative;
   top:auto;
   height:clamp(560px,58vw,760px);
   min-height:560px;
 }
 html.figma-static .hero-camcard .left-hand,
-html.motion-reduced .hero-camcard .left-hand,
-html.figma-static .hero-camcard .right-hand,
-html.motion-reduced .hero-camcard .right-hand{
+html.figma-static .hero-camcard .right-hand{
   transform:translate3d(0,0,0)!important;
 }
 
@@ -1394,4 +1388,75 @@ html.motion-enhanced .hands-container.native-hands-pin{
   html.motion-enhanced .hands-container.native-hands-pin{
     top:74px;
   }
+}
+
+
+/* Native scroll-scrub hero hands: always driven by user scroll except Figma static mode. */
+.hero.hero-camcard.hands-scroll-active{
+  overflow:visible;
+  padding-bottom:760px;
+}
+.hero-camcard .hero-hands-stage.hands-native-pin{
+  position:sticky;
+  top:90px;
+  z-index:2;
+}
+.hero-camcard .hands-motion-window{
+  overflow:hidden;
+}
+@media(max-width:760px){
+  .hero.hero-camcard.hands-scroll-active{
+    padding-bottom:520px;
+  }
+  .hero-camcard .hero-hands-stage.hands-native-pin{
+    top:74px;
+  }
+}
+html.figma-static .hero.hero-camcard.hands-scroll-active{
+  padding-bottom:0;
+}
+html.figma-static .hero-camcard .hero-hands-stage.hands-native-pin{
+  position:relative;
+  top:auto;
+}
+
+
+/* Dedicated scroll shell keeps the hand scene pinned for the full scrub distance. */
+.hero.hero-camcard.hands-scroll-active{
+  min-height:auto!important;
+  padding-bottom:0!important;
+  overflow:visible!important;
+}
+.hero-camcard .hands-scroll-shell{
+  position:relative;
+  height:calc(clamp(560px,58vw,760px) + 760px);
+  margin-top:16px;
+}
+.hero-camcard .hands-scroll-shell .hero-hands-stage.hands-native-pin{
+  position:sticky!important;
+  top:90px!important;
+  height:clamp(560px,58vw,760px)!important;
+  min-height:560px!important;
+  margin-top:0!important;
+  overflow:hidden;
+  z-index:2;
+}
+@media(max-width:760px){
+  .hero-camcard .hands-scroll-shell{
+    height:1040px;
+    margin-top:10px;
+  }
+  .hero-camcard .hands-scroll-shell .hero-hands-stage.hands-native-pin{
+    top:74px!important;
+    height:520px!important;
+    min-height:520px!important;
+  }
+}
+html.figma-static .hero-camcard .hands-scroll-shell{
+  height:auto;
+  margin-top:10px;
+}
+html.figma-static .hero-camcard .hands-scroll-shell .hero-hands-stage.hands-native-pin{
+  position:relative!important;
+  top:auto!important;
 }

@@ -1035,3 +1035,171 @@ html.figma-static .hands-signal{
     transform:translate(-50%,-50%) scale(1)!important;
   }
 }
+
+
+/* CamCard-inspired hero composition: centered message with two hands directly below. */
+.hero.hero-camcard{
+  display:block;
+  width:100%;
+  max-width:none;
+  margin:0;
+  padding:62px 0 0;
+  overflow:hidden;
+  background:#dff0ff;
+}
+.hero-camcard .hero-copy{
+  position:relative;
+  z-index:5;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+}
+.hero-camcard .hero-copy .eyebrow{
+  justify-content:center;
+}
+.hero-camcard .hero-copy h1{
+  max-width:920px;
+  margin:0 auto 24px;
+  font-size:clamp(58px,6.2vw,92px);
+  line-height:.98;
+}
+.hero-camcard .hero-sub{
+  max-width:700px;
+  margin:0 auto;
+  font-size:18px;
+}
+.hero-camcard .early-access-panel{
+  width:min(620px,100%);
+  margin:28px auto 0;
+}
+.hero-camcard .form-caption{
+  width:100%;
+  text-align:center;
+}
+.hero-camcard .hero-reassurance{
+  justify-content:center;
+}
+.hero-camcard .hero-hands-stage{
+  position:relative;
+  width:100%;
+  min-height:470px;
+  margin-top:18px;
+  padding:0;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+  overflow:hidden;
+}
+.hero-camcard .hands-motion-window{
+  position:relative;
+  width:min(1320px,100%);
+  min-height:470px;
+  margin:0 auto;
+  overflow:hidden;
+  isolation:isolate;
+}
+.hero-camcard .hero-orbit{
+  position:absolute;
+  left:50%;
+  border:1px solid #b9def8;
+  border-radius:50%;
+  transform:translateX(-50%);
+  pointer-events:none;
+}
+.hero-camcard .orbit-one{
+  bottom:-260px;
+  width:980px;
+  height:980px;
+  background:#d4ebff;
+}
+.hero-camcard .orbit-two{
+  bottom:-420px;
+  width:760px;
+  height:760px;
+  background:transparent;
+}
+.hero-camcard .hero-hand{
+  position:absolute;
+  z-index:2;
+  bottom:-120px;
+  width:clamp(430px,45vw,640px);
+  max-width:none;
+  height:auto;
+  top:auto;
+  filter:none;
+  pointer-events:none;
+  user-select:none;
+  will-change:transform;
+}
+.hero-camcard .hand-from-left{
+  left:-6%;
+  right:auto;
+  transform:translate3d(-44%,0,0) scale(.84);
+}
+.hero-camcard .hand-from-right{
+  right:-6%;
+  left:auto;
+  transform:translate3d(44%,0,0) scale(.84);
+}
+
+@media(max-width:760px){
+  .hero.hero-camcard{
+    padding:44px 0 0;
+  }
+  .hero-camcard .hero-copy h1{
+    max-width:340px;
+    font-size:52px;
+  }
+  .hero-camcard .hero-sub{
+    max-width:340px;
+    font-size:16px;
+  }
+  .hero-camcard .early-access-panel{
+    width:100%;
+  }
+  .hero-camcard .hero-hands-stage,
+  .hero-camcard .hands-motion-window{
+    min-height:380px;
+  }
+  .hero-camcard .hero-hands-stage{
+    margin-top:12px;
+  }
+  .hero-camcard .hero-hand{
+    bottom:-60px;
+    width:clamp(330px,92vw,460px);
+  }
+  .hero-camcard .hand-from-left{
+    left:-28%;
+  }
+  .hero-camcard .hand-from-right{
+    right:-28%;
+  }
+  .hero-camcard .orbit-one{
+    bottom:-190px;
+    width:620px;
+    height:620px;
+  }
+  .hero-camcard .orbit-two{
+    bottom:-290px;
+    width:470px;
+    height:470px;
+  }
+}
+
+html.figma-static .hero-camcard .hand-from-left{
+  transform:translate3d(8%,0,0) scale(.98)!important;
+}
+html.figma-static .hero-camcard .hand-from-right{
+  transform:translate3d(-8%,0,0) scale(.98)!important;
+}
+
+@media(prefers-reduced-motion:reduce){
+  .hero-camcard .hand-from-left{
+    transform:translate3d(8%,0,0) scale(.98)!important;
+  }
+  .hero-camcard .hand-from-right{
+    transform:translate3d(-8%,0,0) scale(.98)!important;
+  }
+}

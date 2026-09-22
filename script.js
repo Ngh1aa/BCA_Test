@@ -31,7 +31,7 @@ if (isMotionEnhanced) {
 // Exact behavior requested:
 // left hand  xPercent: -100 -> 0
 // right hand xPercent:  100 -> 0
-// both move at the same time with scrub: 1.
+// both move simultaneously while the scene is pinned, so the motion is clearly visible.
 const handsContainer = document.querySelector('.hands-container');
 
 if (handsContainer) {
@@ -58,9 +58,12 @@ if (handsContainer) {
     const handsTimeline = gsap.timeline({
       scrollTrigger: {
         trigger: handsContainer,
-        start: 'top 80%',
-        end: 'bottom 20%',
+        start: () => window.innerWidth <= 760 ? 'top top+=74' : 'top top+=90',
+        end: () => '+=' + (window.innerWidth <= 760 ? 520 : 760),
         scrub: 1,
+        pin: true,
+        pinSpacing: true,
+        anticipatePin: 1,
         invalidateOnRefresh: true
       }
     });
@@ -68,12 +71,12 @@ if (handsContainer) {
     handsTimeline
       .to(leftHand, {
         xPercent: 0,
-        ease: 'power2.out'
-      })
+        ease: 'none'
+      }, 0)
       .to(rightHand, {
         xPercent: 0,
-        ease: 'power2.out'
-      }, '<');
+        ease: 'none'
+      }, 0);
 
     window.addEventListener('load', () => ScrollTrigger.refresh(), { once: true });
   } else {

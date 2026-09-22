@@ -45,13 +45,13 @@ if (handsStage) {
     const p = easeOut(clamp(progress));
     const compact = window.innerWidth <= 760;
 
-    const leftStart = compact ? -58 : -44;
-    const leftEnd = compact ? 4 : 8;
-    const rightStart = compact ? 58 : 44;
-    const rightEnd = compact ? -4 : -8;
+    const leftStart = compact ? -58 : -28;
+    const leftEnd = compact ? 4 : 24;
+    const rightStart = compact ? 58 : 28;
+    const rightEnd = compact ? -4 : -24;
 
-    const startScale = compact ? 0.86 : 0.84;
-    const endScale = compact ? 0.98 : 1;
+    const startScale = compact ? 0.86 : 0.88;
+    const endScale = compact ? 0.98 : 1.04;
 
     const leftX = leftStart + (leftEnd - leftStart) * p;
     const rightX = rightStart + (rightEnd - rightStart) * p;

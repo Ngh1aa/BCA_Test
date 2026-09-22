@@ -1,43 +1,111 @@
-# InstaCard — QA and delivery evidence
+# InstaCard — Final QA and delivery evidence
 
-## Scope and result
-**PASS for the static design handoff** on Chromium 153.0.8010.0, 22 September 2026. This is not a production-app, WCAG-conformance, cross-browser or usability certification. No cloud Factory QA run was claimed.
+## Final submission status — 23 September 2026
+**PASS for the final static design handoff.**
 
-### Rendered checks
-Both `/index.html` and `/design-notes.html` checked at widths **320, 390, 700, 701, 768, 950, 951, 1024, 1199, 1200, 1440**. This covers declared mobile/desktop and layout transition pressure points.
+This QA record describes the current landing implementation after the final hero/product-image changes. It does **not** claim production readiness, WCAG conformance, real-device coverage, cross-browser certification, usability validation, or live backend functionality.
 
-- 22 route/viewport checks: no horizontal page overflow, no broken images, no missing nonempty fragment targets.
-- Axe WCAG 2/2.1 A/AA tagged checks: **0 reported violations** on both routes at 390 and 1440px; see `incomplete` entries in raw evidence for checks requiring manual judgment. Automated coverage is not a conformance claim.
-- No observed page JavaScript errors or HTTP 4xx/5xx responses.
-- Keyboard FAQ expand works with Enter.
-- Mobile menu opens, closes via Escape and closes after anchor navigation.
-- Email empty/invalid state sets `aria-invalid`; valid input explicitly reports no data sent or saved. Hero and footer both checked. Browser local/session storage remain empty.
-- Primary CTA computed default and hover: white on #1465D9 / #0B4BA7; focus ring 3px solid. Reduced-motion transition resolves to 0s.
-- `node --check script.js` and `git diff --check` passed.
+Final UI source baseline:
+`1e97af859fd1c8842cbee30a5666a78e5ba8b917`
 
-### Actual screenshot inspection
-Opened and visually inspected desktop hero/full page, mobile hero/full page, tablet full page, and desktop/mobile design notes. Review covered macro hierarchy, spacing, CTA visibility, logo, card composition, six benefits, footer contrast and responsive reading order.
+Final evidence blobs:
+- desktop: `673ddc24e3d493a518ed5de0fe0cecb8014bc494`
+- mobile: `60b4a58303ad63663185af7bfe344f0be7601108`
 
-Repairs based on evidence:
-1. Moved the hero sharing annotation below the profile card so it no longer hides the Save contact label.
-2. Replaced an unsupported Japanese sample glyph string with a supported French greeting; no missing-glyph boxes remain in the benefits illustration.
-3. Set explicit dimensions on the Microsoft contact-integration motif grid cells.
-4. Darkened the struck-through sample address from #89909A to #66717F after axe detected insufficient contrast. Reran the affected visual/automated checks; no remaining reported violations.
+## What changed in the final pass
+Documentation was synchronized with the current code:
+- hero uses the original client-provided `Screen View Card.png`;
+- Your Card uses the original `Screen My Card.png`;
+- Early Access fields are static visual UI, not HTML forms;
+- FAQ is a static presentation section, not `details/summary`;
+- JavaScript is limited to the mobile navigation behavior;
+- original product screenshots remain image layers by design for Figma conversion.
 
-### Creative review
-- **KEEP:** blue card identity, large direct headline, one CTA, static layered hero, product-specific benefit miniatures.
-- **REVISE (completed):** annotation placement and sample-address contrast.
-- **REMOVE:** unverified “173 trees/day”, fake social proof, auto-animation and unsupported character rendering.
+## Final rendered evidence
+Fresh full-page screenshots were generated from the final-submission branch through GitHub Actions using Playwright Chromium against a local static HTTP server.
 
-### Evidence files
-- `evidence/desktop-1440.png` — complete desktop landing design.
-- `evidence/mobile-390.png` — complete mobile landing design.
-- `evidence/desktop-hero.png`, `evidence/mobile-hero.png` — first viewport details.
-- `evidence/tablet-768.png` — intermediate layout.
-- `evidence/design-notes-1440.png`, `evidence/design-notes-390.png` — rationale/sitemap/flow presentation.
-- `evidence/browser-report.json` — raw viewport/state/axe results.
+Workflow run:
+`35772882361` — **success**
 
-### Limits and deferred work
-No Safari/Firefox or real-device tests, assistive-technology session, formal text-enlargement audit, Lighthouse run, real user research or analytics. No live email, auth, payment, contact import/sync or print integration. App screens beyond the landing are proposed UX flows, not implemented pages. GitHub delivery is source/design review, not a production deployment.
+Current evidence:
+- `evidence/desktop-1440.png` — full landing at **1440 × 1000 viewport**, full-page capture.
+- `evidence/mobile-390.png` — full landing at **390 × 844 viewport**, full-page capture.
 
-The agent-browser CLI could not start its daemon in this environment. Rendered evidence instead uses Playwright with Chromium and axe. This fallback did not alter product code or weaken the checks.
+The screenshots were regenerated after the original View Card screenshot replaced the earlier rebuilt hero mockup.
+
+## Source consistency checks
+Current final branch scan confirms:
+
+| Check | Result |
+|---|---|
+| Required benefit labels | Simple, Accurate, Multilingual, Integrated, Green, Customized — all present |
+| Hero original product image | `Screen View Card.png` present |
+| Your Card original product image | `Screen My Card.png` present |
+| HTML `form` elements | 0 |
+| HTML `input` elements | 0 |
+| HTML `details` elements | 0 |
+| CSS `position:absolute` | 0 |
+| CSS `position:fixed` | 0 |
+| CSS `position:sticky` | 0 |
+| CSS transforms | 0 |
+| CSS linear/radial gradients | 0 |
+| Signup validation JavaScript | none |
+| Mobile navigation JavaScript | present |
+
+Original supplied assets remain in `assets/`:
+- `logo.svg`
+- `Screen New Card.png`
+- `Screen Design Card.png`
+- `Screen My Card.png`
+- `Screen View Card.png`
+- `Screen Premium.png`
+- `ScreenPrinting.png`
+
+## Visual review targets
+The final evidence is intended to verify:
+- hero hierarchy and CTA visibility;
+- original supplied product UI shown without rebuilding the screenshot contents;
+- all six benefit cards;
+- responsive reading order;
+- Your Card screenshot section;
+- FAQ and final CTA presence;
+- footer completion;
+- no obvious horizontal-layout break at the two required submission widths.
+
+## Figma-conversion expectations
+The surrounding landing copy and layout are HTML/CSS and should import as editable structure where supported by the conversion tool.
+
+Expected exceptions:
+- original PNG screenshots remain image layers;
+- the original SVG logo remains a vector layer;
+- text inside original PNG screenshots is intentionally not editable because the source asset must remain unchanged.
+
+## Interaction scope
+This is a design test, not a functional product prototype.
+
+Implemented:
+- anchor links;
+- mobile menu open/close;
+- standard link/button hover/focus behavior.
+
+Not implemented:
+- email submission;
+- form validation;
+- FAQ accordion behavior;
+- authentication;
+- payment;
+- contact saving/sync;
+- printing checkout;
+- analytics.
+
+## Deferred validation
+Not performed in this final pass:
+- Safari / Firefox comparison;
+- physical iOS / Android device testing;
+- screen-reader session;
+- formal accessibility-conformance audit;
+- Lighthouse performance audit;
+- real user interviews or usability sessions;
+- production API/integration testing.
+
+These are intentionally outside the BCA design-test scope and must not be inferred from the static submission.

@@ -1,0 +1,54 @@
+{
+  "generated_at": "2026-09-23",
+  "source_ui_commit": "1e97af859fd1c8842cbee30a5666a78e5ba8b917",
+  "evidence_commit": "3d77dbb2da1b9131dd692b6d04f8d19483020bc3",
+  "workflow_run_id": 35772882361,
+  "workflow_run_status": "success",
+  "renderer": "Playwright 1.55.0 / Chromium",
+  "server": "python3 -m http.server 4173",
+  "captures": [
+    {
+      "file": "evidence/desktop-1440.png",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "full_page": true,
+      "blob_sha": "673ddc24e3d493a518ed5de0fe0cecb8014bc494",
+      "size_bytes": 591472
+    },
+    {
+      "file": "evidence/mobile-390.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "full_page": true,
+      "blob_sha": "60b4a58303ad63663185af7bfe344f0be7601108",
+      "size_bytes": 438623
+    }
+  ],
+  "source_checks": {
+    "required_benefits_present": [
+      "Simple",
+      "Accurate",
+      "Multilingual",
+      "Integrated",
+      "Green",
+      "Customized"
+    ],
+    "hero_uses_original_screen_view_card": true,
+    "your_card_uses_original_screen_my_card": true,
+    "html_form_count": 0,
+    "html_input_count": 0,
+    "html_details_count": 0,
+    "css_position_absolute_count": 0,
+    "css_position_fixed_count": 0,
+    "css_position_sticky_count": 0,
+    "css_transform_count": 0,
+    "css_gradient_count": 0,
+    "signup_validation_javascript": false,
+    "mobile_navigation_javascript": true
+  },
+  "note": "Original product screenshots are intentionally preserved as image layers; text inside those screenshots is not expected to become editable after HTML-to-Figma conversion."
+}

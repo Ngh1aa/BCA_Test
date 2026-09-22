@@ -28,8 +28,7 @@ if (isMotionEnhanced) {
 }
 
 // Scroll-scrubbed "meet in the middle" hero hands.
-// CamCard-inspired composition: headline/CTA stay above; both hands live directly below
-// and move inward as the page scrolls through the hero.
+// The hands scene becomes sticky so the movement is clearly visible while scrolling.
 const handsStage = document.querySelector('[data-hands-stage]');
 
 if (handsStage) {
@@ -45,13 +44,13 @@ if (handsStage) {
     const p = easeOut(clamp(progress));
     const compact = window.innerWidth <= 760;
 
-    const leftStart = compact ? -58 : -28;
-    const leftEnd = compact ? 4 : 24;
-    const rightStart = compact ? 58 : 28;
-    const rightEnd = compact ? -4 : -24;
+    const leftStart = compact ? -64 : -38;
+    const leftEnd = compact ? 4 : 18;
+    const rightStart = compact ? 64 : 38;
+    const rightEnd = compact ? -4 : -18;
 
-    const startScale = compact ? 0.86 : 0.88;
-    const endScale = compact ? 0.98 : 1.04;
+    const startScale = compact ? 0.86 : 0.9;
+    const endScale = compact ? 1 : 1.04;
 
     const leftX = leftStart + (leftEnd - leftStart) * p;
     const rightX = rightStart + (rightEnd - rightStart) * p;
@@ -70,12 +69,16 @@ if (handsStage) {
       const hero = handsStage.closest('.hero');
       if (!hero) return;
 
-      const heroTop = hero.offsetTop;
-      const heroHeight = hero.offsetHeight;
-      const startY = Math.max(0, heroTop - 40);
-      const endY = startY + Math.min(620, Math.max(360, heroHeight * 0.55));
+      const compact = window.innerWidth <= 760;
+      const stickyTop = compact ? 74 : 76;
 
-      setHandsPose((window.scrollY - startY) / (endY - startY));
+      // Static position of the stage inside the hero before sticky behavior takes over.
+      const startY = hero.offsetTop + handsStage.offsetTop - stickyTop;
+      const scrubDistance = compact
+        ? Math.max(360, window.innerHeight * 0.48)
+        : Math.max(460, window.innerHeight * 0.58);
+
+      setHandsPose((window.scrollY - startY) / scrubDistance);
     };
 
     const requestHandsUpdate = () => {

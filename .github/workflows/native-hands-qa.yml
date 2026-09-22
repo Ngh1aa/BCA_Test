@@ -1,0 +1,129 @@
+name: Native hands reduced-motion QA
+
+on:
+  push:
+    branches:
+      - fix/native-hands-always-visible
+
+permissions:
+  contents: write
+
+jobs:
+  qa:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix/native-hands-always-visible
+          fetch-depth: 0
+
+      - name: Start site
+        run: |
+          python3 -m http.server 4173 >/tmp/server.log 2>&1 &
+          for i in {1..20}; do
+            if curl -fsS http://127.0.0.1:4173/ >/dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/server.log
+          exit 1
+
+      - name: Install Playwright
+        run: |
+          npm init -y >/dev/null 2>&1
+          npm install --no-save playwright@1.55.0 >/dev/null
+          npx playwright install --with-deps chromium
+
+      - name: Verify native hands in normal and reduced-motion environments
+        run: |
+          cat > qa.mjs <<'EOF'
+          import { chromium } from 'playwright';
+          import { writeFileSync } from 'node:fs';
+
+          const browser=await chromium.launch({headless:true});
+          const report={};
+
+          for(const mode of ['normal','reduced']){
+            const page=await browser.newPage({viewport:{width:1440,height:1000}});
+            if(mode==='reduced') await page.emulateMedia({reducedMotion:'reduce'});
+            const errors=[];
+            page.on('pageerror',e=>errors.push(String(e)));
+
+            await page.goto('http://127.0.0.1:4173/',{waitUntil:'networkidle'});
+            await page.waitForTimeout(500);
+
+            const metrics=await page.evaluate(()=>{
+              const hero=document.querySelector('.hero-camcard');
+              const stage=document.querySelector('.hands-container');
+              return {
+                rootClass:document.documentElement.className,
+                startY:hero.offsetTop+stage.offsetTop-(window.innerWidth<=760?74:90),
+                travel:window.innerWidth<=760?520:760
+              };
+            });
+
+            const state=()=>page.evaluate(()=>({
+              scrollY:window.scrollY,
+              left:getComputedStyle(document.querySelector('.left-hand')).transform,
+              right:getComputedStyle(document.querySelector('.right-hand')).transform,
+              stageTop:document.querySelector('.hands-container').getBoundingClientRect().top,
+              stagePosition:getComputedStyle(document.querySelector('.hands-container')).position,
+              overflow:[document.documentElement.scrollWidth,document.documentElement.clientWidth]
+            }));
+
+            const positions=[
+              ['start',metrics.startY],
+              ['mid',metrics.startY+metrics.travel/2],
+              ['end',metrics.startY+metrics.travel]
+            ];
+
+            report[mode]={errors,metrics,states:{}};
+
+            for(const [label,y] of positions){
+              await page.evaluate(v=>window.scrollTo(0,v),y);
+              await page.waitForTimeout(250);
+              report[mode].states[label]=await state();
+              if(mode==='reduced') await page.screenshot({path:`evidence/native-hands-reduced-${label}.png`,fullPage:false});
+            }
+
+            const a=report[mode].states.start;
+            const b=report[mode].states.mid;
+            const c=report[mode].states.end;
+
+            if(errors.length) throw new Error(`${mode}: ${errors.join(' | ')}`);
+            if(a.left===b.left || b.left===c.left) throw new Error(`${mode}: left hand does not scrub`);
+            if(a.right===b.right || b.right===c.right) throw new Error(`${mode}: right hand does not scrub`);
+            if(b.overflow[0]!==b.overflow[1]) throw new Error(`${mode}: horizontal overflow`);
+            if(b.stagePosition!=='sticky') throw new Error(`${mode}: stage is not sticky`);
+
+            await page.close();
+          }
+
+          // Figma static remains motion-free.
+          {
+            const page=await browser.newPage({viewport:{width:1440,height:1000}});
+            await page.goto('http://127.0.0.1:4173/?figma=1',{waitUntil:'networkidle'});
+            await page.waitForTimeout(250);
+            report.figma=await page.evaluate(()=>({
+              rootClass:document.documentElement.className,
+              left:getComputedStyle(document.querySelector('.left-hand')).transform,
+              right:getComputedStyle(document.querySelector('.right-hand')).transform,
+              position:getComputedStyle(document.querySelector('.hands-container')).position
+            }));
+            if(!report.figma.rootClass.includes('figma-static')) throw new Error('Figma mode missing');
+            await page.close();
+          }
+
+          writeFileSync('evidence/native-hands-qa.json',JSON.stringify(report,null,2)+'\n');
+          console.log(JSON.stringify(report,null,2));
+          await browser.close();
+          EOF
+          node qa.mjs
+
+      - name: Commit evidence
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add evidence/native-hands-qa.json evidence/native-hands-reduced-*.png
+          git commit -m "Add native hero hands QA evidence [skip ci]" || exit 0
+          git push origin HEAD:fix/native-hands-always-visible

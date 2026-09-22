@@ -5,16 +5,16 @@
       "rootClass": "motion-enhanced",
       "scrollWidth": 1440,
       "clientWidth": 1440,
-      "leftTransform": "matrix(0.84, 0, 0, 0.84, -281.6, 0)",
-      "rightTransform": "matrix(0.84, 0, 0, 0.84, 281.6, 0)",
+      "leftTransform": "matrix(0.88, 0, 0, 0.88, -179.2, 0)",
+      "rightTransform": "matrix(0.88, 0, 0, 0.88, 179.2, 0)",
       "titleBottom": 386.15625,
       "stageTop": 658.796875,
       "heroDisplay": "block"
     },
     "scrolledState": {
       "scrollY": 430,
-      "leftTransform": "matrix(0.993863, 0, 0, 0.993863, 38.4346, 0)",
-      "rightTransform": "matrix(0.993863, 0, 0, 0.993863, -38.4346, 0)",
+      "leftTransform": "matrix(1.03386, 0, 0, 1.03386, 140.835, 0)",
+      "rightTransform": "matrix(1.03386, 0, 0, 1.03386, -140.835, 0)",
       "scrollWidth": 1440,
       "clientWidth": 1440
     }

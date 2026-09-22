@@ -68,14 +68,16 @@ The legacy app screenshots are visually useful as product context but too implem
 - Typography: Bricolage Grotesque Bold for expressive headings; Instrument Sans for body/UI copy.
 - Max content width: 1248px.
 - Responsive implementation is CSS-based with desktop/tablet/mobile breakpoints.
-- Motion is intentionally minimal; no autonomous animation.
+- Motion is intentional and product-specific: slow hero/card float, an infinite sharing rail, scroll reveal/stagger, and restrained hover feedback. Full motion rules live in `docs/motion-direction.md`.
 
 ## Figma-conversion constraints
 The final landing is optimized for HTML → Figma conversion:
 - all marketing/product concept text remains real DOM text;
 - hero, card builder, contact rows, chips, buttons and QR illustration are HTML/CSS/SVG;
 - no PNG screenshots are embedded in `index.html`;
-- the landing avoids absolute/fixed/sticky positioning, CSS transforms, gradients, canvas and iframe;
+- the static layout avoids absolute/fixed/sticky positioning, gradients, canvas and iframe;
+- CSS transforms/opacity are used only for motion enhancement, not to construct the base layout;
+- `?figma=1` activates a static conversion mode that disables reveal, float, pulse and marquee transforms before capture;
 - the InstaCard logo remains an SVG/vector asset;
 - the six original screenshots stay available in `assets/` and `design-notes.html` as reference evidence only.
 
@@ -92,13 +94,23 @@ Expected conversion result:
 - No fabricated testimonials, customer counts, partner logos, conversion lifts, launch dates, or research statistics.
 - Early Access fields are visual design elements only; no email is transmitted or stored.
 
-## Interaction scope
-The brief does not require a prototype. The page keeps interaction deliberately light:
+## Interaction + motion scope
+The brief does not require a functional prototype. Motion therefore supports hierarchy and product storytelling rather than introducing new flows:
+
 - mobile menu open/close;
 - anchor navigation;
-- hover/focus presentation on links/buttons.
+- CamCard-inspired infinite sharing rail for QR / link / save-contact;
+- BOVA-inspired staggered reveal for the 3-step “How it works” sequence;
+- CloudCard-inspired low-amplitude card/preview float in hero and Card Builder;
+- hover/focus lift on scannable cards/chips/buttons;
+- one-time IntersectionObserver reveal for below-fold content.
 
-FAQ rows and Early Access fields are static presentation UI.
+Accessibility / conversion controls:
+- `prefers-reduced-motion: reduce` disables continuous/reveal motion;
+- `?figma=1` disables motion while preserving the exact final layout for HTML → Figma tools;
+- content remains visible if JavaScript is unavailable.
+
+FAQ rows and Early Access fields remain static presentation UI.
 
 ## Acceptance criteria
 - Desktop 1440 and mobile 390 compositions render without horizontal overflow.
@@ -107,3 +119,7 @@ FAQ rows and Early Access fields are static presentation UI.
 - Landing contains **0 client screenshot PNGs**.
 - Final desktop/mobile evidence is regenerated after the marketing-visual redesign.
 - Documentation describes the current visual direction, not the earlier screenshot-led version.
+- Default motion mode runs without runtime errors or horizontal overflow.
+- Reduced-motion mode exposes the same content without continuous motion.
+- `?figma=1` renders the final layout with animation disabled.
+- Motion implementation adds no third-party animation runtime dependency.

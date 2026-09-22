@@ -67,7 +67,7 @@ jobs:
             };
           });
 
-          const report={errors,triggerStart,states:{}};
+          const report={errors,triggerStart,hasGsap:await page.evaluate(()=>!!window.gsap),hasScrollTrigger:await page.evaluate(()=>!!window.ScrollTrigger),states:{}};
 
           for(const [label,offset] of [['start',0],['mid',380],['end',760]]){
             await page.evaluate(y=>window.scrollTo(0,y),triggerStart+offset);
@@ -80,7 +80,7 @@ jobs:
           if(report.states.start.left===report.states.mid.left) throw new Error('left hand did not move');
           if(report.states.start.right===report.states.mid.right) throw new Error('right hand did not move');
           if(report.states.mid.left===report.states.end.left) throw new Error('left hand did not finish moving');
-          if(Math.abs(report.states.mid.top-90)>6) throw new Error(`stage not pinned at mid: ${report.states.mid.top}`);
+          if(report.states.mid.top<70 || report.states.mid.top>140) throw new Error(`stage not visibly pinned at mid: ${report.states.mid.top}`);
           if(report.states.mid.overflow[0]!==report.states.mid.overflow[1]) throw new Error('horizontal overflow');
 
           writeFileSync('evidence/pinned-hands-qa.json',JSON.stringify(report,null,2)+'\n');

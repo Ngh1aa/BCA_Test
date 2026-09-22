@@ -37,6 +37,7 @@ if (handsContainer) {
   const leftHand = handsContainer.querySelector('.left-hand');
   const rightHand = handsContainer.querySelector('.right-hand');
   const hero = handsContainer.closest('.hero-camcard');
+  const handsShell = document.querySelector('[data-hands-shell]');
   const isFigmaStatic = document.documentElement.classList.contains('figma-static');
 
   const clamp = value => Math.min(1, Math.max(0, value));
@@ -50,7 +51,7 @@ if (handsContainer) {
     if (rightHand) rightHand.style.transform = `translate3d(${rightX}%,0,0)`;
   };
 
-  if (leftHand && rightHand && hero && !isFigmaStatic) {
+  if (leftHand && rightHand && hero && handsShell && !isFigmaStatic) {
     hero.classList.add('hands-scroll-active');
     handsContainer.classList.add('hands-native-pin');
 
@@ -63,8 +64,8 @@ if (handsContainer) {
       const pinTop = compact ? 74 : 90;
       const travel = compact ? 520 : 760;
 
-      // offsetTop is stable even while the element is sticky.
-      const startY = hero.offsetTop + handsContainer.offsetTop - pinTop;
+      const shellTop = window.scrollY + handsShell.getBoundingClientRect().top;
+      const startY = shellTop - pinTop;
       const progress = (window.scrollY - startY) / travel;
 
       setProgress(progress);

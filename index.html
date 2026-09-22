@@ -16,6 +16,8 @@
     })();
   </script>
   <link rel="stylesheet" href="./styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
   <script src="./script.js" defer></script>
 </head>
 <body>
@@ -61,27 +63,27 @@
         </p>
       </div>
 
-      <div class="hero-hands-stage" data-reveal="hero-visual" data-hands-stage aria-label="Two InstaCard phone mockups move toward each other as you scroll">
+      <div class="hero-hands-stage hands-container" data-reveal="hero-visual" data-hands-stage aria-label="Two InstaCard phone mockups move toward each other as you scroll">
         <div class="hands-motion-window">
           <div class="hero-orbit orbit-one" aria-hidden="true"></div>
           <div class="hero-orbit orbit-two" aria-hidden="true"></div>
 
           <img
-            src="./assets/hand_right.png"
-            class="hero-hand hand-from-left"
+            src="./assets/hand_left.png"
+            class="hero-hand left-hand"
             width="1340"
             height="1354"
-            alt="Hand holding a phone showing an InstaCard contact profile"
+            alt="Hand holding a phone showing an InstaCard QR sharing screen"
             loading="eager"
             decoding="async"
             fetchpriority="high">
 
           <img
-            src="./assets/hand_left.png"
-            class="hero-hand hand-from-right"
+            src="./assets/hand_right.png"
+            class="hero-hand right-hand"
             width="1340"
             height="1354"
-            alt="Hand holding a phone showing an InstaCard QR sharing screen"
+            alt="Hand holding a phone showing an InstaCard contact profile"
             loading="eager"
             decoding="async"
             fetchpriority="high">

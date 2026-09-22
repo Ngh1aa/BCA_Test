@@ -957,9 +957,6 @@ p{color:var(--muted)}
   .share-rail{grid-template-columns:auto 1fr}
   .share-state{grid-column:1 / -1}
   .builder-layout{grid-template-columns:1fr}
-  
-  
-  .visual-grid{grid-template-columns:1fr 1fr}
   .connection-grid{grid-template-columns:1fr;gap:18px}
   .section-heading{display:block;margin-bottom:34px}
   .section-heading>p{margin-top:20px}

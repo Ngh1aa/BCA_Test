@@ -90,9 +90,13 @@ jobs:
             })));
             assert(steps.every(x => x.visibleClass && x.opacity === '1'), `step reveal failed at ${width}`);
 
-            await page.locator('#why-instacard').scrollIntoViewIfNeeded();
-            await page.waitForTimeout(900);
-            const benefits = await page.locator('.benefit').evaluateAll(nodes => nodes.map(node => ({
+            const benefitLocators = page.locator('.benefit');
+            const benefitCount = await benefitLocators.count();
+            for (let i = 0; i < benefitCount; i += 1) {
+              await benefitLocators.nth(i).scrollIntoViewIfNeeded();
+              await page.waitForTimeout(260);
+            }
+            const benefits = await benefitLocators.evaluateAll(nodes => nodes.map(node => ({
               visibleClass: node.classList.contains('is-visible'),
               opacity: getComputedStyle(node).opacity
             })));

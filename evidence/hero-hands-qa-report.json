@@ -1,0 +1,99 @@
+{
+  "generated_at": "2026-09-22T20:39:14.408Z",
+  "default": [
+    {
+      "width": 1440,
+      "height": 1000,
+      "errors": [],
+      "before": {
+        "rootClass": "motion-enhanced",
+        "leftTransform": "matrix(0.88, 0, 0, 0.88, -241.329, 0)",
+        "rightTransform": "matrix(0.88, 0, 0, 0.88, 241.329, 0)",
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "images": [
+          {
+            "src": "./assets/hand_right.png",
+            "naturalWidth": 1340,
+            "naturalHeight": 1354,
+            "complete": true
+          },
+          {
+            "src": "./assets/hand_left.png",
+            "naturalWidth": 1340,
+            "naturalHeight": 1354,
+            "complete": true
+          }
+        ]
+      },
+      "after": {
+        "leftTransform": "matrix(0.959083, 0, 0, 0.959083, -106.755, 0)",
+        "rightTransform": "matrix(0.959083, 0, 0, 0.959083, 106.755, 0)",
+        "signalOpacity": "0.188161",
+        "scrollWidth": 1440,
+        "clientWidth": 1440
+      }
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "errors": [],
+      "before": {
+        "rootClass": "motion-enhanced",
+        "leftTransform": "matrix(0.975178, 0, 0, 0.975178, -29.5193, 0)",
+        "rightTransform": "matrix(0.975178, 0, 0, 0.975178, 29.5193, 0)",
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "images": [
+          {
+            "src": "./assets/hand_right.png",
+            "naturalWidth": 1340,
+            "naturalHeight": 1354,
+            "complete": true
+          },
+          {
+            "src": "./assets/hand_left.png",
+            "naturalWidth": 1340,
+            "naturalHeight": 1354,
+            "complete": true
+          }
+        ]
+      },
+      "after": {
+        "leftTransform": "matrix(0.98, 0, 0, 0.98, -20.4713, 0)",
+        "rightTransform": "matrix(0.98, 0, 0, 0.98, 20.4713, 0)",
+        "signalOpacity": "1",
+        "scrollWidth": 390,
+        "clientWidth": 390
+      }
+    }
+  ],
+  "figma_static": [
+    {
+      "width": 1440,
+      "height": 1000,
+      "rootClass": "figma-static",
+      "leftTransform": "matrix(1, 0, 0, 1, -37.1275, 0)",
+      "rightTransform": "matrix(1, 0, 0, 1, 37.1275, 0)",
+      "signalOpacity": "1",
+      "scrollWidth": 1440,
+      "clientWidth": 1440
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "rootClass": "figma-static",
+      "leftTransform": "matrix(1, 0, 0, 1, -27.295, 0)",
+      "rightTransform": "matrix(1, 0, 0, 1, 27.295, 0)",
+      "signalOpacity": "1",
+      "scrollWidth": 390,
+      "clientWidth": 390
+    }
+  ],
+  "reduced_motion": {
+    "rootClass": "motion-reduced",
+    "leftTransform": "matrix(1, 0, 0, 1, -37.1275, 0)",
+    "rightTransform": "matrix(1, 0, 0, 1, 37.1275, 0)",
+    "signalOpacity": "1"
+  }
+}

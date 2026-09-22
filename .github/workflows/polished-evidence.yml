@@ -29,13 +29,16 @@ jobs:
           cat /tmp/bca-server.log
           exit 1
 
-      - name: Install Chromium
-        run: npx --yes playwright@1.55.0 install --with-deps chromium
+      - name: Install Chromium and Playwright runtime
+        run: |
+          npm init -y >/dev/null 2>&1
+          npm install --no-save playwright@1.55.0 >/dev/null
+          npx playwright install --with-deps chromium
 
       - name: Capture final desktop and mobile
         run: |
-          npx --yes playwright@1.55.0 screenshot --browser=chromium --full-page --viewport-size="1440,1000" http://127.0.0.1:4173/ evidence/desktop-1440.png
-          npx --yes playwright@1.55.0 screenshot --browser=chromium --full-page --viewport-size="390,844" http://127.0.0.1:4173/ evidence/mobile-390.png
+          npx playwright screenshot --browser=chromium --full-page --viewport-size="1440,1000" http://127.0.0.1:4173/ evidence/desktop-1440.png
+          npx playwright screenshot --browser=chromium --full-page --viewport-size="390,844" http://127.0.0.1:4173/ evidence/mobile-390.png
 
       - name: Layout smoke check
         run: |
@@ -62,7 +65,7 @@ jobs:
           console.log(JSON.stringify(results,null,2));
           await browser.close();
           EOF
-          npx --yes -p playwright@1.55.0 node /tmp/check.mjs
+          node /tmp/check.mjs
 
       - name: Commit refreshed evidence
         run: |

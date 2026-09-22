@@ -1260,13 +1260,11 @@ html.figma-static .hero-camcard .hand-from-right{
   }
 }
 
-html.figma-static .hero.hero-camcard,
-html.motion-reduced .hero.hero-camcard{
+html.figma-static .hero.hero-camcard{
   min-height:auto;
   padding-bottom:0;
 }
-html.figma-static .hero-camcard .hero-hands-stage,
-html.motion-reduced .hero-camcard .hero-hands-stage{
+html.figma-static .hero-camcard .hero-hands-stage{
   position:relative;
   top:auto;
   height:auto;
@@ -1333,22 +1331,18 @@ html.motion-reduced .hero-camcard .hero-hands-stage{
   right:auto;
   margin:0;
 }
-html.figma-static .hero.hero-camcard,
-html.motion-reduced .hero.hero-camcard{
+html.figma-static .hero.hero-camcard{
   min-height:auto;
   padding-bottom:0;
 }
-html.figma-static .hero-camcard .hero-hands-stage,
-html.motion-reduced .hero-camcard .hero-hands-stage{
+html.figma-static .hero-camcard .hero-hands-stage{
   position:relative;
   top:auto;
   height:clamp(560px,58vw,760px);
   min-height:560px;
 }
 html.figma-static .hero-camcard .left-hand,
-html.motion-reduced .hero-camcard .left-hand,
-html.figma-static .hero-camcard .right-hand,
-html.motion-reduced .hero-camcard .right-hand{
+html.figma-static .hero-camcard .right-hand{
   transform:translate3d(0,0,0)!important;
 }
 

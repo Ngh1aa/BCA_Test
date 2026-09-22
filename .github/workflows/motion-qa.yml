@@ -46,7 +46,7 @@ jobs:
             generated_at: new Date().toISOString(),
             renderer: 'Playwright 1.55.0 / Chromium',
             default_motion: [],
-            figma_static: null,
+            static_evidence: [],
             reduced_motion: null
           };
 
@@ -54,6 +54,7 @@ jobs:
             if (!condition) throw new Error(message);
           };
 
+          // 1) Test the real animated experience.
           for (const [width,height] of [[1440,1000],[390,844]]) {
             const page = await browser.newPage({viewport:{width,height}});
             const errors = [];
@@ -81,12 +82,15 @@ jobs:
             assert(top.brandAnimation.includes('instacard-float-a'), `hero float missing at ${width}`);
             assert(top.screenshotPngs === 0, `legacy screenshot PNG rendered at ${width}`);
 
-            await page.locator('#how-it-works').scrollIntoViewIfNeeded();
-            await page.waitForTimeout(900);
-            const steps = await page.locator('.steps article').evaluateAll(nodes => nodes.map(node => ({
+            const stepLocators = page.locator('.steps article');
+            const stepCount = await stepLocators.count();
+            for (let i = 0; i < stepCount; i += 1) {
+              await stepLocators.nth(i).scrollIntoViewIfNeeded();
+              await page.waitForTimeout(260);
+            }
+            const steps = await stepLocators.evaluateAll(nodes => nodes.map(node => ({
               visibleClass: node.classList.contains('is-visible'),
-              opacity: getComputedStyle(node).opacity,
-              transform: getComputedStyle(node).transform
+              opacity: getComputedStyle(node).opacity
             })));
             assert(steps.every(x => x.visibleClass && x.opacity === '1'), `step reveal failed at ${width}`);
 
@@ -103,30 +107,48 @@ jobs:
             assert(benefits.length === 6 && benefits.every(x => x.visibleClass && x.opacity === '1'), `benefit reveal failed at ${width}`);
 
             report.default_motion.push({width,height,errors,top,steps,benefits});
-
-            const screenshot = width === 1440 ? 'evidence/desktop-1440.png' : 'evidence/mobile-390.png';
-            await page.screenshot({path:screenshot,fullPage:true});
             await page.close();
           }
 
-          {
-            const page = await browser.newPage({viewport:{width:1440,height:1000}});
+          // 2) Capture final layout in static/Figma mode so below-fold reveal states do not create blank evidence.
+          for (const [width,height,label] of [[1440,1000,'desktop'],[390,844,'mobile']]) {
+            const page = await browser.newPage({viewport:{width,height}});
+            const errors = [];
+            page.on('pageerror', e => errors.push(String(e)));
+
             await page.goto('http://127.0.0.1:4173/?figma=1', {waitUntil:'networkidle'});
             await page.waitForTimeout(250);
+
             const data = await page.evaluate(() => ({
               rootClass: document.documentElement.className,
+              scrollWidth: document.documentElement.scrollWidth,
+              clientWidth: document.documentElement.clientWidth,
               marqueeAnimation: getComputedStyle(document.querySelector('.sharing-track')).animationName,
               brandAnimation: getComputedStyle(document.querySelector('.brand-card')).animationName,
               hiddenRevealCount: [...document.querySelectorAll('[data-reveal]')].filter(el => getComputedStyle(el).opacity !== '1').length
             }));
-            assert(data.rootClass.includes('figma-static'), 'figma-static root class missing');
-            assert(data.marqueeAnimation === 'none', 'marquee still animates in Figma mode');
-            assert(data.brandAnimation === 'none', 'hero still animates in Figma mode');
-            assert(data.hiddenRevealCount === 0, 'reveals hidden in Figma mode');
-            report.figma_static = data;
+
+            assert(errors.length === 0, `static runtime errors at ${width}`);
+            assert(data.rootClass.includes('figma-static'), `figma-static root class missing at ${width}`);
+            assert(data.scrollWidth === data.clientWidth, `static horizontal overflow at ${width}`);
+            assert(data.marqueeAnimation === 'none', `marquee still animates in Figma mode at ${width}`);
+            assert(data.brandAnimation === 'none', `hero still animates in Figma mode at ${width}`);
+            assert(data.hiddenRevealCount === 0, `reveals hidden in Figma mode at ${width}`);
+
+            await page.screenshot({
+              path: label === 'desktop' ? 'evidence/desktop-1440.png' : 'evidence/mobile-390.png',
+              fullPage:true
+            });
+            await page.screenshot({
+              path: label === 'desktop' ? 'evidence/desktop-top.png' : 'evidence/mobile-top.png',
+              fullPage:false
+            });
+
+            report.static_evidence.push({width,height,errors,data});
             await page.close();
           }
 
+          // 3) Reduced-motion behavior.
           {
             const page = await browser.newPage({viewport:{width:1440,height:1000}});
             await page.emulateMedia({reducedMotion:'reduce'});
@@ -157,15 +179,20 @@ jobs:
         run: |
           base64 -w0 evidence/desktop-1440.png > evidence/desktop-1440.b64.txt
           base64 -w0 evidence/mobile-390.png > evidence/mobile-390.b64.txt
+          base64 -w0 evidence/desktop-top.png > evidence/desktop-top.b64.txt
+          base64 -w0 evidence/mobile-top.png > evidence/mobile-top.b64.txt
 
       - name: Commit refreshed evidence
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add evidence/desktop-1440.png evidence/mobile-390.png evidence/motion-qa-report.json evidence/desktop-1440.b64.txt evidence/mobile-390.b64.txt
+          git add evidence/desktop-1440.png evidence/mobile-390.png evidence/motion-qa-report.json \
+            evidence/desktop-top.png evidence/mobile-top.png \
+            evidence/desktop-1440.b64.txt evidence/mobile-390.b64.txt \
+            evidence/desktop-top.b64.txt evidence/mobile-top.b64.txt
           if git diff --cached --quiet; then
             echo "Evidence already current."
           else
-            git commit -m "Refresh motion QA evidence [skip ci]"
+            git commit -m "Refresh static motion evidence [skip ci]"
             git push origin HEAD:feat/reference-motion-system
           fi

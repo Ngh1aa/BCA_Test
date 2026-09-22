@@ -3,15 +3,16 @@
     "errors": [],
     "metrics": {
       "rootClass": "motion-enhanced",
-      "startY": 659,
+      "startY": 566.796875,
+      "pinTop": 90,
       "travel": 760
     },
     "states": {
       "start": {
-        "scrollY": 424,
+        "scrollY": 405,
         "left": "matrix(1, 0, 0, 1, -648, 0)",
         "right": "matrix(1, 0, 0, 1, 648, 0)",
-        "stageTop": 232.796875,
+        "stageTop": 251.796875,
         "stagePosition": "sticky",
         "overflow": [
           1440,
@@ -19,10 +20,10 @@
         ]
       },
       "mid": {
-        "scrollY": 871,
-        "left": "matrix(1, 0, 0, 1, -467.242, 0)",
-        "right": "matrix(1, 0, 0, 1, 467.242, 0)",
-        "stageTop": -214.203125,
+        "scrollY": 796,
+        "left": "matrix(1, 0, 0, 1, -452.574, 0)",
+        "right": "matrix(1, 0, 0, 1, 452.574, 0)",
+        "stageTop": 90,
         "stagePosition": "sticky",
         "overflow": [
           1440,
@@ -30,10 +31,10 @@
         ]
       },
       "end": {
-        "scrollY": 1263,
-        "left": "matrix(1, 0, 0, 1, -133.011, 0)",
-        "right": "matrix(1, 0, 0, 1, 133.011, 0)",
-        "stageTop": -606.203125,
+        "scrollY": 1183,
+        "left": "matrix(1, 0, 0, 1, -122.606, 0)",
+        "right": "matrix(1, 0, 0, 1, 122.606, 0)",
+        "stageTop": 90,
         "stagePosition": "sticky",
         "overflow": [
           1440,
@@ -46,15 +47,16 @@
     "errors": [],
     "metrics": {
       "rootClass": "motion-reduced",
-      "startY": 659,
+      "startY": 566.796875,
+      "pinTop": 90,
       "travel": 760
     },
     "states": {
       "start": {
-        "scrollY": 659,
-        "left": "matrix(1, 0, 0, 1, -648, 0)",
-        "right": "matrix(1, 0, 0, 1, 648, 0)",
-        "stageTop": -2.203125,
+        "scrollY": 567,
+        "left": "matrix(1, 0, 0, 1, -647.827, 0)",
+        "right": "matrix(1, 0, 0, 1, 647.827, 0)",
+        "stageTop": 90,
         "stagePosition": "sticky",
         "overflow": [
           1440,
@@ -62,10 +64,10 @@
         ]
       },
       "mid": {
-        "scrollY": 1039,
-        "left": "matrix(1, 0, 0, 1, -324, 0)",
-        "right": "matrix(1, 0, 0, 1, 324, 0)",
-        "stageTop": -382.203125,
+        "scrollY": 947,
+        "left": "matrix(1, 0, 0, 1, -323.827, 0)",
+        "right": "matrix(1, 0, 0, 1, 323.827, 0)",
+        "stageTop": 90,
         "stagePosition": "sticky",
         "overflow": [
           1440,
@@ -73,10 +75,10 @@
         ]
       },
       "end": {
-        "scrollY": 1419,
+        "scrollY": 1327,
         "left": "matrix(1, 0, 0, 1, 0, 0)",
         "right": "matrix(1, 0, 0, 1, 0, 0)",
-        "stageTop": -762.203125,
+        "stageTop": 89.796875,
         "stagePosition": "sticky",
         "overflow": [
           1440,

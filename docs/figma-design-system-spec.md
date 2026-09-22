@@ -3,7 +3,7 @@
 ## Purpose
 This file is the source for the Figma **UI Foundations** and **Components & UI Styles** frames.
 
-Values are derived from the current `styles.css` on `main`.
+These values are a **retained design-system snapshot from the previous implementation**. Revalidate them against the new local implementation after upload before final Figma delivery.
 
 ---
 
@@ -13,10 +13,12 @@ Values are derived from the current `styles.css` on `main`.
 - **Display / headings:** Bricolage Grotesque Bold
 - **Body / UI:** Instrument Sans
 
-Local files:
-- `assets/fonts/BricolageGrotesque-Bold.ttf`
-- `assets/fonts/InstrumentSans-Regular.ttf`
-- `assets/fonts/InstrumentSans-Bold.ttf`
+Font family references retained for Figma:
+- Bricolage Grotesque Bold
+- Instrument Sans Regular
+- Instrument Sans Bold
+
+The previous local font files were intentionally removed with the old implementation. Re-add font assets only if the new code requires them.
 
 ### Text styles
 

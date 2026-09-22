@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-22T20:06:26.019Z",
+  "generated_at": "2026-09-22T20:09:48.506Z",
   "renderer": "Playwright 1.55.0 / Chromium",
   "default_motion": [
     {
@@ -19,18 +19,15 @@
       "steps": [
         {
           "visibleClass": true,
-          "opacity": "1",
-          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+          "opacity": "1"
         },
         {
           "visibleClass": true,
-          "opacity": "1",
-          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+          "opacity": "1"
         },
         {
           "visibleClass": true,
-          "opacity": "1",
-          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+          "opacity": "1"
         }
       ],
       "benefits": [
@@ -77,18 +74,15 @@
       "steps": [
         {
           "visibleClass": true,
-          "opacity": "1",
-          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+          "opacity": "1"
         },
         {
           "visibleClass": true,
-          "opacity": "1",
-          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+          "opacity": "1"
         },
         {
           "visibleClass": true,
-          "opacity": "1",
-          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+          "opacity": "1"
         }
       ],
       "benefits": [
@@ -119,12 +113,34 @@
       ]
     }
   ],
-  "figma_static": {
-    "rootClass": "figma-static",
-    "marqueeAnimation": "none",
-    "brandAnimation": "none",
-    "hiddenRevealCount": 0
-  },
+  "static_evidence": [
+    {
+      "width": 1440,
+      "height": 1000,
+      "errors": [],
+      "data": {
+        "rootClass": "figma-static",
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "marqueeAnimation": "none",
+        "brandAnimation": "none",
+        "hiddenRevealCount": 0
+      }
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "errors": [],
+      "data": {
+        "rootClass": "figma-static",
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "marqueeAnimation": "none",
+        "brandAnimation": "none",
+        "hiddenRevealCount": 0
+      }
+    }
+  ],
   "reduced_motion": {
     "rootClass": "motion-reduced",
     "marqueeAnimation": "none",

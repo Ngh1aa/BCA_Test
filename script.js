@@ -28,42 +28,37 @@ if (isMotionEnhanced) {
 }
 
 // Scroll-scrubbed "meet in the middle" hero hands.
-// Recreates the supplied GSAP/ScrollTrigger behavior with native requestAnimationFrame
-// so the landing keeps zero animation-runtime dependencies.
+// CamCard-inspired composition: headline/CTA stay above; both hands live directly below
+// and move inward as the page scrolls through the hero.
 const handsStage = document.querySelector('[data-hands-stage]');
 
 if (handsStage) {
   const handFromLeft = handsStage.querySelector('.hand-from-left');
   const handFromRight = handsStage.querySelector('.hand-from-right');
-  const signal = handsStage.querySelector('.hands-signal');
 
   const clamp = value => Math.min(1, Math.max(0, value));
-  const easeOut = value => 1 - Math.pow(1 - value, 2);
+  const easeOut = value => 1 - Math.pow(1 - value, 3);
 
   const setHandsPose = progress => {
-    if (!handFromLeft || !handFromRight || !signal) return;
+    if (!handFromLeft || !handFromRight) return;
 
-    const p = clamp(progress);
-    const eased = easeOut(p);
+    const p = easeOut(clamp(progress));
     const compact = window.innerWidth <= 760;
 
-    const leftStart = compact ? -50 : -52;
-    const leftEnd = compact ? -6 : -8;
-    const rightStart = compact ? 50 : 52;
-    const rightEnd = compact ? 6 : 8;
+    const leftStart = compact ? -58 : -44;
+    const leftEnd = compact ? 4 : 8;
+    const rightStart = compact ? 58 : 44;
+    const rightEnd = compact ? -4 : -8;
 
-    const leftX = leftStart + (leftEnd - leftStart) * eased;
-    const rightX = rightStart + (rightEnd - rightStart) * eased;
-    const startScale = compact ? 0.9 : 0.88;
+    const startScale = compact ? 0.86 : 0.84;
     const endScale = compact ? 0.98 : 1;
-    const scale = startScale + (endScale - startScale) * eased;
 
-    handFromLeft.style.transform = `translate3d(${leftX}%, 0, 0) scale(${scale})`;
-    handFromRight.style.transform = `translate3d(${rightX}%, 0, 0) scale(${scale})`;
+    const leftX = leftStart + (leftEnd - leftStart) * p;
+    const rightX = rightStart + (rightEnd - rightStart) * p;
+    const scale = startScale + (endScale - startScale) * p;
 
-    const signalProgress = clamp((eased - 0.58) / 0.42);
-    signal.style.opacity = String(signalProgress);
-    signal.style.transform = `translate(-50%, -50%) scale(${0.88 + signalProgress * 0.12})`;
+    handFromLeft.style.transform = `translate3d(${leftX}%,0,0) scale(${scale})`;
+    handFromRight.style.transform = `translate3d(${rightX}%,0,0) scale(${scale})`;
   };
 
   if (isMotionEnhanced) {
@@ -72,19 +67,15 @@ if (handsStage) {
     const updateHands = () => {
       ticking = false;
 
-      if (window.innerWidth <= 760) {
-        const rect = handsStage.getBoundingClientRect();
-        const start = window.innerHeight * 0.92;
-        const end = window.innerHeight * 0.28;
-        setHandsPose((start - rect.top) / (start - end));
-        return;
-      }
-
       const hero = handsStage.closest('.hero');
-      const headerOffset = 88;
-      const start = Math.max(0, (hero?.offsetTop || 0) - headerOffset);
-      const range = Math.min(560, Math.max(360, (hero?.offsetHeight || 720) * 0.68));
-      setHandsPose((window.scrollY - start) / range);
+      if (!hero) return;
+
+      const heroTop = hero.offsetTop;
+      const heroHeight = hero.offsetHeight;
+      const startY = Math.max(0, heroTop - 40);
+      const endY = startY + Math.min(620, Math.max(360, heroHeight * 0.55));
+
+      setHandsPose((window.scrollY - startY) / (endY - startY));
     };
 
     const requestHandsUpdate = () => {

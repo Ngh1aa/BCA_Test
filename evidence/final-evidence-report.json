@@ -1,12 +1,10 @@
 {
   "generated_at": "2026-09-23",
-  "direction": "Original logo → new editable marketing visuals → UX rationale → polished desktop/mobile UI",
-  "source_ui_commit": "bf963ca0e17801fa54ef0614b7efbaf11bf5aacd",
-  "evidence_commit": "f164aedd236e0bae9f726ff24134e0b321a34ce4",
-  "workflow_run_id": 35775059850,
+  "scope": "BCA InstaCard landing with competitor-inspired motion",
+  "motion_reference_strategy": "Recreated behavior from CamCard/BOVAcard/CloudCard/21st.dev patterns; no competitor source code copied.",
+  "workflow_run_id": 35778391086,
   "workflow_run_status": "success",
   "renderer": "Playwright 1.55.0 / Chromium",
-  "server": "python3 -m http.server 4173",
   "captures": [
     {
       "file": "evidence/desktop-1440.png",
@@ -14,12 +12,9 @@
         "width": 1440,
         "height": 1000
       },
+      "mode": "figma-static",
       "full_page": true,
-      "blob_sha": "13b891ebc525b98a3024ad9547ee45d7cfc31cec",
-      "size_bytes": 503674,
-      "scroll_width": 1440,
-      "client_width": 1440,
-      "page_errors": 0
+      "blob_sha": "d8dceb708726ba4b1512a2673bd6187f41ea2009"
     },
     {
       "file": "evidence/mobile-390.png",
@@ -27,40 +22,48 @@
         "width": 390,
         "height": 844
       },
+      "mode": "figma-static",
       "full_page": true,
-      "blob_sha": "5df7b91a5738d73663549b022b2b4ea9c90d5103",
-      "size_bytes": 462292,
-      "scroll_width": 390,
-      "client_width": 390,
-      "page_errors": 0
+      "blob_sha": "4a036bf5f34becc5078f623e4ab799cb50a61f22"
     }
   ],
-  "source_checks": {
-    "required_benefits_present": [
-      "Simple",
-      "Accurate",
-      "Multilingual",
-      "Integrated",
-      "Green",
-      "Customized"
-    ],
-    "original_logo_used": true,
-    "landing_client_screenshot_png_refs": 0,
-    "landing_png_img_tags": 0,
-    "hero_editable_visual_present": true,
-    "card_builder_editable_visual_present": true,
-    "html_form_count": 0,
-    "html_input_count": 0,
-    "html_details_count": 0,
-    "html_canvas_count": 0,
-    "html_iframe_count": 0,
-    "css_position_absolute_count": 0,
-    "css_position_fixed_count": 0,
-    "css_position_sticky_count": 0,
-    "css_transform_count": 0,
-    "css_gradient_count": 0,
-    "signup_validation_javascript": false,
-    "mobile_navigation_javascript": true
+  "motion_checks": {
+    "default_desktop": {
+      "runtime_errors": 0,
+      "horizontal_overflow": false,
+      "marquee": "instacard-marquee",
+      "hero_float": "instacard-float-a",
+      "steps_revealed": 3,
+      "benefits_revealed": 6
+    },
+    "default_mobile": {
+      "runtime_errors": 0,
+      "horizontal_overflow": false,
+      "marquee": "instacard-marquee",
+      "hero_float": "instacard-float-a",
+      "steps_revealed": 3,
+      "benefits_revealed": 6
+    },
+    "reduced_motion": {
+      "marquee": "none",
+      "hero_float": "none",
+      "hidden_reveals": 0
+    },
+    "figma_static": {
+      "marquee": "none",
+      "hero_float": "none",
+      "hidden_reveals": 0
+    }
   },
-  "reference_asset_policy": "Six supplied app screenshots remain in assets/design-notes as reference evidence only; they are not used in the main landing."
+  "visual_inspection": {
+    "performed": true,
+    "p0_p1_defects": 0,
+    "notes": [
+      "Hero hierarchy remains clear.",
+      "Sharing rail stays within the page without horizontal overflow.",
+      "All below-fold sections are visible in final static evidence.",
+      "Mobile remains single-column with no clipping."
+    ]
+  },
+  "figma_conversion_url": "https://ngh1aa.github.io/BCA_Test/?figma=1"
 }

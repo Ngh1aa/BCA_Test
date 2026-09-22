@@ -56,3 +56,12 @@ If time is limited, the must-have sequence is:
 **01 → 02 → 03 → 04 → 05 → 07 → 08 → 09**
 
 Frame 06 is valuable because it demonstrates product thinking beyond the marketing page, but it is secondary to the brief’s required Early Access user flow.
+
+
+### Static conversion URL
+
+Use the static motion override when importing the landing frames:
+
+`https://ngh1aa.github.io/BCA_Test/?figma=1`
+
+The query parameter disables marquee, float, pulse and reveal transitions while preserving the exact final layout and editable HTML/CSS/SVG structure.

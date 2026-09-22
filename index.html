@@ -7,6 +7,14 @@
   <meta name="description" content="Your contact details, social links and personal brand. One digital business card. Discover InstaCard and get early access.">
   <link rel="icon" href="./assets/logo.svg" type="image/svg+xml">
   <link rel="preload" href="./assets/fonts/InstrumentSans-Regular.ttf" as="font" type="font/ttf" crossorigin>
+  <script>
+    (() => {
+      const root = document.documentElement;
+      const isFigma = new URLSearchParams(location.search).get('figma') === '1';
+      const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      root.classList.add(isFigma ? 'figma-static' : (reduceMotion ? 'motion-reduced' : 'motion-enhanced'));
+    })();
+  </script>
   <link rel="stylesheet" href="./styles.css">
   <script src="./script.js" defer></script>
 </head>
@@ -33,7 +41,7 @@
 
   <main id="main">
     <section class="hero container" id="top" aria-labelledby="hero-title">
-      <div class="hero-copy">
+      <div class="hero-copy" data-reveal="hero-copy">
         <p class="eyebrow"><span class="tiny-card" aria-hidden="true"></span>A BETTER WAY TO SAY HELLO</p>
         <h1 id="hero-title">Say goodbye<br>to <span class="blue">business cards.</span></h1>
         <p class="hero-sub"><strong>Effortless contact exchange.</strong><br>Your details, your socials, your story. One digital card that keeps the conversation going.</p>
@@ -53,7 +61,7 @@
         </p>
       </div>
 
-      <div class="hero-visual" aria-label="InstaCard digital identity concept preview">
+      <div class="hero-visual" data-reveal="hero-visual" aria-label="InstaCard digital identity concept preview">
         <div class="visual-topline">
           <span>LIVE DIGITAL ID</span>
           <span>NO APP REQUIRED</span>
@@ -127,15 +135,30 @@
 
     <section class="connection-strip" aria-label="Sharing options">
       <div class="container connection-grid">
-        <p>From “nice to meet you”<br><strong>to “let’s stay in touch.”</strong></p>
-        <div class="connection-item"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7V5a2 2 0 0 1 2-2h2"></path><path d="M17 3h2a2 2 0 0 1 2 2v2"></path><path d="M21 17v2a2 2 0 0 1-2 2h-2"></path><path d="M7 21H5a2 2 0 0 1-2-2v-2"></path><path d="M7 12h10"></path></svg><span>Share with a QR code</span></div>
-        <div class="connection-item"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg><span>Send a single link</span></div>
-        <div class="connection-item"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M5 21a7 7 0 0 1 14 0"></path></svg><span>Save straight to contacts</span></div>
+        <div class="connection-intro" data-reveal>
+          <span>SHARE YOUR WAY</span>
+          <p>From “nice to meet you”<br><strong>to “let’s stay in touch.”</strong></p>
+        </div>
+
+        <div class="sharing-marquee" aria-label="Ways to share an InstaCard">
+          <div class="sharing-track">
+            <div class="sharing-group">
+              <div class="connection-item"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7V5a2 2 0 0 1 2-2h2"></path><path d="M17 3h2a2 2 0 0 1 2 2v2"></path><path d="M21 17v2a2 2 0 0 1-2 2h-2"></path><path d="M7 21H5a2 2 0 0 1-2-2v-2"></path><path d="M7 12h10"></path></svg><span>Share with a QR code</span></div>
+              <div class="connection-item"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg><span>Send a single link</span></div>
+              <div class="connection-item"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M5 21a7 7 0 0 1 14 0"></path></svg><span>Save straight to contacts</span></div>
+            </div>
+            <div class="sharing-group" aria-hidden="true">
+              <div class="connection-item"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7V5a2 2 0 0 1 2-2h2"></path><path d="M17 3h2a2 2 0 0 1 2 2v2"></path><path d="M21 17v2a2 2 0 0 1-2 2h-2"></path><path d="M7 21H5a2 2 0 0 1-2-2v-2"></path><path d="M7 12h10"></path></svg><span>Share with a QR code</span></div>
+              <div class="connection-item"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg><span>Send a single link</span></div>
+              <div class="connection-item"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M5 21a7 7 0 0 1 14 0"></path></svg><span>Save straight to contacts</span></div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
     <section class="section container" id="how-it-works" aria-labelledby="how-title">
-      <div class="section-heading">
+      <div class="section-heading" data-reveal>
         <div>
           <p class="eyebrow">SMALL STEPS. REAL CONNECTIONS.</p>
           <h2 id="how-title">A hello. A scan.<br>A new connection.</h2>
@@ -144,17 +167,17 @@
       </div>
 
       <div class="steps">
-        <article>
+        <article data-reveal style="--reveal-delay:0ms">
           <div class="step-top"><span>01</span><span class="step-icon">ID</span></div>
           <h3>Make it yours.</h3>
           <p>Add your details and social links. Choose a template that feels like you.</p>
         </article>
-        <article>
+        <article data-reveal style="--reveal-delay:90ms">
           <div class="step-top"><span>02</span><span class="step-icon">QR</span></div>
           <h3>Share in the moment.</h3>
           <p>Let someone scan your QR code, or send your card as a link. That’s it.</p>
         </article>
-        <article>
+        <article data-reveal style="--reveal-delay:180ms">
           <div class="step-top"><span>03</span><span class="step-icon">✓</span></div>
           <h3>Keep the connection.</h3>
           <p>They save your details to their contacts. No app download gets in the way.</p>
@@ -164,7 +187,7 @@
 
     <section class="benefit-section" id="why-instacard" aria-labelledby="benefit-title">
       <div class="container section">
-        <div class="section-heading">
+        <div class="section-heading" data-reveal>
           <div>
             <p class="eyebrow">LESS FRICTION. MORE POSSIBILITY.</p>
             <h2 id="benefit-title">Everything a paper<br>card wishes it could be.</h2>
@@ -173,7 +196,7 @@
         </div>
 
         <div class="benefit-grid">
-          <article class="benefit benefit-blue">
+          <article class="benefit benefit-blue" data-reveal style="--reveal-delay:0ms">
             <div class="benefit-label"><span>01</span><span>SIMPLE</span></div>
             <div class="simple-visual">
               <div class="mini-link"><span>instacard / you</span><span>↗</span></div>
@@ -183,7 +206,7 @@
             <p>Open a card in the browser and save the contact. Your connection doesn’t need another app.</p>
           </article>
 
-          <article class="benefit">
+          <article class="benefit" data-reveal style="--reveal-delay:80ms">
             <div class="benefit-label"><span>02</span><span>ACCURATE</span></div>
             <div class="data-sample">
               <span class="mistyped">j0lly.joe@company.c0m</span>
@@ -193,28 +216,28 @@
             <p>Share the information you enter directly. Skip manual typing and OCR scanning errors.</p>
           </article>
 
-          <article class="benefit">
+          <article class="benefit" data-reveal style="--reveal-delay:160ms">
             <div class="benefit-label"><span>03</span><span>MULTILINGUAL</span></div>
             <div class="language-sample"><span>Hello.</span><span>Xin chào.</span><span>Bonjour.</span></div>
             <h3>Names, without<br>language barriers.</h3>
             <p>Save details in their original language, even when you can’t type the characters.</p>
           </article>
 
-          <article class="benefit">
+          <article class="benefit" data-reveal style="--reveal-delay:0ms">
             <div class="benefit-label"><span>04</span><span>INTEGRATED</span></div>
             <div class="integration-sample"><span class="integration-chip">G</span><span>↔</span><span class="integration-chip">MS</span><span>↔</span><span class="integration-chip">CT</span></div>
             <h3>Right where your<br>contacts belong.</h3>
             <p>Save to your phone. Google and Microsoft contact sync is planned for launch.</p>
           </article>
 
-          <article class="benefit benefit-green">
+          <article class="benefit benefit-green" data-reveal style="--reveal-delay:80ms">
             <div class="benefit-label"><span>05</span><span>GREEN</span></div>
             <div class="green-sample"><span class="leaf-mark">⌁</span><span>More hellos.<br>Less paper.</span></div>
             <h3>Make connections.<br>Not more paper.</h3>
             <p>One reusable digital card means fewer cards to print, carry and throw away.</p>
           </article>
 
-          <article class="benefit">
+          <article class="benefit" data-reveal style="--reveal-delay:160ms">
             <div class="benefit-label"><span>06</span><span>CUSTOMIZED</span></div>
             <div class="palette-sample"><span></span><span></span><span></span><span></span></div>
             <h3>Professional.<br>And unmistakably you.</h3>
@@ -225,7 +248,7 @@
     </section>
 
     <section class="section container personal" id="your-card" aria-labelledby="personal-title">
-      <div class="builder-visual" aria-label="InstaCard editable card builder concept">
+      <div class="builder-visual" data-reveal aria-label="InstaCard editable card builder concept">
         <div class="builder-toolbar">
           <div>
             <span class="builder-kicker">CARD BUILDER</span>
@@ -290,7 +313,7 @@
         </div>
       </div>
 
-      <div class="personal-copy">
+      <div class="personal-copy" data-reveal style="--reveal-delay:100ms">
         <p class="eyebrow">ONE CARD. MANY SIDES OF YOU.</p>
         <h2 id="personal-title">More than a name<br>and a number.</h2>
         <p>Your work. Your socials. The best way to reach you. Bring it all together in a card that makes the right introduction.</p>
@@ -304,30 +327,30 @@
     </section>
 
     <section class="section container faq" id="questions" aria-labelledby="faq-title">
-      <div>
+      <div data-reveal>
         <p class="eyebrow">GOOD QUESTIONS.</p>
         <h2 id="faq-title">A little clarity,<br>before you connect.</h2>
         <p>Here’s what to know about InstaCard.</p>
       </div>
 
       <div class="faq-list">
-        <article class="faq-item">
+        <article class="faq-item" data-reveal style="--reveal-delay:0ms">
           <div class="faq-question"><h3>Does the other person need the app?</h3><span>+</span></div>
           <p>No. The proposed sharing experience lets anyone open your card in a browser and save your details, without installing an app or creating an account.</p>
         </article>
-        <article class="faq-item">
+        <article class="faq-item" data-reveal style="--reveal-delay:65ms">
           <div class="faq-question"><h3>How do I share my digital card?</h3><span>+</span></div>
           <p>Show your QR code in person, or send your card link by email, message or social media.</p>
         </article>
-        <article class="faq-item">
+        <article class="faq-item" data-reveal style="--reveal-delay:130ms">
           <div class="faq-question"><h3>Can I add my social and messaging links?</h3><span>+</span></div>
           <p>Yes. The planned card supports links such as Facebook, Instagram, LinkedIn and WhatsApp alongside your contact information.</p>
         </article>
-        <article class="faq-item">
+        <article class="faq-item" data-reveal style="--reveal-delay:195ms">
           <div class="faq-question"><h3>Can I make my card look like me?</h3><span>+</span></div>
           <p>Choose a professional template or customize your card. Final Premium features and pricing will be confirmed at launch.</p>
         </article>
-        <article class="faq-item">
+        <article class="faq-item" data-reveal style="--reveal-delay:260ms">
           <div class="faq-question"><h3>What happens when I request early access?</h3><span>+</span></div>
           <p>This is a static design preview. No email is submitted or stored, and there is no confirmed launch date yet.</p>
         </article>
@@ -335,7 +358,7 @@
     </section>
 
     <section class="closing" id="early-access" aria-labelledby="closing-title">
-      <div class="container closing-inner">
+      <div class="container closing-inner" data-reveal>
         <p class="eyebrow">THE NEXT HELLO COULD CHANGE EVERYTHING.</p>
         <h2 id="closing-title">Be remembered.<br>Stay connected.</h2>
         <p>Your next great connection starts with one little card.</p>

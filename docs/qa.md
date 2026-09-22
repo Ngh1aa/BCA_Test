@@ -1,110 +1,127 @@
-# InstaCard — Final QA and delivery evidence
+# InstaCard — Final QA and motion evidence
 
-## Final submission status — 23 September 2026
-**PASS for the polished static design handoff.**
+## Status — 23 September 2026
+**PASS for the BCA static landing + motion enhancement scope.**
 
-This record describes the current screenshot-free marketing direction. It does **not** claim production readiness, WCAG conformance, cross-browser certification, usability validation, or live backend functionality.
+The motion pass was implemented after comparing relevant patterns from CamCard, BOVAcard, CloudCard and 21st.dev. Motion behavior was recreated from scratch in the existing HTML/CSS/JS codebase.
 
-UI source used for final visual evidence:
-`bf963ca0e17801fa54ef0614b7efbaf11bf5aacd`
+No claim is made for production readiness, formal WCAG conformance, Safari/Firefox parity, real-device validation or backend functionality.
 
-Evidence commit:
-`f164aedd236e0bae9f726ff24134e0b321a34ce4`
+## Motion system verified
 
-## Final visual direction verified
-- Original `logo.svg` remains the brand asset.
-- Hero uses a new HTML/CSS/SVG digital identity + recipient preview + QR/share composition.
-- “Your card” uses a new HTML/CSS Card Builder + live preview concept.
-- The six supplied app screenshots remain reference evidence only and are **not embedded in the landing page**.
-- Early Access fields and FAQ remain static presentation UI.
-- JavaScript is limited to mobile navigation.
-
-## Rendered evidence
-Final full-page screenshots were generated using Playwright 1.55 / Chromium against a local static HTTP server.
-
-Successful workflow run:
-`35775059850`
-
-Evidence:
-- `evidence/desktop-1440.png` — 1440 × 1000 viewport, full-page capture.
-- `evidence/mobile-390.png` — 390 × 844 viewport, full-page capture.
-
-Evidence blobs:
-- desktop: `13b891ebc525b98a3024ad9547ee45d7cfc31cec`
-- mobile: `5df7b91a5738d73663549b022b2b4ea9c90d5103`
-
-## Layout smoke-check result
-
-| Viewport | scrollWidth | clientWidth | Page errors | Image loading |
-|---|---:|---:|---:|---|
-| Desktop 1440 | 1440 | 1440 | 0 | PASS |
-| Mobile 390 | 390 | 390 | 0 | PASS |
-
-Both rendered states confirmed:
-- `.hero-visual` exists;
-- `.builder-visual` exists;
-- all six required benefit labels are present;
-- only the original InstaCard SVG logo is loaded as an external image (header + footer);
-- no horizontal page overflow was detected.
-
-## Source consistency checks
-
-| Check | Result |
+| Surface | Final behavior |
 |---|---|
-| Required benefits | Simple, Accurate, Multilingual, Integrated, Green, Customized — all present |
-| Original logo used | YES |
-| Client screenshot PNG references in `index.html` | **0** |
-| Landing PNG `img` tags | **0** |
-| New hero concept | present |
-| New Card Builder concept | present |
-| HTML `form` | 0 |
-| HTML `input` | 0 |
-| HTML `details` | 0 |
-| HTML `canvas` | 0 |
-| HTML `iframe` | 0 |
-| CSS `position:absolute` | 0 |
-| CSS `position:fixed` | 0 |
-| CSS `position:sticky` | 0 |
-| CSS transforms | 0 |
-| CSS linear/radial gradients | 0 |
-| Signup-validation JavaScript | none |
-| Mobile-navigation JavaScript | present |
+| Hero identity card | slow vertical float |
+| Recipient preview | inverse slow float |
+| Ready state | soft pulse |
+| Sharing strip | infinite horizontal marquee |
+| How it works | sequential scroll reveal |
+| Benefits | scroll reveal + hover lift |
+| Card Builder preview | low-amplitude float |
+| FAQ / final CTA | simple reveal |
 
-## Figma-conversion expectations
-The main landing is now strongly conversion-oriented:
-- marketing copy is DOM text;
-- profile/card content is DOM text;
-- buttons, chips, contact rows and builder controls are HTML/CSS;
-- QR artwork is inline SVG/vector;
-- original logo remains SVG/vector;
-- no legacy product screenshot flattens hero or personalization into one bitmap.
+No GSAP, Motion, Framer Motion or other animation runtime was added.
 
-The six original screenshots remain in `assets/` and in the optional **Supplied Product Evidence** section of `design-notes.html`. They should stay out of the primary Desktop/Mobile Figma landing frames unless BCA explicitly requests them.
+## Automated browser evidence
 
-## Interaction scope
-Implemented:
-- anchor navigation;
-- mobile menu open/close;
-- standard link/button hover/focus presentation.
+Successful Playwright workflow:
+`35778391086`
 
-Not implemented:
-- email submission;
-- form validation;
-- FAQ accordion;
-- authentication;
-- payment;
-- real contact saving/sync;
-- print checkout;
-- analytics.
+Renderer:
+**Playwright 1.55.0 / Chromium**
 
-## Deferred validation
-Not performed:
-- Safari / Firefox comparison;
-- physical iOS / Android device test;
+### Default motion mode
+
+Desktop **1440 × 1000**:
+- runtime errors: **0**
+- horizontal overflow: **0**
+- root mode: `motion-enhanced`
+- sharing rail animation: `instacard-marquee`
+- hero animation: `instacard-float-a`
+- all 3 How It Works steps reveal successfully after entering the viewport
+- all 6 benefit cards reveal successfully after entering the viewport
+- legacy screenshot PNGs rendered in landing: **0**
+
+Mobile **390 × 844**:
+- runtime errors: **0**
+- horizontal overflow: **0**
+- root mode: `motion-enhanced`
+- sharing rail animation: `instacard-marquee`
+- hero animation begins when the hero visual enters the viewport
+- all 3 steps and all 6 benefits reveal successfully through the real mobile scroll sequence
+- legacy screenshot PNGs rendered in landing: **0**
+
+## Reduced motion
+
+Playwright emulated `prefers-reduced-motion: reduce`.
+
+Verified:
+- root mode: `motion-reduced`
+- sharing marquee: **disabled**
+- hero float: **disabled**
+- hidden reveal elements: **0**
+
+Core content therefore remains visible without continuous/reveal motion.
+
+## Figma conversion mode
+
+Use:
+
+`?figma=1`
+
+Example:
+`https://ngh1aa.github.io/BCA_Test/?figma=1`
+
+Verified at desktop and mobile:
+- root mode: `figma-static`
+- marquee animation: **none**
+- hero float: **none**
+- hidden reveal elements: **0**
+- no horizontal overflow
+
+This is the preferred URL for HTML → Figma conversion so the converter cannot capture an in-between motion state.
+
+## Final static visual evidence
+
+Full-page screenshots are captured in `?figma=1` mode after motion behavior is separately verified.
+
+- `evidence/desktop-1440.png`
+  - blob: `d8dceb708726ba4b1512a2673bd6187f41ea2009`
+- `evidence/mobile-390.png`
+  - blob: `4a036bf5f34becc5078f623e4ab799cb50a61f22`
+
+Both screenshots were opened and visually inspected after capture.
+
+Visual inspection:
+- hero hierarchy remains clear;
+- animated sharing rail fits the section without clipping the page;
+- How It Works and benefit grids keep their alignment;
+- Card Builder, FAQ and closing CTA are all present in full-page evidence;
+- mobile layout retains the expected single-column reading order;
+- no blank sections caused by unrevealed content remain in final evidence;
+- no P0/P1 visual defect was found in the declared desktop/mobile scope.
+
+Machine-readable motion evidence:
+`evidence/motion-qa-report.json`
+
+## Source consistency
+
+Current implementation:
+- original InstaCard logo SVG remains in header/footer;
+- landing product visuals remain HTML/CSS/SVG;
+- client app screenshots remain reference evidence only;
+- JavaScript uses IntersectionObserver for one-time reveal and existing mobile-menu behavior;
+- marquee/float/reveal motion is CSS-based;
+- `prefers-reduced-motion` and Figma static mode are explicit escape hatches.
+
+## Deferred / not claimed
+
+Not covered by this final motion pass:
+- Safari / Firefox rendering comparison;
+- physical iOS / Android testing;
 - screen-reader session;
-- formal accessibility-conformance audit;
-- Lighthouse audit;
-- real user interviews/usability sessions;
-- production API/integration testing.
-
-These remain outside the BCA static design-test scope.
+- formal WCAG conformance audit;
+- Lighthouse / field Core Web Vitals;
+- production email submission;
+- backend/integration behavior;
+- usability testing with recruited users.

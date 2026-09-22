@@ -1,0 +1,150 @@
+{
+  "generated_at": "2026-09-22T20:13:02.939Z",
+  "renderer": "Playwright 1.55.0 / Chromium",
+  "default_motion": [
+    {
+      "width": 1440,
+      "height": 1000,
+      "errors": [],
+      "top": {
+        "rootClass": "motion-enhanced",
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "heroVisual": true,
+        "builderVisual": true,
+        "marqueeAnimation": "instacard-marquee",
+        "brandAnimation": "instacard-float-a",
+        "screenshotPngs": 0
+      },
+      "steps": [
+        {
+          "visibleClass": true,
+          "opacity": "1"
+        },
+        {
+          "visibleClass": true,
+          "opacity": "1"
+        },
+        {
+          "visibleClass": true,
+          "opacity": "1"
+        }
+      ],
+      "benefits": [
+        {
+          "visibleClass": true,
+          "opacity": "1"
+        },
+        {
+          "visibleClass": true,
+          "opacity": "1"
+        },
+        {
+          "visibleClass": true,
+          "opacity": "1"
+        },
+        {
+          "visibleClass": true,
+          "opacity": "1"
+        },
+        {
+          "visibleClass": true,
+          "opacity": "1"
+        },
+        {
+          "visibleClass": true,
+          "opacity": "1"
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "errors": [],
+      "top": {
+        "rootClass": "motion-enhanced",
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "heroVisual": true,
+        "builderVisual": true,
+        "marqueeAnimation": "instacard-marquee",
+        "brandAnimation": "instacard-float-a",
+        "screenshotPngs": 0
+      },
+      "steps": [
+        {
+          "visibleClass": true,
+          "opacity": "1"
+        },
+        {
+          "visibleClass": true,
+          "opacity": "1"
+        },
+        {
+          "visibleClass": true,
+          "opacity": "1"
+        }
+      ],
+      "benefits": [
+        {
+          "visibleClass": true,
+          "opacity": "1"
+        },
+        {
+          "visibleClass": true,
+          "opacity": "1"
+        },
+        {
+          "visibleClass": true,
+          "opacity": "1"
+        },
+        {
+          "visibleClass": true,
+          "opacity": "1"
+        },
+        {
+          "visibleClass": true,
+          "opacity": "1"
+        },
+        {
+          "visibleClass": true,
+          "opacity": "1"
+        }
+      ]
+    }
+  ],
+  "static_evidence": [
+    {
+      "width": 1440,
+      "height": 1000,
+      "errors": [],
+      "data": {
+        "rootClass": "figma-static",
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "marqueeAnimation": "none",
+        "brandAnimation": "none",
+        "hiddenRevealCount": 0
+      }
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "errors": [],
+      "data": {
+        "rootClass": "figma-static",
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "marqueeAnimation": "none",
+        "brandAnimation": "none",
+        "hiddenRevealCount": 0
+      }
+    }
+  ],
+  "reduced_motion": {
+    "rootClass": "motion-reduced",
+    "marqueeAnimation": "none",
+    "brandAnimation": "none",
+    "hiddenRevealCount": 0
+  }
+}

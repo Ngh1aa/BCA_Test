@@ -1,0 +1,211 @@
+{
+  "checkedAt": "2026-09-22T17:16:57.070Z",
+  "browser": "153.0.8010.0",
+  "routes": [
+    {
+      "route": "index.html",
+      "width": 320,
+      "viewport": 320,
+      "brokenImages": [],
+      "anchors": []
+    },
+    {
+      "route": "index.html",
+      "width": 390,
+      "viewport": 390,
+      "brokenImages": [],
+      "anchors": [],
+      "axe": {
+        "violations": [],
+        "incomplete": [
+          "aria-prohibited-attr",
+          "color-contrast"
+        ]
+      }
+    },
+    {
+      "route": "index.html",
+      "width": 700,
+      "viewport": 700,
+      "brokenImages": [],
+      "anchors": []
+    },
+    {
+      "route": "index.html",
+      "width": 701,
+      "viewport": 701,
+      "brokenImages": [],
+      "anchors": []
+    },
+    {
+      "route": "index.html",
+      "width": 768,
+      "viewport": 768,
+      "brokenImages": [],
+      "anchors": []
+    },
+    {
+      "route": "index.html",
+      "width": 950,
+      "viewport": 950,
+      "brokenImages": [],
+      "anchors": []
+    },
+    {
+      "route": "index.html",
+      "width": 951,
+      "viewport": 951,
+      "brokenImages": [],
+      "anchors": []
+    },
+    {
+      "route": "index.html",
+      "width": 1024,
+      "viewport": 1024,
+      "brokenImages": [],
+      "anchors": []
+    },
+    {
+      "route": "index.html",
+      "width": 1199,
+      "viewport": 1199,
+      "brokenImages": [],
+      "anchors": []
+    },
+    {
+      "route": "index.html",
+      "width": 1200,
+      "viewport": 1200,
+      "brokenImages": [],
+      "anchors": []
+    },
+    {
+      "route": "index.html",
+      "width": 1440,
+      "viewport": 1440,
+      "brokenImages": [],
+      "anchors": [],
+      "axe": {
+        "violations": [],
+        "incomplete": [
+          "aria-prohibited-attr",
+          "color-contrast"
+        ]
+      }
+    },
+    {
+      "route": "design-notes.html",
+      "width": 320,
+      "viewport": 320,
+      "brokenImages": [],
+      "anchors": []
+    },
+    {
+      "route": "design-notes.html",
+      "width": 390,
+      "viewport": 390,
+      "brokenImages": [],
+      "anchors": [],
+      "axe": {
+        "violations": [],
+        "incomplete": []
+      }
+    },
+    {
+      "route": "design-notes.html",
+      "width": 700,
+      "viewport": 700,
+      "brokenImages": [],
+      "anchors": []
+    },
+    {
+      "route": "design-notes.html",
+      "width": 701,
+      "viewport": 701,
+      "brokenImages": [],
+      "anchors": []
+    },
+    {
+      "route": "design-notes.html",
+      "width": 768,
+      "viewport": 768,
+      "brokenImages": [],
+      "anchors": []
+    },
+    {
+      "route": "design-notes.html",
+      "width": 950,
+      "viewport": 950,
+      "brokenImages": [],
+      "anchors": []
+    },
+    {
+      "route": "design-notes.html",
+      "width": 951,
+      "viewport": 951,
+      "brokenImages": [],
+      "anchors": []
+    },
+    {
+      "route": "design-notes.html",
+      "width": 1024,
+      "viewport": 1024,
+      "brokenImages": [],
+      "anchors": []
+    },
+    {
+      "route": "design-notes.html",
+      "width": 1199,
+      "viewport": 1199,
+      "brokenImages": [],
+      "anchors": []
+    },
+    {
+      "route": "design-notes.html",
+      "width": 1200,
+      "viewport": 1200,
+      "brokenImages": [],
+      "anchors": []
+    },
+    {
+      "route": "design-notes.html",
+      "width": 1440,
+      "viewport": 1440,
+      "brokenImages": [],
+      "anchors": [],
+      "axe": {
+        "violations": [],
+        "incomplete": []
+      }
+    }
+  ],
+  "states": {
+    "menuOpen": "true",
+    "menuClosed": "false",
+    "anchor": true,
+    "menuClosedAfterAnchor": "false",
+    "invalid": "true",
+    "validPreview": "This is a design preview. Your email has not been sent or saved.",
+    "noStorage": {
+      "local": 0,
+      "session": 0
+    },
+    "footerPreview": "This is a design preview. Your email has not been sent or saved.",
+    "faqKeyboard": true,
+    "ctaDefault": {
+      "color": "rgb(255, 255, 255)",
+      "background": "rgb(20, 101, 217)"
+    },
+    "ctaHover": {
+      "color": "rgb(255, 255, 255)",
+      "background": "rgb(11, 75, 167)"
+    },
+    "ctaFocus": {
+      "outline": "solid",
+      "outlineWidth": "3px"
+    },
+    "reducedMotion": "0s"
+  },
+  "consoleErrors": [],
+  "networkErrors": []
+}

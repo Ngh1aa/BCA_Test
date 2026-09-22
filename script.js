@@ -28,19 +28,50 @@ if (isMotionEnhanced) {
 }
 
 // Scroll-scrubbed “meet in the middle” hero hands.
-// Exact behavior requested:
-// left hand  xPercent: -100 -> 0
-// right hand xPercent:  100 -> 0
-// both move simultaneously while the scene is pinned, so the motion is clearly visible.
+// Primary path: GSAP ScrollTrigger with pin + scrub.
+// Fallback path: native sticky + requestAnimationFrame if GSAP/CDN is unavailable.
 const handsContainer = document.querySelector('.hands-container');
 
 if (handsContainer) {
   const leftHand = handsContainer.querySelector('.left-hand');
   const rightHand = handsContainer.querySelector('.right-hand');
+  const hero = handsContainer.closest('.hero-camcard');
 
-  const showFinalPose = () => {
-    if (leftHand) leftHand.style.transform = 'translate3d(0,0,0)';
-    if (rightHand) rightHand.style.transform = 'translate3d(0,0,0)';
+  const setNativeProgress = progress => {
+    const p = Math.min(1, Math.max(0, progress));
+    const leftX = -100 + (100 * p);
+    const rightX = 100 - (100 * p);
+    if (leftHand) leftHand.style.transform = `translate3d(${leftX}%,0,0)`;
+    if (rightHand) rightHand.style.transform = `translate3d(${rightX}%,0,0)`;
+  };
+
+  const showFinalPose = () => setNativeProgress(1);
+
+  const setupNativeFallback = () => {
+    if (!leftHand || !rightHand || !hero) return;
+
+    hero.classList.add('native-hands-fallback');
+    handsContainer.classList.add('native-hands-pin');
+    setNativeProgress(0);
+
+    let ticking = false;
+    const update = () => {
+      ticking = false;
+      const compact = window.innerWidth <= 760;
+      const pinTop = compact ? 74 : 90;
+      const distance = compact ? 520 : 760;
+      const startY = hero.offsetTop + handsContainer.offsetTop - pinTop;
+      setNativeProgress((window.scrollY - startY) / distance);
+    };
+    const requestUpdate = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
+    };
+
+    window.addEventListener('scroll', requestUpdate, { passive: true });
+    window.addEventListener('resize', requestUpdate);
+    requestUpdate();
   };
 
   if (
@@ -69,18 +100,13 @@ if (handsContainer) {
     });
 
     handsTimeline
-      .to(leftHand, {
-        xPercent: 0,
-        ease: 'none'
-      }, 0)
-      .to(rightHand, {
-        xPercent: 0,
-        ease: 'none'
-      }, 0);
+      .to(leftHand, { xPercent: 0, ease: 'none' }, 0)
+      .to(rightHand, { xPercent: 0, ease: 'none' }, 0);
 
     window.addEventListener('load', () => ScrollTrigger.refresh(), { once: true });
+  } else if (isMotionEnhanced) {
+    setupNativeFallback();
   } else {
-    // Figma mode, reduced-motion mode, or CDN failure: show the clean final composition.
     showFinalPose();
   }
 }

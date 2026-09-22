@@ -1,0 +1,94 @@
+{
+  "normal": {
+    "errors": [],
+    "metrics": {
+      "rootClass": "motion-enhanced",
+      "startY": 659,
+      "travel": 760
+    },
+    "states": {
+      "start": {
+        "scrollY": 424,
+        "left": "matrix(1, 0, 0, 1, -648, 0)",
+        "right": "matrix(1, 0, 0, 1, 648, 0)",
+        "stageTop": 232.796875,
+        "stagePosition": "sticky",
+        "overflow": [
+          1440,
+          1440
+        ]
+      },
+      "mid": {
+        "scrollY": 871,
+        "left": "matrix(1, 0, 0, 1, -467.242, 0)",
+        "right": "matrix(1, 0, 0, 1, 467.242, 0)",
+        "stageTop": -214.203125,
+        "stagePosition": "sticky",
+        "overflow": [
+          1440,
+          1440
+        ]
+      },
+      "end": {
+        "scrollY": 1263,
+        "left": "matrix(1, 0, 0, 1, -133.011, 0)",
+        "right": "matrix(1, 0, 0, 1, 133.011, 0)",
+        "stageTop": -606.203125,
+        "stagePosition": "sticky",
+        "overflow": [
+          1440,
+          1440
+        ]
+      }
+    }
+  },
+  "reduced": {
+    "errors": [],
+    "metrics": {
+      "rootClass": "motion-reduced",
+      "startY": 659,
+      "travel": 760
+    },
+    "states": {
+      "start": {
+        "scrollY": 659,
+        "left": "matrix(1, 0, 0, 1, -648, 0)",
+        "right": "matrix(1, 0, 0, 1, 648, 0)",
+        "stageTop": -2.203125,
+        "stagePosition": "sticky",
+        "overflow": [
+          1440,
+          1440
+        ]
+      },
+      "mid": {
+        "scrollY": 1039,
+        "left": "matrix(1, 0, 0, 1, -324, 0)",
+        "right": "matrix(1, 0, 0, 1, 324, 0)",
+        "stageTop": -382.203125,
+        "stagePosition": "sticky",
+        "overflow": [
+          1440,
+          1440
+        ]
+      },
+      "end": {
+        "scrollY": 1419,
+        "left": "matrix(1, 0, 0, 1, 0, 0)",
+        "right": "matrix(1, 0, 0, 1, 0, 0)",
+        "stageTop": -762.203125,
+        "stagePosition": "sticky",
+        "overflow": [
+          1440,
+          1440
+        ]
+      }
+    }
+  },
+  "figma": {
+    "rootClass": "figma-static",
+    "left": "matrix(1, 0, 0, 1, 0, 0)",
+    "right": "matrix(1, 0, 0, 1, 0, 0)",
+    "position": "relative"
+  }
+}

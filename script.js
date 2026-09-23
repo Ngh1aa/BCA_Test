@@ -73,6 +73,78 @@ if (!isFigmaStatic && !reduceMotion && 'IntersectionObserver' in window) {
   revealItems.forEach(item => item.classList.add('is-visible'));
 }
 
+// Continuous social-channel marquee.
+// Uses requestAnimationFrame so the rail keeps moving even on systems that
+// report reduced-motion. Figma capture mode remains intentionally static.
+function initChannelMarquee() {
+  if (isFigmaStatic) return;
+
+  const rail = document.querySelector('.channel-rail');
+  const track = rail?.querySelector('.channel-track');
+  const firstGroup = track?.querySelector('.channel-group');
+
+  if (!rail || !track || !firstGroup) return;
+
+  track.classList.add('is-js-marquee');
+
+  const SPEED = 58; // pixels per second
+  let loopWidth = 0;
+  let offset = 0;
+  let lastTime = performance.now();
+  let frameId = 0;
+
+  const measure = () => {
+    const trackStyle = getComputedStyle(track);
+    const gap = parseFloat(trackStyle.columnGap || trackStyle.gap || '0') || 0;
+    loopWidth = firstGroup.getBoundingClientRect().width + gap;
+
+    if (loopWidth > 0) {
+      offset = -((-offset) % loopWidth);
+      track.style.transform = `translate3d(${offset}px,0,0)`;
+    }
+  };
+
+  const tick = now => {
+    const delta = Math.min((now - lastTime) / 1000, 0.05);
+    lastTime = now;
+
+    if (!document.hidden && loopWidth > 0) {
+      offset -= SPEED * delta;
+
+      if (-offset >= loopWidth) {
+        offset += loopWidth;
+      }
+
+      track.style.transform = `translate3d(${offset}px,0,0)`;
+    }
+
+    frameId = requestAnimationFrame(tick);
+  };
+
+  measure();
+
+  if ('ResizeObserver' in window) {
+    const resizeObserver = new ResizeObserver(measure);
+    resizeObserver.observe(rail);
+    resizeObserver.observe(firstGroup);
+  } else {
+    window.addEventListener('resize', measure, { passive: true });
+  }
+
+  document.addEventListener('visibilitychange', () => {
+    lastTime = performance.now();
+  });
+
+  frameId = requestAnimationFrame(tick);
+
+  window.addEventListener('pagehide', () => {
+    cancelAnimationFrame(frameId);
+  }, { once: true });
+}
+
+initChannelMarquee();
+
+
 // Restored previous two-hand GSAP ScrollTrigger interaction.
 function initCamCardHandsScroll() {
   const heroStage = document.getElementById('camcard-hands-stage');

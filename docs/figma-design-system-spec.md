@@ -212,6 +212,27 @@ Green variant:
 ---
 
 
+
+### Benefit Feature Matrix card
+- Desktop layout: 3 columns × 2 rows
+- Card min height: 330px
+- Mobile min height: 285px
+- Padding: 30px desktop / 26px mobile
+- Radius: 24px
+- Border: `#E1E8EF`
+- Background: white
+- Shadow: `0 14px 32px rgba(23,58,92,.055)`
+- Top row: number + category pill + 44px outline icon box
+- Number: Bricolage Grotesque 22px / 700 / Primary Blue
+- Category pill: 9px / 700 / uppercase / 9% tracking
+- Title: Bricolage Grotesque 27px / 700 / 1.06 line-height
+- Body: Instrument Sans 14px / 1.68 line-height
+- Bottom accent: 52px × 3px, expands to 86px on hover
+- Simple variant: pale blue surface
+- Green variant: pale green surface
+- Hover: translateY(-5px), stronger border/shadow only
+- Mobile: single-column stack
+
 ### Process step card — How it works
 - Desktop layout: 3 equal columns
 - Card min height: 310px
@@ -343,7 +364,7 @@ Document these in Figma:
 - Button / Small
 - Button / Dark
 - Field / Early Access
-- Card / Benefit
+- Card / Benefit Feature Matrix
 - Card / Builder
 - Card / Profile
 - Card / Process Step

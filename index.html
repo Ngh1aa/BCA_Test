@@ -11,7 +11,7 @@
       if (params.get('figma') === '1') document.documentElement.classList.add('figma-static');
     })();
   </script>
-  <link rel="stylesheet" href="./styles.css?v=benefits-showcase-1">
+  <link rel="stylesheet" href="./styles.css?v=builder-studio-1">
 </head>
 <body>
   <header class="site-header" id="top">
@@ -363,42 +363,92 @@
 
     <section class="your-card section" id="your-card" aria-labelledby="your-card-title">
       <div class="container your-card-grid">
-        <div class="card-builder reveal-once" aria-label="Editable InstaCard concept">
-          <div class="builder-topline">
-            <div>
-              <span>INSTA CARD BUILDER</span>
-              <strong>Live preview</strong>
+        <div class="studio-builder reveal-once" aria-label="InstaCard visual builder concept">
+          <div class="studio-toolbar">
+            <div class="studio-toolbar__brand">
+              <span class="studio-mark" aria-hidden="true">IC</span>
+              <div>
+                <span>INSTA CARD STUDIO</span>
+                <strong>Profile canvas</strong>
+              </div>
             </div>
-            <span class="status-pill">Personal</span>
+
+            <div class="studio-toolbar__actions" aria-hidden="true">
+              <span class="studio-live"><i></i> Live</span>
+              <span class="studio-zoom">100%</span>
+            </div>
           </div>
 
-          <div class="builder-layout">
-            <div class="builder-controls">
-              <div class="control-block">
-                <span>PROFILE</span>
-                <div class="control-row"><b>AV</b><div><strong>Alex Vance</strong><small>Product Designer</small></div></div>
+          <div class="studio-stage">
+            <div class="studio-grid" aria-hidden="true"></div>
+
+            <div class="studio-rail" aria-label="Builder sections">
+              <span class="studio-tool is-active" aria-label="Profile">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"></circle><path d="M5 20c.8-4 3.1-6 7-6s6.2 2 7 6"></path></svg>
+              </span>
+              <span class="studio-tool" aria-label="Channels">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 14.5 14.5 9"></path><path d="M7.5 17H6a4 4 0 0 1 0-8h3"></path><path d="M16.5 7H18a4 4 0 0 1 0 8h-3"></path></svg>
+              </span>
+              <span class="studio-tool" aria-label="Style">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4a8 8 0 1 0 0 16h1.2a2 2 0 0 0 0-4h-.8a1.7 1.7 0 0 1 0-3.4H15a5 5 0 0 0 0-10z"></path><circle cx="7.5" cy="10" r="1"></circle><circle cx="9.5" cy="6.8" r="1"></circle><circle cx="14" cy="6.2" r="1"></circle></svg>
+              </span>
+            </div>
+
+            <div class="studio-context">
+              <span>PROFILE</span>
+              <strong>Alex Vance</strong>
+              <small>Product Designer</small>
+            </div>
+
+            <div class="studio-theme-panel">
+              <div>
+                <span>THEME</span>
+                <strong>Clear Blue</strong>
               </div>
-              <div class="control-block">
-                <span>CHANNELS</span>
-                <div class="channel-mini"><i>f</i><i>◎</i><i>◉</i><i>↗</i></div>
-              </div>
-              <div class="control-block">
-                <span>STYLE</span>
-                <div class="swatches"><i></i><i></i><i></i></div>
+              <div class="studio-swatches" aria-hidden="true">
+                <i class="is-selected"></i><i></i><i></i>
               </div>
             </div>
 
-            <div class="profile-card">
-              <div class="profile-avatar">AV</div>
-              <p class="profile-kicker">INSTA CARD</p>
-              <h3>Alex Vance</h3>
-              <p>Product Designer · Ho Chi Minh City</p>
-              <div class="profile-links">
-                <span>Facebook</span>
-                <span>Instagram</span>
-                <span>WhatsApp</span>
+            <div class="studio-profile-card">
+              <div class="studio-cover">
+                <span class="studio-cover__badge">PERSONAL</span>
+                <span class="studio-cover__mark">IC</span>
               </div>
-              <button type="button" class="profile-action">View contact details</button>
+
+              <div class="studio-profile-body">
+                <div class="studio-avatar">AV</div>
+                <div class="studio-identity">
+                  <p>INSTA CARD</p>
+                  <h3>Alex Vance</h3>
+                  <span>Product Designer · Ho Chi Minh City</span>
+                </div>
+
+                <div class="studio-contact-row">
+                  <span><b>f</b> Facebook</span>
+                  <span><b>◎</b> Instagram</span>
+                  <span><b>◉</b> WhatsApp</span>
+                </div>
+
+                <div class="studio-card-footer">
+                  <div>
+                    <span>alex@instacard.me</span>
+                    <small>Primary contact</small>
+                  </div>
+                  <button type="button">View contact <span aria-hidden="true">↗</span></button>
+                </div>
+              </div>
+            </div>
+
+            <div class="studio-share-chip" aria-hidden="true">
+              <span>SHARE READY</span>
+              <b>Profile link copied</b>
+              <i>✓</i>
+            </div>
+
+            <div class="studio-canvas-caption" aria-hidden="true">
+              <span>Canvas</span>
+              <span>Desktop profile</span>
             </div>
           </div>
         </div>

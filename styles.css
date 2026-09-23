@@ -2511,3 +2511,75 @@ html.figma-static .camcard-connect-badge {
   .journey-visual{min-height:176px}
   .journey-copy h3{font-size:24px}
 }
+
+
+/* Journey step header refinement — static visual-only patch.
+   Removes the generic progress-line treatment and turns each step label
+   into a compact InstaCard-style identity chip. No motion rules added. */
+.journey-board::before{
+  display:none;
+}
+.journey-step__topline{
+  width:max-content;
+  max-width:100%;
+  display:inline-flex;
+  align-items:center;
+  justify-content:flex-start;
+  gap:9px;
+  margin-bottom:20px;
+  padding:6px 10px 6px 6px;
+  border:1px solid #D8E5F0;
+  border-radius:999px;
+  background:#F7FBFF;
+}
+.journey-step__topline>span{
+  width:30px;
+  height:30px;
+  display:grid;
+  place-items:center;
+  border:0;
+  border-radius:9px;
+  background:linear-gradient(145deg,#2D7FEA,#1465D9);
+  color:#fff;
+  box-shadow:0 6px 14px rgba(20,101,217,.16);
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:-.02em;
+}
+.journey-step__topline small{
+  color:#36526A;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.09em;
+}
+.journey-step:nth-child(3) .journey-step__topline{
+  border-color:#D8E8DC;
+  background:#F7FBF8;
+}
+.journey-step:nth-child(3) .journey-step__topline>span{
+  background:linear-gradient(145deg,#55A56A,#3B8E53);
+  box-shadow:0 6px 14px rgba(59,142,83,.14);
+}
+.journey-step:nth-child(3) .journey-step__topline small{
+  color:#466C51;
+}
+
+@media(max-width:960px){
+  .journey-step__topline{
+    width:max-content;
+    display:inline-flex;
+    justify-items:initial;
+    justify-content:flex-start;
+    margin:0;
+  }
+}
+@media(max-width:700px){
+  .journey-step__topline{
+    width:max-content;
+    display:inline-flex;
+    grid-template-columns:none;
+  }
+  .journey-step__topline small{
+    justify-self:auto;
+  }
+}

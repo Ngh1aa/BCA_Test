@@ -3,7 +3,7 @@
 ## Purpose
 This file is the source for the Figma **UI Foundations** and **Components & UI Styles** frames.
 
-These values are a **retained design-system snapshot from the previous implementation**. Revalidate them against the new local implementation after upload before final Figma delivery.
+These values are synchronized to the active brief-aligned implementation in `styles.css`.
 
 ---
 
@@ -18,13 +18,13 @@ Font family references retained for Figma:
 - Instrument Sans Regular
 - Instrument Sans Bold
 
-The previous local font files were intentionally removed with the old implementation. Re-add font assets only if the new code requires them.
+The font files are present under `assets/fonts/` and are loaded locally by the active landing.
 
 ### Text styles
 
 | Figma style | Font | Weight | Size | Line height | Tracking | Usage |
 |---|---|---:|---:|---:|---:|---|
-| Display / Hero | Bricolage Grotesque | 700 | 58–92px responsive | .98 | -4.5% | Hero headline |
+| Display / Hero | Bricolage Grotesque | 700 | 62–102px responsive | .92 | -4.5% | Hero headline |
 | Heading / H1 Base | Bricolage Grotesque | 700 | 78px | 1.05 | -4.5% | Large presentation heading |
 | Heading / H2 | Bricolage Grotesque | 700 | 48px | 1.05 | -4.5% | Section heading |
 | Heading / H3 | Instrument Sans / Bricolage by section | 700 | 24–25px | 1.2 | -2.5% when Bricolage | Card/section title |
@@ -38,12 +38,11 @@ The previous local font files were intentionally removed with the old implementa
 | UI / Caption | Instrument Sans | 400 | 12px | Auto | 0 | Form caption |
 
 ### Responsive type notes
-- Hero desktop: `clamp(58px, 6.2vw, 92px)`
+- Hero desktop: `clamp(62px, 7.1vw, 102px)`
 - Hero mobile: 52px
 - H2 mobile: 38px
-- Closing CTA desktop: 66px
-- Closing CTA mobile: 48px
-- Closing CTA ≤390px: 42px
+- Closing CTA desktop: `clamp(50px, 5.3vw, 72px)`
+- Mobile section H2: 38px
 
 ---
 
@@ -75,10 +74,9 @@ The previous local font files were intentionally removed with the old implementa
 - Mobile content width: **88%**
 - Standard section padding: **104px vertical**
 - Mobile section padding: **68px vertical**
-- Desktop header: **90px**
-- Mobile header: **74px**
+- Sticky header visual shell: ~64px inside the floating nav
 - Key breakpoints:
-  - 1100px
+  - 960px
   - 760px
   - 390px
 
@@ -166,20 +164,20 @@ Current special values also include 7px, 9px, 11px.
 ## 8. Input / Early Access field
 
 - Min height: 56px
-- Padding: 0 16px
-- Radius: 11px
+- Padding: 0 20px desktop / 0 16px mobile
+- Radius: 12px
 - Background: white
 - Border: `#CBD6E1`
 - Text: `#6B7F92`
-- Font: 14px
-- Leading icon: 18px
+- Font: 15px
+- Leading icon: 19px
 
 ---
 
 ## 9. Cards
 
 ### Benefit card
-- Min height: 380px
+- Min height: 350px desktop / 300px mobile
 - Padding: 28px
 - Radius: 20px
 - Background: white
@@ -216,7 +214,7 @@ Green variant:
 ## 10. Chips / pills
 
 ### Sharing pill
-- Min height: 48px
+- Min height: 58px desktop / 52px mobile
 - Padding: 0 16px
 - Radius: 999px
 - BG: white

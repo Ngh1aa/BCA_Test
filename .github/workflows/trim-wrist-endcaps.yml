@@ -1,0 +1,85 @@
+name: Trim wrist end caps
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/trim-wrist-endcaps.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  trim:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Pillow
+        run: pip install pillow
+
+      - name: Trim black wrist end caps
+        shell: python
+        run: |
+          from PIL import Image
+          from pathlib import Path
+
+          def cut_with_line(path, selector, line_fn, feather=6):
+              im = Image.open(path).convert("RGBA")
+              w, h = im.size
+              px = im.load()
+              changed = 0
+
+              for x in range(w):
+                  if not selector(x, w):
+                      continue
+
+                  y_cut = line_fn(x, w, h)
+                  for y in range(h):
+                      r, g, b, a = px[x, y]
+                      if a == 0:
+                          continue
+
+                      d = y_cut - y
+                      if d <= 0:
+                          px[x, y] = (r, g, b, 0)
+                          changed += 1
+                      elif d < feather:
+                          new_a = int(a * (d / feather))
+                          if new_a != a:
+                              px[x, y] = (r, g, b, new_a)
+                              changed += 1
+
+              im.save(path, "WEBP", quality=96, method=6, exact=True)
+              print(f"{path}: trimmed {changed} pixels")
+
+          # QR/share hand: remove only the dark diagonal cap at the lower-left wrist.
+          cut_with_line(
+              Path("assets/images/hand-left.webp"),
+              selector=lambda x, w: x < 540,
+              line_fn=lambda x, w, h: 972 + 0.24 * x,
+              feather=7,
+          )
+
+          # Profile/contact hand: remove only the dark diagonal cap at the lower-right wrist.
+          cut_with_line(
+              Path("assets/images/hand-right.webp"),
+              selector=lambda x, w: x > 960,
+              line_fn=lambda x, w, h: -0.52 * x + 1685,
+              feather=7,
+          )
+
+      - name: Commit assets and remove temporary workflow
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm .github/workflows/trim-wrist-endcaps.yml
+          git add assets/images/hand-left.webp assets/images/hand-right.webp
+          git commit -m "Trim black end caps from hero wrists"
+          git push

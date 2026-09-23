@@ -79,9 +79,8 @@ function initCamCardHandsScroll() {
   if (!heroStage) return;
 
   const isFigmaStatic = document.documentElement.classList.contains('figma-static');
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  if (isFigmaStatic || reduceMotion) {
+  if (isFigmaStatic) {
     const left = document.querySelector('.camcard-hand--left');
     const right = document.querySelector('.camcard-hand--right');
     const badge = document.getElementById('camcard-connect-badge');

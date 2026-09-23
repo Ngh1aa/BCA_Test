@@ -1,0 +1,91 @@
+name: Process cards visual QA
+
+on:
+  push:
+    branches:
+      - feat/process-step-cards
+
+permissions:
+  contents: write
+
+jobs:
+  qa:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feat/process-step-cards
+          fetch-depth: 0
+
+      - name: Start site
+        run: |
+          python3 -m http.server 4173 >/tmp/server.log 2>&1 &
+          for i in {1..20}; do
+            if curl -fsS http://127.0.0.1:4173/ >/dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/server.log
+          exit 1
+
+      - name: Install Playwright
+        run: |
+          npm init -y >/dev/null 2>&1
+          npm install --no-save playwright@1.55.0 >/dev/null
+          npx playwright install --with-deps chromium
+
+      - name: Capture and verify process cards
+        run: |
+          mkdir -p evidence
+          cat > qa.mjs <<'EOF'
+          import { chromium } from 'playwright';
+          import { writeFileSync } from 'node:fs';
+
+          const browser=await chromium.launch({headless:true});
+          const report={};
+
+          for(const [name,width,height] of [['desktop',1440,1000],['mobile',390,844]]){
+            const page=await browser.newPage({viewport:{width,height}});
+            const errors=[];
+            page.on('pageerror',e=>errors.push(String(e)));
+            await page.goto('http://127.0.0.1:4173/?figma=1',{waitUntil:'networkidle'});
+
+            const section=page.locator('#how-it-works');
+            await section.scrollIntoViewIfNeeded();
+            await page.waitForTimeout(250);
+
+            const state=await page.evaluate(()=>{
+              const cards=[...document.querySelectorAll('#how-it-works .step-card')];
+              return {
+                cards:cards.length,
+                labels:cards.map(c=>c.querySelector('.step-label')?.textContent?.trim()),
+                dots:cards.map(c=>c.querySelectorAll('.step-dots .is-active').length),
+                numbers:cards.map(c=>c.querySelector('.step-number')?.textContent?.trim()),
+                overflow:[document.documentElement.scrollWidth,document.documentElement.clientWidth],
+                title:document.querySelector('#how-title')?.textContent?.trim()
+              };
+            });
+
+            if(errors.length) throw new Error(name+': '+errors.join(' | '));
+            if(state.cards!==3) throw new Error(name+': expected 3 cards');
+            if(JSON.stringify(state.dots)!==JSON.stringify([1,2,3])) throw new Error(name+': progress dots wrong '+JSON.stringify(state.dots));
+            if(state.overflow[0]!==state.overflow[1]) throw new Error(name+': horizontal overflow');
+
+            await section.screenshot({path:`evidence/process-cards-${name}.png`});
+            report[name]={errors,state};
+            await page.close();
+          }
+
+          writeFileSync('evidence/process-cards-qa.json',JSON.stringify(report,null,2)+'\n');
+          console.log(JSON.stringify(report,null,2));
+          await browser.close();
+          EOF
+          node qa.mjs
+
+      - name: Commit evidence
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add evidence/process-cards-desktop.png evidence/process-cards-mobile.png evidence/process-cards-qa.json
+          git commit -m "Add process cards visual QA evidence [skip ci]" || exit 0
+          git push origin HEAD:feat/process-step-cards

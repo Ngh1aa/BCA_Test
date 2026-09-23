@@ -1,0 +1,95 @@
+name: Fix hand image backgrounds
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/fix-hand-background.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  fix-background:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install Pillow
+        run: pip install pillow
+      - name: Remove connected black background
+        shell: python
+        run: |
+          from PIL import Image
+          from collections import deque
+          from pathlib import Path
+
+          files = [
+              Path("assets/images/hand-left.png"),
+              Path("assets/images/hand-right.png"),
+          ]
+
+          def clean(path: Path):
+              im = Image.open(path).convert("RGBA")
+              w, h = im.size
+              px = im.load()
+
+              # Flood-fill only the near-black area connected to the canvas border.
+              # This removes the forgotten black backdrop without touching dark
+              # details inside the phone/UI that are not connected to the border.
+              threshold = 18
+              seen = bytearray(w * h)
+              q = deque()
+
+              def candidate(x, y):
+                  r, g, b, a = px[x, y]
+                  return a > 0 and max(r, g, b) <= threshold
+
+              def push(x, y):
+                  i = y * w + x
+                  if not seen[i] and candidate(x, y):
+                      seen[i] = 1
+                      q.append((x, y))
+
+              for x in range(w):
+                  push(x, 0)
+                  push(x, h - 1)
+              for y in range(h):
+                  push(0, y)
+                  push(w - 1, y)
+
+              while q:
+                  x, y = q.popleft()
+                  r, g, b, _ = px[x, y]
+                  px[x, y] = (r, g, b, 0)
+                  if x: push(x - 1, y)
+                  if x + 1 < w: push(x + 1, y)
+                  if y: push(x, y - 1)
+                  if y + 1 < h: push(x, y + 1)
+
+              # Clear any remaining exactly-black canvas pixels; this catches
+              # isolated compression/antialias specks while preserving real detail.
+              for y in range(h):
+                  for x in range(w):
+                      r, g, b, a = px[x, y]
+                      if a and r <= 3 and g <= 3 and b <= 3:
+                          px[x, y] = (r, g, b, 0)
+
+              im.save(path, optimize=True)
+              print(f"cleaned {path}")
+
+          for f in files:
+              clean(f)
+
+      - name: Commit corrected transparent assets and remove temp workflow
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm .github/workflows/fix-hand-background.yml
+          git add assets/images/hand-left.png assets/images/hand-right.png
+          git commit -m "Fix transparent backgrounds for hero hand images"
+          git push

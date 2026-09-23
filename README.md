@@ -1,48 +1,40 @@
-# InstaCard — BCA UI/UX Design Test
+# InstaCard — BCA UI/UX Designer Test
 
-## Repository state
+Static responsive landing-page prototype for the BCA design brief.
 
-This repository is intentionally in **documentation-only mode**.
+## Brief-aligned landing
+Current section order:
 
-The previous HTML/CSS/JavaScript implementation, assets and rendered QA evidence were removed so a new local implementation can be uploaded cleanly without conflicts.
+1. Header — original InstaCard logo + anchor navigation
+2. Hero — **Say goodbye to business cards** / **Effortless contact exchange** / email + **Get Early Access**
+3. Share your way — contact + Facebook / Instagram / WhatsApp / profile-link story
+4. Six required benefits — Simple, Accurate, Multilingual, Integrated, Green, Customized
+5. How it works — Create → Share → Stay connected
+6. Your card — customization / social-link concept
+7. FAQ
+8. Footer — repeated email + **Get Early Access**
 
-### Files intentionally preserved
+The landing intentionally does **not** claim NFC, Apple/Google Wallet, OCR scanning, enterprise customer logos, customer counts or satisfaction statistics because those are not verified by the supplied brief.
 
-- `docs/figma-frame-inventory.md` — official list of frames to build/convert in Figma
-- `docs/figma-design-system-spec.md` — typography, type scale, colors, spacing, radius, effects and component specs
-- `docs/ux-research.md` — competitor research and design implications
-- `docs/ux-strategy.md` — sitemap, UX strategy and user flows
-- `docs/design-contract.md` — design decisions and scope reference
-- `docs/motion-direction.md` — motion/reference direction
-- `docs/qa.md` — historical QA notes from the removed implementation
-- `docs/phase-state.md` — current handoff state
+## Visual direction
+**Clear · Personal · Effortless**
 
-## Official Figma frame list
+- Bricolage Grotesque for expressive headings
+- Instrument Sans for body/UI
+- InstaCard blue as the single primary action accent
+- one primary motion moment in the hero
+- 21st.dev patterns used as inspiration only (masked marquee, card depth, selective reveal); no copied source code
 
-1. Project Overview
-2. Problem & Consumer Insight
-3. Competitive Landscape & Design Implications
-4. Sitemap
-5. User Flow — Early Access
-6. User Flow — Core Product
-7. Concept & Visual Direction
-8. **UI Foundations — Typography & Tokens**
-9. **Components & UI Styles**
-10. Final Landing — Desktop 1440
-11. Final Landing — Mobile 390
+## Figma
+Official frame inventory: `docs/figma-frame-inventory.md`
 
-Frames **08–09** are the reusable design-system frames and must include typography/font sizes, line-height, tracking, colors, spacing, radius, shadows, buttons, fields, cards, chips, icons and component states.
+Design-system specification: `docs/figma-design-system-spec.md`
 
-Full details:
-- `docs/figma-frame-inventory.md`
-- `docs/figma-design-system-spec.md`
+Static HTML → Figma capture mode:
 
-## Next step
+`/?figma=1`
 
-Upload the new local implementation to this repository. After that:
-1. reconnect frames 10–11 to the new desktop/mobile UI;
-2. revalidate the design-system values against the new code;
-3. regenerate QA/evidence from the new implementation;
-4. update any stale implementation references in the documentation.
+## Important evidence rule
+The **“173 trees a day”** and Microsoft/Google sync messages are present because they are explicitly required by the client brief. They should be treated as **client-supplied claims** and verified before a production launch.
 
-The old runtime implementation is intentionally no longer part of the repository.
+Early Access forms are prototype UI only; no email is transmitted or stored.

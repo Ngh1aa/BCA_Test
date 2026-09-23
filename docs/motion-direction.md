@@ -15,11 +15,16 @@ Behavior:
 - the motion visually reinforces “exchange contact information in the moment”;
 - no NFC, Wallet or scanner capability is stated or implied by copy.
 
-Implementation:
-- native scroll progress;
-- `requestAnimationFrame` throttling;
-- transform-only movement;
-- no GSAP, Framer Motion, WebGL or animation runtime.
+Implementation — restored from the previous local build:
+- GSAP 3.12.2 + ScrollTrigger;
+- trigger: `#camcard-hands-stage`;
+- start: `top 85%`;
+- end: `bottom 45%`;
+- scrub: `1.2`;
+- left hand: `xPercent: 50`, rotation → 0;
+- right hand: `xPercent: -50`, rotation → 0;
+- both hand movements run together;
+- the final contact-exchanged badge appears as the hands converge.
 
 ## 21st.dev pattern adaptation
 21st.dev is used as a visual-pattern benchmark only:

@@ -2711,3 +2711,317 @@ html.figma-static .camcard-connect-badge {
     justify-self:auto;
   }
 }
+
+
+/* ---------------------------------------------------------
+   Figma wireframe mode — ?figma=2
+   Medium-fidelity monochrome version for UX / Figma handoff.
+   Keeps the exact information architecture and semantic text,
+   while removing production art direction, gradients and depth.
+   --------------------------------------------------------- */
+html.figma-wireframe{
+  --ink:#171717;
+  --muted:#6A6A6A;
+  --blue:#171717;
+  --blue-dark:#000000;
+  --hero:#F2F2F2;
+  --pale:#F5F5F5;
+  --surface:#F7F7F7;
+  --line:#D6D6D6;
+  --white:#FFFFFF;
+  --green:#F3F3F3;
+  --closing:#171717;
+  --dark:#171717;
+  color-scheme:light;
+}
+
+html.figma-wireframe body{
+  background:#FFFFFF!important;
+  color:#171717!important;
+}
+
+html.figma-wireframe body *,
+html.figma-wireframe body *::before,
+html.figma-wireframe body *::after{
+  box-shadow:none!important;
+  text-shadow:none!important;
+}
+
+html.figma-wireframe .hero,
+html.figma-wireframe .share-section,
+html.figma-wireframe .benefits,
+html.figma-wireframe .how--journey,
+html.figma-wireframe .your-card,
+html.figma-wireframe .faq,
+html.figma-wireframe .footer__cta-section,
+html.figma-wireframe .footer__bottom,
+html.figma-wireframe .benefit-visual,
+html.figma-wireframe .journey-visual,
+html.figma-wireframe .composer-stage,
+html.figma-wireframe .composer-cover{
+  background-image:none!important;
+}
+
+html.figma-wireframe .hero{
+  background:#F3F3F3!important;
+  border-bottom:1px solid #D5D5D5!important;
+}
+
+html.figma-wireframe .site-header{
+  padding-top:14px!important;
+  background:#FFFFFF!important;
+  border-bottom:0!important;
+}
+
+html.figma-wireframe .nav-shell{
+  background:#FFFFFF!important;
+  border:1px solid #CFCFCF!important;
+}
+
+html.figma-wireframe .brand img,
+html.figma-wireframe .footer__logo-img,
+html.figma-wireframe .composer-brand img,
+html.figma-wireframe .composer-cover__brand img{
+  filter:grayscale(1) contrast(1.45)!important;
+}
+
+html.figma-wireframe .eyebrow,
+html.figma-wireframe .hero-copy h1 span,
+html.figma-wireframe .text-link,
+html.figma-wireframe .product-proof__icon,
+html.figma-wireframe .composer-tool,
+html.figma-wireframe .composer-contact-list i,
+html.figma-wireframe .journey-contact__row b{
+  color:#171717!important;
+}
+
+html.figma-wireframe .hero-copy p,
+html.figma-wireframe .section-heading p,
+html.figma-wireframe .benefit-copy p,
+html.figma-wireframe .journey-copy p,
+html.figma-wireframe .your-card-copy>p,
+html.figma-wireframe .faq-list p,
+html.figma-wireframe .product-proof small,
+html.figma-wireframe .footer__cta-subtitle{
+  color:#686868!important;
+}
+
+html.figma-wireframe .button,
+html.figma-wireframe .footer__cta-btn,
+html.figma-wireframe .journey-share-pill,
+html.figma-wireframe .composer-card-actions button{
+  background:#171717!important;
+  border-color:#171717!important;
+  color:#FFFFFF!important;
+}
+
+html.figma-wireframe .button *,
+html.figma-wireframe .footer__cta-btn *,
+html.figma-wireframe .journey-share-pill *,
+html.figma-wireframe .composer-card-actions button *{
+  color:#FFFFFF!important;
+}
+
+html.figma-wireframe .email-field,
+html.figma-wireframe .footer__input,
+html.figma-wireframe .channel-pill,
+html.figma-wireframe .product-proof,
+html.figma-wireframe .benefit-card,
+html.figma-wireframe .journey-step,
+html.figma-wireframe .composer-card,
+html.figma-wireframe .composer-style-chip,
+html.figma-wireframe .composer-dock,
+html.figma-wireframe .composer-share-note,
+html.figma-wireframe .faq-list,
+html.figma-wireframe .accuracy-sheet,
+html.figma-wireframe .journey-editor,
+html.figma-wireframe .journey-share-card,
+html.figma-wireframe .journey-contact{
+  background:#FFFFFF!important;
+  border-color:#D3D3D3!important;
+}
+
+html.figma-wireframe .share-section,
+html.figma-wireframe .benefits,
+html.figma-wireframe .your-card,
+html.figma-wireframe .faq{
+  background:#FFFFFF!important;
+}
+
+html.figma-wireframe .product-proof,
+html.figma-wireframe .how--journey{
+  background:#F8F8F8!important;
+}
+
+html.figma-wireframe .product-proof__icon,
+html.figma-wireframe .composer-tool,
+html.figma-wireframe .composer-contact-list i,
+html.figma-wireframe .journey-contact__row b{
+  background:#F2F2F2!important;
+  border-color:#D1D1D1!important;
+}
+
+html.figma-wireframe .composer-tool.is-active{
+  background:#171717!important;
+  color:#FFFFFF!important;
+}
+
+html.figma-wireframe .composer-card-type{
+  background:#FFFFFF!important;
+  border-color:#BFBFBF!important;
+  color:#171717!important;
+}
+
+html.figma-wireframe .composer-cover{
+  background:#E7E7E7!important;
+  border-bottom:1px solid #CFCFCF!important;
+}
+
+html.figma-wireframe .composer-cover__brand img{
+  filter:grayscale(1) brightness(.15)!important;
+}
+
+html.figma-wireframe .composer-avatar{
+  background:#D0D0D0!important;
+  color:#171717!important;
+  border-color:#FFFFFF!important;
+}
+
+html.figma-wireframe .composer-avatar span,
+html.figma-wireframe .composer-share-note i,
+html.figma-wireframe .journey-contact__head i{
+  background:#171717!important;
+  color:#FFFFFF!important;
+  border-color:#FFFFFF!important;
+}
+
+html.figma-wireframe .composer-socials span,
+html.figma-wireframe .composer-contact-list>div,
+html.figma-wireframe .accuracy-row,
+html.figma-wireframe .journey-contact__saved{
+  background:#F6F6F6!important;
+  border-color:#D7D7D7!important;
+  color:#3F3F3F!important;
+}
+
+html.figma-wireframe .benefit-visual,
+html.figma-wireframe .journey-visual,
+html.figma-wireframe .composer-stage{
+  background:#F4F4F4!important;
+  border-color:#D4D4D4!important;
+}
+
+html.figma-wireframe .benefit-visual::before,
+html.figma-wireframe .composer-orb,
+html.figma-wireframe .camcard-hands-glow{
+  display:none!important;
+}
+
+html.figma-wireframe .camcard-hand{
+  filter:grayscale(1) contrast(.9) brightness(1.03)!important;
+  opacity:.82!important;
+}
+
+html.figma-wireframe .camcard-connect-badge{
+  background:#FFFFFF!important;
+  border:1px solid #AFAFAF!important;
+  color:#171717!important;
+}
+
+html.figma-wireframe .pulse-dot{
+  background:#171717!important;
+}
+
+html.figma-wireframe .channel-pill b,
+html.figma-wireframe .composer-socials b,
+html.figma-wireframe .sync-node{
+  color:#171717!important;
+}
+
+html.figma-wireframe .sync-node,
+html.figma-wireframe .theme-card,
+html.figma-wireframe .mini-phone,
+html.figma-wireframe .language-chip,
+html.figma-wireframe .benefit-float-chip{
+  background:#FFFFFF!important;
+  border-color:#CFCFCF!important;
+  color:#4A4A4A!important;
+}
+
+html.figma-wireframe .sync-node--center{
+  background:#171717!important;
+  color:#FFFFFF!important;
+}
+
+html.figma-wireframe .green-counter strong,
+html.figma-wireframe .green-counter__eyebrow,
+html.figma-wireframe .green-counter__unit{
+  color:#3D3D3D!important;
+}
+
+html.figma-wireframe .green-sprout i,
+html.figma-wireframe .green-sprout b,
+html.figma-wireframe .theme-swatches i,
+html.figma-wireframe .composer-swatches i{
+  background:#9A9A9A!important;
+}
+
+html.figma-wireframe .footer__cta-section{
+  background:#EFEFEF!important;
+  color:#171717!important;
+  border-top:1px solid #D0D0D0!important;
+}
+
+html.figma-wireframe .footer__cta-section *,
+html.figma-wireframe .footer__eyebrow,
+html.figma-wireframe .footer__cta-title{
+  color:#171717!important;
+}
+
+html.figma-wireframe .footer__cta-btn,
+html.figma-wireframe .footer__cta-btn *{
+  color:#FFFFFF!important;
+}
+
+html.figma-wireframe .footer__bottom{
+  background:#191919!important;
+  color:#FFFFFF!important;
+}
+
+html.figma-wireframe .footer__bottom *,
+html.figma-wireframe .footer__link,
+html.figma-wireframe .footer__tagline,
+html.figma-wireframe .footer__copyright{
+  color:#E7E7E7!important;
+}
+
+html.figma-wireframe .footer__social-link{
+  background:#2C2C2C!important;
+  color:#FFFFFF!important;
+}
+
+html.figma-wireframe .footer__logo-img{
+  filter:grayscale(1) brightness(0) invert(1)!important;
+}
+
+html.figma-wireframe .theme-card--back,
+html.figma-wireframe .theme-card--mid,
+html.figma-wireframe .theme-card--front{
+  background:#FFFFFF!important;
+}
+
+html.figma-wireframe .composer-orb,
+html.figma-wireframe .camcard-hands-glow{
+  opacity:0!important;
+}
+
+html.figma-wireframe .footer__input:focus,
+html.figma-wireframe .email-field:focus-within{
+  outline:2px solid #171717!important;
+  box-shadow:none!important;
+}
+
+html.figma-wireframe .faq-list summary::before,
+html.figma-wireframe .faq-list summary::after{
+  background:#171717!important;
+}

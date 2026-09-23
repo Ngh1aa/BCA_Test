@@ -64,7 +64,7 @@ jobs:
                 emailInputs: document.querySelectorAll('input[type="email"]').length,
                 heroEmail: !!document.querySelector('.early-form--hero input[type="email"]'),
                 footerEmail: !!document.querySelector('.early-form--footer input[type="email"]'),
-                benefits: ['Simple','Accurate','Multilingual','Integrated','Green','Customized'].map(x => [x, text.includes(x)]),
+                benefits: ['Simple','Accurate','Multilingual','Integrated','Green','Customized'].map(x => [x, text.toLowerCase().includes(x.toLowerCase())]),
                 unsupported: {
                   nfc: /\bNFC\b/i.test(text),
                   wallet: /Apple Wallet|Google Wallet/i.test(text),

@@ -1,0 +1,119 @@
+name: Trim dark wrist edges
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/trim-dark-wrist-edges.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  trim:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Pillow
+        run: pip install pillow
+
+      - name: Remove only dark border-connected wrist fringe
+        shell: python
+        run: |
+          from PIL import Image
+          from collections import deque
+          from pathlib import Path
+
+          files = [
+              Path("assets/images/hand-left.webp"),
+              Path("assets/images/hand-right.webp"),
+          ]
+
+          def trim(path: Path):
+              im = Image.open(path).convert("RGBA")
+              w, h = im.size
+              px = im.load()
+
+              # Restrict cleanup to the lower 30% of the source.
+              # This avoids touching the phone/UI and preserves the hand itself.
+              y_min = int(h * 0.70)
+
+              # Flood-fill dark pixels connected to the outer border.
+              # The unwanted black cuff/fringe is border-connected; internal
+              # phone blacks are not.
+              seen = bytearray(w * h)
+              q = deque()
+
+              def dark(x, y):
+                  if y < y_min:
+                      return False
+                  r, g, b, a = px[x, y]
+                  if a == 0:
+                      return False
+                  # Keep normal skin/shadows; catch only the near-black fringe.
+                  return max(r, g, b) < 82 and (r + g + b) < 190
+
+              def push(x, y):
+                  i = y * w + x
+                  if not seen[i] and dark(x, y):
+                      seen[i] = 1
+                      q.append((x, y))
+
+              # Seed only from left/right/bottom borders inside the lower zone.
+              for x in range(w):
+                  push(x, h - 1)
+              for y in range(y_min, h):
+                  push(0, y)
+                  push(w - 1, y)
+
+              removed = []
+              while q:
+                  x, y = q.popleft()
+                  removed.append((x, y))
+                  if x > 0: push(x - 1, y)
+                  if x + 1 < w: push(x + 1, y)
+                  if y > y_min: push(x, y - 1)
+                  if y + 1 < h: push(x, y + 1)
+
+              # Make the detected fringe transparent.
+              for x, y in removed:
+                  r, g, b, _ = px[x, y]
+                  px[x, y] = (r, g, b, 0)
+
+              # Feather only immediate neighboring dark antialias pixels so the
+              # wrist edge does not keep a 1px black halo.
+              frontier = set()
+              for x, y in removed:
+                  for nx in range(max(0, x-1), min(w, x+2)):
+                      for ny in range(max(y_min, y-1), min(h, y+2)):
+                          if (nx, ny) in removed:
+                              continue
+                          r, g, b, a = px[nx, ny]
+                          if a and max(r, g, b) < 118 and (r + g + b) < 285:
+                              frontier.add((nx, ny))
+
+              for x, y in frontier:
+                  r, g, b, a = px[x, y]
+                  px[x, y] = (r, g, b, min(a, 28))
+
+              im.save(path, "WEBP", quality=96, method=6, exact=True)
+              print(f"{path}: removed {len(removed)} fringe pixels, feathered {len(frontier)}")
+
+          for f in files:
+              trim(f)
+
+      - name: Commit corrected assets and remove temporary workflow
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm .github/workflows/trim-dark-wrist-edges.yml
+          git add assets/images/hand-left.webp assets/images/hand-right.webp
+          git commit -m "Remove dark wrist fringe from hero hand assets"
+          git push

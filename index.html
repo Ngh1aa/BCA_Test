@@ -8,10 +8,18 @@
   <script>
     (() => {
       const params = new URLSearchParams(location.search);
-      if (params.get('figma') === '1') document.documentElement.classList.add('figma-static');
+      const figmaMode = params.get('figma');
+
+      if (figmaMode === '1') {
+        document.documentElement.classList.add('figma-static');
+      }
+
+      if (figmaMode === '2') {
+        document.documentElement.classList.add('figma-static', 'figma-wireframe');
+      }
     })();
   </script>
-  <link rel="stylesheet" href="./styles.css?v=figma-editable-text-1">
+  <link rel="stylesheet" href="./styles.css?v=figma-wireframe-2">
 </head>
 <body>
   <svg class="icon-sprite" aria-hidden="true" focusable="false">

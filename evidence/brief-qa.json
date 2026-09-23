@@ -1,0 +1,93 @@
+{
+  "generated_at": "2026-09-23T06:03:56.272Z",
+  "viewports": [
+    {
+      "label": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "errors": [],
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "brokenImages": [],
+      "emailInputs": 2,
+      "heroEmail": true,
+      "footerEmail": true,
+      "benefits": [
+        [
+          "Simple",
+          true
+        ],
+        [
+          "Accurate",
+          true
+        ],
+        [
+          "Multilingual",
+          true
+        ],
+        [
+          "Integrated",
+          true
+        ],
+        [
+          "Green",
+          true
+        ],
+        [
+          "Customized",
+          true
+        ]
+      ],
+      "unsupported": {
+        "nfc": false,
+        "wallet": false,
+        "scanner": false,
+        "fakeStats": false
+      }
+    },
+    {
+      "label": "mobile",
+      "width": 390,
+      "height": 844,
+      "errors": [],
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "brokenImages": [],
+      "emailInputs": 2,
+      "heroEmail": true,
+      "footerEmail": true,
+      "benefits": [
+        [
+          "Simple",
+          true
+        ],
+        [
+          "Accurate",
+          true
+        ],
+        [
+          "Multilingual",
+          true
+        ],
+        [
+          "Integrated",
+          true
+        ],
+        [
+          "Green",
+          true
+        ],
+        [
+          "Customized",
+          true
+        ]
+      ],
+      "unsupported": {
+        "nfc": false,
+        "wallet": false,
+        "scanner": false,
+        "fakeStats": false
+      }
+    }
+  ]
+}

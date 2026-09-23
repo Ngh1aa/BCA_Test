@@ -1,26 +1,25 @@
 # Delivery state
 
 ## Current repository mode
-**DOCUMENTATION_ONLY**
+**ACTIVE_IMPLEMENTATION**
 
-The previous runtime implementation, assets and evidence were intentionally removed so the user can upload a new local implementation cleanly.
-
-## Preserved deliverables
+## Current milestone
+Brief-aligned InstaCard landing redesign.
 
 | Requirement | Status | Source |
 |---|---|---|
-| Competitor research | RETAINED | `ux-research.md` |
-| UX strategy / sitemap / user flows | RETAINED | `ux-strategy.md` |
-| Design contract / rationale | RETAINED_REFERENCE | `design-contract.md` |
-| Figma frame inventory | RETAINED_OFFICIAL | `figma-frame-inventory.md` |
-| Typography / UI design-system spec | RETAINED_OFFICIAL | `figma-design-system-spec.md` |
-| Motion direction | RETAINED_REFERENCE | `motion-direction.md` |
-| Old HTML/CSS/JS implementation | REMOVED | awaiting new local upload |
-| Old assets | REMOVED | awaiting new local upload if needed |
-| Old rendered evidence | REMOVED | regenerate after new upload |
-| QA | STALE_REFERENCE | `qa.md`; must rerun after new upload |
-| Final Landing — Desktop 1440 | PENDING_NEW_UPLOAD | Figma frame 10 |
-| Final Landing — Mobile 390 | PENDING_NEW_UPLOAD | Figma frame 11 |
+| Header logo + anchor menu | IMPLEMENTED | `index.html` |
+| Hero required title/subtitle | IMPLEMENTED | `index.html` |
+| Hero email + Early Access | IMPLEMENTED | `index.html` |
+| Six required benefits | IMPLEMENTED | `index.html` |
+| Footer email + Early Access | IMPLEMENTED | `index.html` |
+| Desktop responsive target | IMPLEMENTED / QA | `styles.css`, evidence after QA |
+| Mobile responsive target | IMPLEMENTED / QA | `styles.css`, evidence after QA |
+| Unsupported NFC/Wallet/OCR claims | REMOVED | current landing |
+| Fabricated logos/stats | REMOVED | current landing |
+| Figma frame inventory | CURRENT | `figma-frame-inventory.md` |
+| Typography/UI system spec | CURRENT FOUNDATION | `figma-design-system-spec.md` |
+| UX research / strategy | RETAINED | `ux-research.md`, `ux-strategy.md` |
 
-## Next action
-Upload the new local implementation, then reconnect the preserved documentation to the new code and rerun visual/responsive QA.
+## Submission rule
+Only claims supported by the client brief or clearly labeled research/hypothesis may appear as product facts.

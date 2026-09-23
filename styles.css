@@ -1666,16 +1666,24 @@ input:focus-visible,
   font-weight:700;
 }
 .faq-list summary::-webkit-details-marker{display:none}
+.faq-list summary::before,
 .faq-list summary::after{
-  content:"+";
+  content:"";
   position:absolute;
-  right:0;
-  top:19px;
-  color:var(--blue);
-  font-size:24px;
-  font-weight:400;
+  right:2px;
+  top:31px;
+  width:16px;
+  height:2px;
+  border-radius:999px;
+  background:var(--blue);
 }
-.faq-list details[open] summary::after{content:"–"}
+.faq-list summary::before{
+  transform:rotate(90deg);
+}
+.faq-list details[open] summary::before{
+  transform:rotate(0deg);
+  opacity:0;
+}
 .faq-list details p{
   max-width:650px;
   margin:0;

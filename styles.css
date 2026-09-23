@@ -4615,3 +4615,44 @@ html.figma-wireframe.figma-mobile .composer-card{
 
 /* Wireframe keeps the same responsive information architecture as final UI.
    Only fidelity/color/placeholder treatment differs. */
+
+
+/* ---------- export matrix QA overrides ---------- */
+/* Prevent a narrow importer viewport from leaking mobile typography into
+   the fixed desktop export. */
+html.figma-desktop body{font-size:17px!important}
+html.figma-desktop h2{font-size:58px!important}
+html.figma-desktop .faq-intro h2{font-size:44px!important}
+html.figma-desktop .brand img{width:132px!important}
+html.figma-desktop .benefit-card{padding:0!important}
+html.figma-desktop .footer__cta-title{font-size:66px!important}
+
+/* The responsive matrix is appended after the wireframe theme, so explicitly
+   keep all responsive wireframe borders/fills neutral after layout overrides. */
+html.figma-wireframe.figma-desktop .product-proof__grid>div,
+html.figma-wireframe.figma-tablet .product-proof__grid>div,
+html.figma-wireframe.figma-mobile .product-proof__grid>div,
+html.figma-wireframe.figma-desktop .journey-step,
+html.figma-wireframe.figma-tablet .journey-step,
+html.figma-wireframe.figma-mobile .journey-step{
+  border-color:var(--wf-line-soft)!important;
+}
+html.figma-wireframe.figma-desktop .benefit-visual,
+html.figma-wireframe.figma-tablet .benefit-visual,
+html.figma-wireframe.figma-mobile .benefit-visual,
+html.figma-wireframe.figma-desktop .journey-visual,
+html.figma-wireframe.figma-tablet .journey-visual,
+html.figma-wireframe.figma-mobile .journey-visual{
+  background:var(--wf-gray-100)!important;
+  border-color:var(--wf-line)!important;
+}
+html.figma-wireframe.figma-desktop .footer__bottom,
+html.figma-wireframe.figma-tablet .footer__bottom,
+html.figma-wireframe.figma-mobile .footer__bottom{
+  background:var(--wf-gray-900)!important;
+}
+html.figma-wireframe.figma-desktop .footer__cta-section,
+html.figma-wireframe.figma-tablet .footer__cta-section,
+html.figma-wireframe.figma-mobile .footer__cta-section{
+  background:var(--wf-gray-100)!important;
+}

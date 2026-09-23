@@ -8,22 +8,36 @@
   <script>
     (() => {
       const params = new URLSearchParams(location.search);
-      const figmaMode = params.get('figma');
+      const rawMode = (params.get('figma') || '').toLowerCase();
 
-      if (figmaMode === '1') {
-        document.documentElement.classList.add('figma-static');
-      }
+      const modeMap = {
+        '1': ['figma-static', 'figma-desktop', 'figma-landing'],
+        'landing-desktop': ['figma-static', 'figma-desktop', 'figma-landing'],
+        'desktop': ['figma-static', 'figma-desktop', 'figma-landing'],
 
-      if (figmaMode === '2') {
-        document.documentElement.classList.add('figma-static', 'figma-wireframe');
-      }
+        '2': ['figma-static', 'figma-wireframe', 'figma-desktop'],
+        'wireframe-desktop': ['figma-static', 'figma-wireframe', 'figma-desktop'],
 
-      if (figmaMode === '3') {
-        document.documentElement.classList.add('figma-static', 'figma-mobile');
-      }
+        '3': ['figma-static', 'figma-mobile', 'figma-landing'],
+        'landing-mobile': ['figma-static', 'figma-mobile', 'figma-landing'],
+        'mobile': ['figma-static', 'figma-mobile', 'figma-landing'],
+
+        '4': ['figma-static', 'figma-tablet', 'figma-landing'],
+        'landing-tablet': ['figma-static', 'figma-tablet', 'figma-landing'],
+        'tablet': ['figma-static', 'figma-tablet', 'figma-landing'],
+
+        '5': ['figma-static', 'figma-wireframe', 'figma-tablet'],
+        'wireframe-tablet': ['figma-static', 'figma-wireframe', 'figma-tablet'],
+
+        '6': ['figma-static', 'figma-wireframe', 'figma-mobile'],
+        'wireframe-mobile': ['figma-static', 'figma-wireframe', 'figma-mobile']
+      };
+
+      const classes = modeMap[rawMode];
+      if (classes) document.documentElement.classList.add(...classes);
     })();
   </script>
-  <link rel="stylesheet" href="./styles.css?v=figma-mobile-5">
+  <link rel="stylesheet" href="./styles.css?v=figma-responsive-matrix-6">
 </head>
 <body>
   <svg class="icon-sprite" aria-hidden="true" focusable="false">

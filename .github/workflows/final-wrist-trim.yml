@@ -1,0 +1,78 @@
+name: Final wrist trim
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/final-wrist-trim.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  trim:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pillow
+      - name: Cut above the remaining dark wrist bands
+        shell: python
+        run: |
+          from PIL import Image
+          from pathlib import Path
+
+          def trim(path, x_pred, cut_fn, feather=10):
+              im = Image.open(path).convert("RGBA")
+              w, h = im.size
+              px = im.load()
+              changed = 0
+
+              for x in range(w):
+                  if not x_pred(x, w):
+                      continue
+                  cut = cut_fn(x, w, h)
+                  for y in range(h):
+                      r,g,b,a = px[x,y]
+                      if not a:
+                          continue
+                      d = cut - y
+                      if d <= 0:
+                          px[x,y] = (r,g,b,0)
+                          changed += 1
+                      elif d < feather:
+                          na = int(a * (d/feather))
+                          if na != a:
+                              px[x,y] = (r,g,b,na)
+                              changed += 1
+
+              im.save(path, "WEBP", quality=96, method=6, exact=True)
+              print(path, changed)
+
+          # Move the cut slightly inward so the entire black cuff/fringe is gone.
+          trim(
+              Path("assets/images/hand-left.webp"),
+              lambda x,w: x < 560,
+              lambda x,w,h: 948 + 0.24*x,
+              feather=10,
+          )
+
+          trim(
+              Path("assets/images/hand-right.webp"),
+              lambda x,w: x > 930,
+              lambda x,w,h: -0.52*x + 1638,
+              feather=10,
+          )
+
+      - name: Commit cleaned assets and remove temporary workflow
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm .github/workflows/final-wrist-trim.yml
+          git add assets/images/hand-left.webp assets/images/hand-right.webp
+          git commit -m "Remove remaining black wrist edges"
+          git push

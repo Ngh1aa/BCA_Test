@@ -93,15 +93,31 @@ function initChannelMarquee() {
   let lastTime = performance.now();
   let frameId = 0;
 
-  const measure = () => {
+  // A seamless marquee needs enough repeated groups to cover the viewport
+  // plus one complete group waiting beyond the right edge. Two copies are
+  // not enough on wide desktop screens, which caused the visible empty gap.
+  const ensureCoverage = () => {
     const trackStyle = getComputedStyle(track);
     const gap = parseFloat(trackStyle.columnGap || trackStyle.gap || '0') || 0;
-    loopWidth = firstGroup.getBoundingClientRect().width + gap;
+    const groupWidth = firstGroup.getBoundingClientRect().width;
 
-    if (loopWidth > 0) {
-      offset = -((-offset) % loopWidth);
-      track.style.transform = `translate3d(${offset}px,0,0)`;
+    if (groupWidth <= 0) return;
+
+    loopWidth = groupWidth + gap;
+
+    const minimumTrackWidth = rail.clientWidth + loopWidth * 2;
+    let safety = 0;
+
+    while (track.scrollWidth < minimumTrackWidth && safety < 12) {
+      const clone = firstGroup.cloneNode(true);
+      clone.setAttribute('aria-hidden', 'true');
+      clone.dataset.marqueeClone = 'true';
+      track.appendChild(clone);
+      safety += 1;
     }
+
+    offset = -((-offset) % loopWidth);
+    track.style.transform = `translate3d(${offset}px,0,0)`;
   };
 
   const tick = now => {
@@ -112,6 +128,8 @@ function initChannelMarquee() {
       offset -= SPEED * delta;
 
       if (-offset >= loopWidth) {
+        // Jump forward exactly one duplicated group. Because every group is
+        // identical, the visual position is unchanged and the loop is seamless.
         offset += loopWidth;
       }
 
@@ -121,14 +139,18 @@ function initChannelMarquee() {
     frameId = requestAnimationFrame(tick);
   };
 
-  measure();
+  ensureCoverage();
 
   if ('ResizeObserver' in window) {
-    const resizeObserver = new ResizeObserver(measure);
+    const resizeObserver = new ResizeObserver(ensureCoverage);
     resizeObserver.observe(rail);
     resizeObserver.observe(firstGroup);
   } else {
-    window.addEventListener('resize', measure, { passive: true });
+    window.addEventListener('resize', ensureCoverage, { passive: true });
+  }
+
+  if (document.fonts?.ready) {
+    document.fonts.ready.then(ensureCoverage).catch(() => {});
   }
 
   document.addEventListener('visibilitychange', () => {

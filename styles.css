@@ -1055,16 +1055,8 @@ html.figma-static .camcard-connect-badge {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .camcard-hand--left,
-  .camcard-hand--right {
-    transform: rotate(0deg) !important;
-  }
-
-  .camcard-connect-badge {
-    opacity: 1 !important;
-    transform: translate(-50%, -50%) scale(1) !important;
-  }
-
+  /* Keep the restored hand-scroll interaction active.
+     Only the decorative pulse animation is disabled. */
   .pulse-dot {
     animation: none;
   }

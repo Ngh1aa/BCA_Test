@@ -1,0 +1,65 @@
+name: Restore old hands QA
+
+on:
+  push:
+    branches:
+      - fix/restore-old-hands-section
+
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix/restore-old-hands-section
+      - run: |
+          python3 -m http.server 4173 >/tmp/server.log 2>&1 &
+          for i in {1..20}; do curl -fsS http://127.0.0.1:4173/ >/dev/null && exit 0; sleep 1; done
+          exit 1
+      - run: |
+          npm init -y >/dev/null 2>&1
+          npm install --no-save playwright@1.55.0 >/dev/null
+          npx playwright install --with-deps chromium
+      - run: |
+          cat > qa.mjs <<'EOF'
+          import { chromium } from 'playwright';
+          const browser=await chromium.launch({headless:true});
+          const page=await browser.newPage({viewport:{width:1440,height:1000}});
+          const errors=[];
+          page.on('pageerror',e=>errors.push(String(e)));
+          await page.goto('http://127.0.0.1:4173/',{waitUntil:'networkidle'});
+          await page.waitForTimeout(800);
+
+          const initial=await page.evaluate(()=>({
+            gsap:!!window.gsap,
+            st:!!window.ScrollTrigger,
+            left:getComputedStyle(document.querySelector('.camcard-hand--left')).transform,
+            right:getComputedStyle(document.querySelector('.camcard-hand--right')).transform,
+            badge:getComputedStyle(document.querySelector('#camcard-connect-badge')).opacity,
+            overflow:[document.documentElement.scrollWidth,document.documentElement.clientWidth],
+            text:document.body.innerText
+          }));
+
+          const stageTop=await page.evaluate(()=>{
+            const el=document.querySelector('#camcard-hands-stage');
+            return scrollY+el.getBoundingClientRect().top;
+          });
+          await page.evaluate(y=>scrollTo(0,y),stageTop+450);
+          await page.waitForTimeout(1400);
+
+          const after=await page.evaluate(()=>({
+            left:getComputedStyle(document.querySelector('.camcard-hand--left')).transform,
+            right:getComputedStyle(document.querySelector('.camcard-hand--right')).transform,
+            badge:getComputedStyle(document.querySelector('#camcard-connect-badge')).opacity,
+            overflow:[document.documentElement.scrollWidth,document.documentElement.clientWidth]
+          }));
+
+          if(errors.length) throw new Error(errors.join('|'));
+          if(!initial.gsap||!initial.st) throw new Error('GSAP/ScrollTrigger missing');
+          if(initial.left===after.left||initial.right===after.right) throw new Error('hands did not move');
+          if(initial.overflow[0]!==initial.overflow[1]||after.overflow[0]!==after.overflow[1]) throw new Error('overflow');
+          if(/\bNFC\b|Apple Wallet|Google Wallet|OCR Scanner|Smart Scanner/i.test(initial.text)) throw new Error('unsupported content returned');
+          console.log(JSON.stringify({initial,after},null,2));
+          await browser.close();
+          EOF
+          node qa.mjs

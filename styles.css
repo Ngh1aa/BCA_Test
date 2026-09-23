@@ -3025,3 +3025,515 @@ html.figma-wireframe .faq-list summary::before,
 html.figma-wireframe .faq-list summary::after{
   background:#171717!important;
 }
+
+
+/* =========================================================
+   Standard low-fidelity wireframe — ?figma=2
+   Structural UX artifact, not a monochrome final UI.
+   ========================================================= */
+.wireframe-only{display:none!important}
+
+html.figma-wireframe{
+  --wf-text:#242424;
+  --wf-muted:#6F6F6F;
+  --wf-line:#AFAFAF;
+  --wf-line-soft:#D2D2D2;
+  --wf-fill:#E9E9E9;
+  --wf-fill-soft:#F5F5F5;
+  --wf-white:#FFFFFF;
+  --section:80px;
+}
+
+html.figma-wireframe .wireframe-only{
+  display:block!important;
+}
+
+html.figma-wireframe body,
+html.figma-wireframe h1,
+html.figma-wireframe h2,
+html.figma-wireframe h3,
+html.figma-wireframe strong,
+html.figma-wireframe button,
+html.figma-wireframe input{
+  font-family:"Instrument Sans",Arial,sans-serif!important;
+}
+
+html.figma-wireframe body{
+  background:#FFFFFF!important;
+  color:var(--wf-text)!important;
+}
+
+html.figma-wireframe h1,
+html.figma-wireframe h2,
+html.figma-wireframe h3{
+  color:var(--wf-text)!important;
+  letter-spacing:-.025em!important;
+}
+
+html.figma-wireframe .hero-copy h1{
+  font-size:clamp(48px,6vw,72px)!important;
+  line-height:1.02!important;
+}
+
+html.figma-wireframe .section-heading h2,
+html.figma-wireframe .your-card-copy h2,
+html.figma-wireframe .faq-intro h2{
+  font-size:clamp(34px,4vw,48px)!important;
+  line-height:1.08!important;
+}
+
+html.figma-wireframe .eyebrow{
+  color:var(--wf-muted)!important;
+  letter-spacing:.12em!important;
+}
+
+html.figma-wireframe .site-header,
+html.figma-wireframe .hero,
+html.figma-wireframe .share-section,
+html.figma-wireframe .product-proof,
+html.figma-wireframe .benefits,
+html.figma-wireframe .how--journey,
+html.figma-wireframe .your-card,
+html.figma-wireframe .faq,
+html.figma-wireframe .footer__cta-section,
+html.figma-wireframe .footer__bottom{
+  background:#FFFFFF!important;
+  background-image:none!important;
+}
+
+html.figma-wireframe .site-header{
+  padding:0!important;
+  border-bottom:1px solid var(--wf-line-soft)!important;
+}
+
+html.figma-wireframe .nav-shell{
+  min-height:72px!important;
+  padding:0!important;
+  border:0!important;
+  border-radius:0!important;
+  background:#FFFFFF!important;
+}
+
+html.figma-wireframe .brand img,
+html.figma-wireframe .footer__logo-img{
+  display:none!important;
+}
+
+html.figma-wireframe .wireframe-logo-label{
+  width:92px;
+  min-height:34px;
+  display:grid!important;
+  place-items:center;
+  border:1px solid var(--wf-line)!important;
+  border-radius:4px!important;
+  background:var(--wf-fill-soft)!important;
+  color:var(--wf-text)!important;
+  font-size:11px!important;
+  font-weight:700!important;
+  letter-spacing:.08em!important;
+}
+
+html.figma-wireframe .hero{
+  padding-top:72px!important;
+  background:#FFFFFF!important;
+  border-bottom:1px solid var(--wf-line-soft)!important;
+}
+
+html.figma-wireframe .hero-support{
+  max-width:560px!important;
+}
+
+html.figma-wireframe .button,
+html.figma-wireframe .footer__cta-btn,
+html.figma-wireframe .journey-share-pill,
+html.figma-wireframe .composer-card-actions button{
+  min-height:48px!important;
+  border:1px solid #8F8F8F!important;
+  border-radius:4px!important;
+  background:#DEDEDE!important;
+  color:#1F1F1F!important;
+  box-shadow:none!important;
+}
+
+html.figma-wireframe .button *,
+html.figma-wireframe .footer__cta-btn *,
+html.figma-wireframe .journey-share-pill *,
+html.figma-wireframe .composer-card-actions button *{
+  color:#1F1F1F!important;
+}
+
+html.figma-wireframe .email-field,
+html.figma-wireframe .footer__input{
+  min-height:48px!important;
+  border:1px solid var(--wf-line)!important;
+  border-radius:4px!important;
+  background:#FFFFFF!important;
+}
+
+html.figma-wireframe .email-field:focus-within,
+html.figma-wireframe .footer__input:focus{
+  outline:2px solid #5D5D5D!important;
+  outline-offset:1px!important;
+  box-shadow:none!important;
+}
+
+/* Hero visual becomes an actual low-fi device placeholder, not a photo mockup. */
+html.figma-wireframe .camcard-hands-stage{
+  height:500px!important;
+  margin-top:48px!important;
+  overflow:hidden!important;
+  border-top:1px solid var(--wf-line-soft)!important;
+  background:var(--wf-fill-soft)!important;
+}
+
+html.figma-wireframe .camcard-hand,
+html.figma-wireframe .camcard-hands-glow,
+html.figma-wireframe .camcard-connect-badge{
+  display:none!important;
+}
+
+html.figma-wireframe .wireframe-device-pair{
+  position:absolute!important;
+  inset:0!important;
+  display:flex!important;
+  align-items:flex-end!important;
+  justify-content:center!important;
+  gap:56px!important;
+  padding:52px 24px 42px!important;
+}
+
+html.figma-wireframe .wireframe-device{
+  position:relative!important;
+  width:230px!important;
+  height:390px!important;
+  padding:34px 18px 18px!important;
+  border:2px solid #8E8E8E!important;
+  border-radius:20px!important;
+  background:#FFFFFF!important;
+}
+
+html.figma-wireframe .wireframe-device--left{
+  transform:rotate(-8deg)!important;
+}
+
+html.figma-wireframe .wireframe-device--right{
+  transform:rotate(8deg)!important;
+}
+
+html.figma-wireframe .wireframe-device__notch{
+  position:absolute!important;
+  top:12px!important;
+  left:50%!important;
+  width:64px!important;
+  height:8px!important;
+  transform:translateX(-50%)!important;
+  border-radius:999px!important;
+  background:#B9B9B9!important;
+}
+
+html.figma-wireframe .wireframe-device__avatar{
+  width:58px!important;
+  height:58px!important;
+  display:block!important;
+  margin:8px auto 20px!important;
+  border:1px solid #9B9B9B!important;
+  border-radius:50%!important;
+  background:#D8D8D8!important;
+}
+
+html.figma-wireframe .wireframe-device__block{
+  display:block!important;
+  width:100%!important;
+  border:1px solid #A9A9A9!important;
+  border-radius:4px!important;
+  background:#E3E3E3!important;
+}
+
+html.figma-wireframe .wireframe-device__block--hero{
+  height:142px!important;
+  margin-bottom:22px!important;
+}
+
+html.figma-wireframe .wireframe-device__line{
+  display:block!important;
+  width:62%!important;
+  height:10px!important;
+  margin:10px auto!important;
+  border-radius:2px!important;
+  background:#D0D0D0!important;
+}
+
+html.figma-wireframe .wireframe-device__line--lg{
+  width:82%!important;
+}
+
+html.figma-wireframe .wireframe-device__row{
+  display:block!important;
+  height:42px!important;
+  margin:10px 0!important;
+  border:1px solid #B0B0B0!important;
+  border-radius:4px!important;
+  background:#F5F5F5!important;
+}
+
+html.figma-wireframe .wireframe-device__button{
+  display:block!important;
+  height:44px!important;
+  margin-top:24px!important;
+  border:1px solid #8F8F8F!important;
+  border-radius:4px!important;
+  background:#DCDCDC!important;
+}
+
+/* Standard low-fi surfaces: square-ish, outlined, no glass/card styling. */
+html.figma-wireframe .channel-pill,
+html.figma-wireframe .product-proof__icon,
+html.figma-wireframe .benefit-card,
+html.figma-wireframe .journey-step,
+html.figma-wireframe .composer-card,
+html.figma-wireframe .composer-dock,
+html.figma-wireframe .composer-style-chip,
+html.figma-wireframe .composer-share-note,
+html.figma-wireframe .composer-contact-list>div,
+html.figma-wireframe .composer-socials span,
+html.figma-wireframe .journey-contact,
+html.figma-wireframe .journey-editor,
+html.figma-wireframe .journey-share-card,
+html.figma-wireframe .accuracy-sheet{
+  border:1px solid var(--wf-line)!important;
+  border-radius:6px!important;
+  background:#FFFFFF!important;
+  box-shadow:none!important;
+}
+
+html.figma-wireframe .channel-pill{
+  min-height:46px!important;
+  border-radius:4px!important;
+}
+
+html.figma-wireframe .product-proof{
+  border-top:1px solid var(--wf-line-soft)!important;
+  border-bottom:1px solid var(--wf-line-soft)!important;
+}
+
+html.figma-wireframe .product-proof__grid>div{
+  border-right:1px solid var(--wf-line-soft)!important;
+}
+
+html.figma-wireframe .product-proof__icon{
+  background:var(--wf-fill-soft)!important;
+  color:var(--wf-text)!important;
+}
+
+html.figma-wireframe .benefit-card{
+  overflow:hidden!important;
+}
+
+html.figma-wireframe .benefit-meta,
+html.figma-wireframe .journey-step__topline{
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+}
+
+html.figma-wireframe .journey-step__topline{
+  padding:0!important;
+  margin-bottom:16px!important;
+}
+
+html.figma-wireframe .journey-step__topline>span{
+  width:34px!important;
+  height:28px!important;
+  border:1px solid var(--wf-line)!important;
+  border-radius:4px!important;
+  background:var(--wf-fill)!important;
+  color:var(--wf-text)!important;
+  box-shadow:none!important;
+}
+
+html.figma-wireframe .journey-step__topline small{
+  color:var(--wf-muted)!important;
+}
+
+/* Decorative illustration systems are replaced with explicit placeholder boxes. */
+html.figma-wireframe .benefit-visual,
+html.figma-wireframe .journey-visual{
+  position:relative!important;
+  min-height:210px!important;
+  display:grid!important;
+  place-items:center!important;
+  overflow:hidden!important;
+  border:1px solid var(--wf-line)!important;
+  border-radius:4px!important;
+  background:#F2F2F2!important;
+}
+
+html.figma-wireframe .benefit-visual> :not(.wireframe-visual-label),
+html.figma-wireframe .journey-visual> :not(.wireframe-visual-label){
+  display:none!important;
+}
+
+html.figma-wireframe .benefit-visual::before,
+html.figma-wireframe .benefit-visual::after,
+html.figma-wireframe .journey-visual::before,
+html.figma-wireframe .journey-visual::after{
+  content:""!important;
+  position:absolute!important;
+  left:50%!important;
+  top:50%!important;
+  width:58%!important;
+  height:1px!important;
+  background:#B8B8B8!important;
+  transform-origin:center!important;
+  opacity:1!important;
+}
+
+html.figma-wireframe .benefit-visual::before,
+html.figma-wireframe .journey-visual::before{
+  transform:translate(-50%,-50%) rotate(24deg)!important;
+}
+
+html.figma-wireframe .benefit-visual::after,
+html.figma-wireframe .journey-visual::after{
+  transform:translate(-50%,-50%) rotate(-24deg)!important;
+}
+
+html.figma-wireframe .wireframe-visual-label{
+  position:relative!important;
+  z-index:2!important;
+  padding:7px 10px!important;
+  border:1px solid #A6A6A6!important;
+  border-radius:3px!important;
+  background:#FFFFFF!important;
+  color:#555555!important;
+  font-size:10px!important;
+  font-weight:700!important;
+  letter-spacing:.1em!important;
+}
+
+/* Product preview becomes a clear structural wireframe instead of hi-fi card art. */
+html.figma-wireframe .instacard-composer{
+  min-height:560px!important;
+  border:1px solid var(--wf-line)!important;
+  border-radius:6px!important;
+  background:#F5F5F5!important;
+  box-shadow:none!important;
+}
+
+html.figma-wireframe .composer-bar{
+  min-height:56px!important;
+  border-bottom:1px solid var(--wf-line)!important;
+  background:#FFFFFF!important;
+}
+
+html.figma-wireframe .composer-brand img{
+  display:none!important;
+}
+
+html.figma-wireframe .composer-stage{
+  background:#F5F5F5!important;
+  border:0!important;
+}
+
+html.figma-wireframe .composer-orb,
+html.figma-wireframe .composer-style-chip,
+html.figma-wireframe .composer-share-note{
+  display:none!important;
+}
+
+html.figma-wireframe .composer-card{
+  width:min(62%,370px)!important;
+  border:1px solid #8F8F8F!important;
+  border-radius:6px!important;
+  transform:translate(-47%,-50%)!important;
+}
+
+html.figma-wireframe .composer-cover{
+  min-height:110px!important;
+  border-radius:5px 5px 0 0!important;
+  background:#DEDEDE!important;
+}
+
+html.figma-wireframe .composer-cover__brand,
+html.figma-wireframe .composer-card-type{
+  display:none!important;
+}
+
+html.figma-wireframe .composer-avatar{
+  background:#D6D6D6!important;
+  color:#555!important;
+}
+
+html.figma-wireframe .composer-tool{
+  border:1px solid var(--wf-line)!important;
+  border-radius:4px!important;
+  background:#FFFFFF!important;
+  color:#555!important;
+}
+
+html.figma-wireframe .composer-tool.is-active{
+  background:#DCDCDC!important;
+  color:#222!important;
+}
+
+html.figma-wireframe .wireframe-visual-label--product{
+  position:absolute!important;
+  left:50%!important;
+  top:22px!important;
+  transform:translateX(-50%)!important;
+  z-index:8!important;
+}
+
+/* Footer in low-fi stays light: no production contrast treatment. */
+html.figma-wireframe .footer__cta-section,
+html.figma-wireframe .footer__bottom{
+  background:#F2F2F2!important;
+  color:var(--wf-text)!important;
+  border-top:1px solid var(--wf-line-soft)!important;
+}
+
+html.figma-wireframe .footer__bottom *,
+html.figma-wireframe .footer__link,
+html.figma-wireframe .footer__tagline,
+html.figma-wireframe .footer__copyright{
+  color:#4F4F4F!important;
+}
+
+html.figma-wireframe .footer__social-link{
+  border:1px solid var(--wf-line)!important;
+  border-radius:4px!important;
+  background:#FFFFFF!important;
+  color:#333!important;
+}
+
+html.figma-wireframe .wireframe-logo-label--footer{
+  background:#FFFFFF!important;
+}
+
+/* Remove product-polish clues that do not belong in a low-fi wireframe. */
+html.figma-wireframe .composer-caption,
+html.figma-wireframe .camcard-connect-badge,
+html.figma-wireframe .benefit-float-chip,
+html.figma-wireframe .sync-status{
+  display:none!important;
+}
+
+html.figma-wireframe .faq-list details,
+html.figma-wireframe .copy-points span{
+  border-color:var(--wf-line-soft)!important;
+}
+
+@media(max-width:760px){
+  html.figma-wireframe .wireframe-device-pair{
+    gap:18px!important;
+    padding-inline:12px!important;
+  }
+  html.figma-wireframe .wireframe-device{
+    width:170px!important;
+    height:320px!important;
+  }
+  html.figma-wireframe .composer-card{
+    width:min(84%,340px)!important;
+    transform:translate(-50%,-50%)!important;
+  }
+}

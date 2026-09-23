@@ -3790,3 +3790,390 @@ html.figma-wireframe .wireframe-logo-label--footer{
   color:var(--wf-white)!important;
   border-color:var(--wf-gray-500)!important;
 }
+
+
+/* =========================================================
+   Figma mobile final UI — ?figma=3
+   Fixed 390px artboard-friendly layout for HTML→Figma import.
+   Inherits figma-static so copy stays semantic/editable and
+   motion/filter effects that can rasterize text remain disabled.
+   ========================================================= */
+html.figma-mobile{
+  width:390px!important;
+  min-width:390px!important;
+  max-width:390px!important;
+  margin:0 auto!important;
+  background:#EEF2F6!important;
+  overflow-x:hidden!important;
+}
+
+html.figma-mobile body{
+  width:390px!important;
+  min-width:390px!important;
+  max-width:390px!important;
+  margin:0!important;
+  overflow-x:hidden!important;
+  background:#FFFFFF!important;
+  font-size:16px!important;
+}
+
+html.figma-mobile .container{
+  width:calc(100% - 32px)!important;
+  max-width:none!important;
+  margin-left:16px!important;
+  margin-right:16px!important;
+}
+
+html.figma-mobile .section{
+  padding:68px 0!important;
+}
+
+/* Mobile header */
+html.figma-mobile .site-header{
+  position:relative!important;
+  top:auto!important;
+  padding:10px 0 0!important;
+  background:#FFFFFF!important;
+}
+
+html.figma-mobile .nav-shell{
+  min-height:58px!important;
+  grid-template-columns:1fr auto!important;
+  gap:12px!important;
+  padding:7px 8px 7px 14px!important;
+  border-radius:15px!important;
+}
+
+html.figma-mobile .brand img{
+  width:120px!important;
+  height:auto!important;
+}
+
+html.figma-mobile .desktop-nav,
+html.figma-mobile .desktop-cta{
+  display:none!important;
+}
+
+html.figma-mobile .menu-toggle{
+  display:block!important;
+}
+
+html.figma-mobile .mobile-nav{
+  width:calc(100% - 32px)!important;
+  margin:8px 16px 0!important;
+}
+
+/* Hero */
+html.figma-mobile .hero{
+  margin-top:-82px!important;
+  padding-top:132px!important;
+  overflow:hidden!important;
+}
+
+html.figma-mobile .hero-copy{
+  text-align:center!important;
+}
+
+html.figma-mobile .hero-copy h1{
+  max-width:358px!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+  font-size:46px!important;
+  line-height:.96!important;
+  letter-spacing:-.045em!important;
+}
+
+html.figma-mobile .hero-lede{
+  font-size:19px!important;
+}
+
+html.figma-mobile .hero-support{
+  max-width:346px!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+  font-size:15px!important;
+}
+
+html.figma-mobile .early-form{
+  width:100%!important;
+  max-width:none!important;
+  grid-template-columns:1fr!important;
+  gap:9px!important;
+}
+
+html.figma-mobile .early-form .button{
+  width:100%!important;
+}
+
+html.figma-mobile .camcard-hands-stage{
+  height:440px!important;
+  margin-top:18px!important;
+  overflow:hidden!important;
+}
+
+html.figma-mobile .camcard-hand{
+  width:320px!important;
+  bottom:-6px!important;
+}
+
+html.figma-mobile .camcard-hand--left{
+  left:50%!important;
+  margin-left:-300px!important;
+  transform:translateX(50%) rotate(0deg)!important;
+}
+
+html.figma-mobile .camcard-hand--right{
+  left:50%!important;
+  right:auto!important;
+  margin-left:-18px!important;
+  transform:translateX(-50%) rotate(0deg)!important;
+}
+
+html.figma-mobile .camcard-connect-badge{
+  top:42%!important;
+  font-size:10px!important;
+  padding:10px 16px!important;
+}
+
+/* Section headings */
+html.figma-mobile h2{
+  font-size:38px!important;
+  line-height:1.05!important;
+}
+
+html.figma-mobile .section-heading,
+html.figma-mobile .section-heading--center{
+  grid-template-columns:1fr!important;
+  gap:14px!important;
+  margin-bottom:34px!important;
+  text-align:left!important;
+}
+
+html.figma-mobile .section-heading--center p,
+html.figma-mobile .section-heading--center h2,
+html.figma-mobile .section-heading--center .eyebrow{
+  text-align:center!important;
+}
+
+/* Share rail + proof */
+html.figma-mobile .channel-rail{
+  overflow:hidden!important;
+}
+
+html.figma-mobile .channel-track{
+  width:max-content!important;
+  transform:none!important;
+}
+
+html.figma-mobile .channel-group{
+  gap:10px!important;
+}
+
+html.figma-mobile .channel-pill{
+  min-height:50px!important;
+  padding:0 14px!important;
+  gap:9px!important;
+}
+
+html.figma-mobile .share-summary{
+  grid-template-columns:1fr!important;
+}
+
+html.figma-mobile .product-proof__grid{
+  grid-template-columns:1fr!important;
+}
+
+html.figma-mobile .product-proof__grid>div{
+  min-height:96px!important;
+  border-right:0!important;
+  border-bottom:1px solid #E7EDF3!important;
+}
+
+html.figma-mobile .product-proof__grid>div:last-child{
+  border-bottom:0!important;
+}
+
+/* Benefits */
+html.figma-mobile .benefit-grid,
+html.figma-mobile .benefit-grid--showcase{
+  grid-template-columns:1fr!important;
+  gap:14px!important;
+}
+
+html.figma-mobile .benefit-card{
+  min-height:0!important;
+}
+
+html.figma-mobile .benefit-card--showcase{
+  grid-template-rows:auto auto!important;
+}
+
+html.figma-mobile .benefit-visual{
+  min-height:235px!important;
+}
+
+html.figma-mobile .benefit-body{
+  padding:22px!important;
+}
+
+html.figma-mobile .benefit-copy h3{
+  font-size:24px!important;
+}
+
+/* How it works */
+html.figma-mobile .journey-board{
+  grid-template-columns:1fr!important;
+  gap:0!important;
+  border-radius:24px!important;
+}
+
+html.figma-mobile .journey-board::before{
+  display:none!important;
+}
+
+html.figma-mobile .journey-step{
+  padding:24px!important;
+  border-right:0!important;
+  border-bottom:1px solid #E2E8EE!important;
+}
+
+html.figma-mobile .journey-step:last-child{
+  border-bottom:0!important;
+}
+
+html.figma-mobile .journey-visual{
+  min-height:250px!important;
+}
+
+html.figma-mobile .journey-copy h3{
+  font-size:24px!important;
+}
+
+/* Your card */
+html.figma-mobile .your-card-grid{
+  grid-template-columns:1fr!important;
+  gap:40px!important;
+}
+
+html.figma-mobile .instacard-composer{
+  border-radius:24px!important;
+}
+
+html.figma-mobile .composer-bar{
+  padding:11px 12px!important;
+}
+
+html.figma-mobile .composer-brand span,
+html.figma-mobile .composer-status span{
+  display:none!important;
+}
+
+html.figma-mobile .composer-stage{
+  min-height:520px!important;
+}
+
+html.figma-mobile .composer-dock{
+  left:50%!important;
+  top:auto!important;
+  bottom:16px!important;
+  grid-auto-flow:column!important;
+  transform:translateX(-50%)!important;
+}
+
+html.figma-mobile .composer-style-chip{
+  display:none!important;
+}
+
+html.figma-mobile .composer-card{
+  top:49%!important;
+  width:calc(100% - 34px)!important;
+  max-width:340px!important;
+  transform:translate(-50%,-50%)!important;
+}
+
+html.figma-mobile .composer-share-note,
+html.figma-mobile .composer-caption{
+  display:none!important;
+}
+
+html.figma-mobile .composer-card-actions>span{
+  display:none!important;
+}
+
+html.figma-mobile .composer-card-actions button{
+  width:100%!important;
+  justify-content:center!important;
+}
+
+/* FAQ */
+html.figma-mobile .faq-grid{
+  grid-template-columns:1fr!important;
+  gap:34px!important;
+}
+
+html.figma-mobile .faq-intro h2{
+  font-size:38px!important;
+}
+
+/* Footer */
+html.figma-mobile .footer__cta-section{
+  padding-left:16px!important;
+  padding-right:16px!important;
+}
+
+html.figma-mobile .footer__cta-title{
+  font-size:38px!important;
+  line-height:1.04!important;
+}
+
+html.figma-mobile .footer__form{
+  flex-direction:column!important;
+  gap:10px!important;
+}
+
+html.figma-mobile .footer__cta-btn{
+  width:100%!important;
+}
+
+html.figma-mobile .footer__bottom{
+  padding-left:16px!important;
+  padding-right:16px!important;
+}
+
+html.figma-mobile .footer__bottom-container{
+  grid-template-columns:1fr!important;
+  gap:30px!important;
+}
+
+html.figma-mobile .footer__links{
+  grid-template-columns:1fr 1fr!important;
+  gap:28px!important;
+}
+
+html.figma-mobile .footer__social{
+  justify-content:flex-start!important;
+}
+
+/* Conversion safety: no hidden animated text, no blur/masks. */
+html.figma-mobile .reveal-once{
+  opacity:1!important;
+  transform:none!important;
+}
+
+html.figma-mobile .channel-group[aria-hidden="true"]{
+  display:none!important;
+}
+
+html.figma-mobile .channel-rail{
+  -webkit-mask-image:none!important;
+  mask-image:none!important;
+}
+
+html.figma-mobile .site-header,
+html.figma-mobile .composer-dock,
+html.figma-mobile .composer-style-chip,
+html.figma-mobile .composer-share-note,
+html.figma-mobile .camcard-connect-badge{
+  -webkit-backdrop-filter:none!important;
+  backdrop-filter:none!important;
+}

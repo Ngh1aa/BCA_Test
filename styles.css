@@ -343,16 +343,30 @@ input:focus-visible,
 
 .share-section{overflow:hidden;background:#fff}
 .channel-rail{
+  position:relative;
   width:100%;
   overflow:hidden;
   margin:18px 0 46px;
-  mask-image:linear-gradient(to right,transparent,#000 8%,#000 92%,transparent);
+  -webkit-mask-image:linear-gradient(to right,transparent,#000 7%,#000 93%,transparent);
+  mask-image:linear-gradient(to right,transparent,#000 7%,#000 93%,transparent);
+}
+.channel-rail:focus{outline:none}
+.channel-rail:focus-visible{
+  outline:2px solid rgba(20,101,217,.28);
+  outline-offset:6px;
 }
 .channel-track{
   width:max-content;
   display:flex;
   gap:14px;
-  animation:channel-marquee 24s linear infinite;
+  transform:translate3d(0,0,0);
+  will-change:transform;
+  animation:channel-marquee 16s linear infinite;
+}
+.channel-rail:hover .channel-track,
+.channel-rail:focus .channel-track,
+.channel-rail:focus-within .channel-track{
+  animation-play-state:paused;
 }
 .channel-group{display:flex;gap:14px;flex:none}
 .channel-pill{
@@ -375,7 +389,8 @@ input:focus-visible,
   letter-spacing:.04em;
 }
 @keyframes channel-marquee{
-  to{transform:translateX(calc(-50% - 7px))}
+  from{transform:translate3d(0,0,0)}
+  to{transform:translate3d(calc(-50% - 7px),0,0)}
 }
 .share-summary{
   display:grid;

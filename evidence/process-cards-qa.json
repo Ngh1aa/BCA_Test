@@ -1,0 +1,54 @@
+{
+  "desktop": {
+    "errors": [],
+    "state": {
+      "cards": 3,
+      "labels": [
+        "STEP 1",
+        "STEP 2",
+        "STEP 3"
+      ],
+      "dots": [
+        1,
+        2,
+        3
+      ],
+      "numbers": [
+        "01",
+        "02",
+        "03"
+      ],
+      "overflow": [
+        1440,
+        1440
+      ],
+      "title": "Make it. Share it. Keep the connection."
+    }
+  },
+  "mobile": {
+    "errors": [],
+    "state": {
+      "cards": 3,
+      "labels": [
+        "STEP 1",
+        "STEP 2",
+        "STEP 3"
+      ],
+      "dots": [
+        1,
+        2,
+        3
+      ],
+      "numbers": [
+        "01",
+        "02",
+        "03"
+      ],
+      "overflow": [
+        390,
+        390
+      ],
+      "title": "Make it. Share it. Keep the connection."
+    }
+  }
+}

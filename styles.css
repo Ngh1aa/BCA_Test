@@ -923,3 +923,149 @@ html.figma-static .channel-track{animation:none!important;transform:none!importa
 html.figma-static .reveal-once{opacity:1!important;transform:none!important;transition:none!important}
 html.figma-static .hand--left,
 html.figma-static .hand--right{transform:none!important}
+
+
+/* Restored previous two-hand hero stage */
+.camcard-hands-stage {
+  position: relative;
+  width: 100%;
+  height: clamp(560px, 64vh, 760px);
+  overflow: visible;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin-top: 36px;
+  z-index: 3;
+}
+
+.camcard-hands-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle, rgba(0, 136, 255, 0.22) 0%, rgba(99, 102, 241, 0.12) 50%, transparent 70%);
+  filter: blur(70px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.camcard-hand {
+  position: absolute;
+  bottom: -22px;
+  width: clamp(360px, 42vw, 640px);
+  height: auto;
+  will-change: transform;
+  pointer-events: none;
+  user-select: none;
+  filter: drop-shadow(0 25px 50px rgba(15, 23, 42, 0.28));
+}
+
+.camcard-hand--left {
+  left: 50%;
+  margin-left: clamp(-880px, -46vw, -480px);
+  transform: rotate(-14deg);
+  z-index: 10;
+}
+
+.camcard-hand--right {
+  left: 50%;
+  margin-left: clamp(160px, 16vw, 380px);
+  transform: rotate(14deg);
+  z-index: 12;
+}
+
+.camcard-connect-badge {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.6);
+  background: rgba(15, 23, 42, 0.94);
+  border: 1px solid rgba(56, 189, 248, 0.55);
+  box-shadow: 0 0 40px rgba(14, 165, 233, 0.45);
+  padding: 12px 24px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #38BDF8;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  z-index: 20;
+  opacity: 0;
+  pointer-events: none;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  white-space: nowrap;
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #38BDF8;
+  box-shadow: 0 0 10px #38BDF8;
+  animation: pulseDot 1.5s infinite;
+}
+
+@keyframes pulseDot {
+  0%,100% { opacity: .55; transform: scale(.85); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+
+@media (max-width: 760px) {
+  .camcard-hands-stage {
+    height: 480px;
+    margin-top: 20px;
+    overflow: visible;
+  }
+
+  .camcard-hand {
+    width: clamp(260px, 68vw, 360px);
+    bottom: 0;
+  }
+
+  .camcard-hand--left {
+    margin-left: clamp(-360px, -52vw, -220px);
+    transform: rotate(-12deg);
+  }
+
+  .camcard-hand--right {
+    margin-left: clamp(30px, 6vw, 90px);
+    transform: rotate(12deg);
+  }
+
+  .camcard-connect-badge {
+    font-size: 11px;
+    padding: 8px 16px;
+    top: 36%;
+  }
+}
+
+html.figma-static .camcard-hand--left,
+html.figma-static .camcard-hand--right {
+  transform: rotate(0deg) !important;
+}
+
+html.figma-static .camcard-connect-badge {
+  opacity: 1 !important;
+  transform: translate(-50%, -50%) scale(1) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .camcard-hand--left,
+  .camcard-hand--right {
+    transform: rotate(0deg) !important;
+  }
+
+  .camcard-connect-badge {
+    opacity: 1 !important;
+    transform: translate(-50%, -50%) scale(1) !important;
+  }
+
+  .pulse-dot {
+    animation: none;
+  }
+}

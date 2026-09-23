@@ -73,51 +73,62 @@ if (!isFigmaStatic && !reduceMotion && 'IntersectionObserver' in window) {
   revealItems.forEach(item => item.classList.add('is-visible'));
 }
 
-// Hero moment: the two supplied phone/hand visuals move toward one another
-// while the stage is sticky. This is purely presentational and does not imply NFC.
-const shell = document.querySelector('[data-hands-shell]');
-const leftHand = document.querySelector('.hand--left');
-const rightHand = document.querySelector('.hand--right');
+// Restored previous two-hand GSAP ScrollTrigger interaction.
+function initCamCardHandsScroll() {
+  const heroStage = document.getElementById('camcard-hands-stage');
+  if (!heroStage) return;
 
-if (shell && leftHand && rightHand) {
-  const clamp = value => Math.min(1, Math.max(0, value));
-
-  const setProgress = progress => {
-    const p = clamp(progress);
-    const compact = window.innerWidth <= 760;
-    const start = compact ? 72 : 58;
-    const leftX = -start + (start * p);
-    const rightX = start - (start * p);
-    const scale = (compact ? .9 : .88) + ((compact ? .1 : .12) * p);
-
-    leftHand.style.transform = `translate3d(${leftX}%,0,0) scale(${scale})`;
-    rightHand.style.transform = `translate3d(${rightX}%,0,0) scale(${scale})`;
-  };
+  const isFigmaStatic = document.documentElement.classList.contains('figma-static');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   if (isFigmaStatic || reduceMotion) {
-    setProgress(1);
-  } else {
-    let ticking = false;
-
-    const update = () => {
-      ticking = false;
-      const pinTop = window.innerWidth <= 760 ? 74 : 90;
-      const shellTop = window.scrollY + shell.getBoundingClientRect().top;
-      const travel = window.innerWidth <= 760 ? 430 : 560;
-      const startY = shellTop - pinTop;
-      setProgress((window.scrollY - startY) / travel);
-    };
-
-    const requestUpdate = () => {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(update);
-    };
-
-    setProgress(0);
-    requestAnimationFrame(update);
-    window.addEventListener('scroll', requestUpdate, { passive: true });
-    window.addEventListener('resize', requestUpdate);
-    window.addEventListener('pageshow', requestUpdate);
+    const left = document.querySelector('.camcard-hand--left');
+    const right = document.querySelector('.camcard-hand--right');
+    const badge = document.getElementById('camcard-connect-badge');
+    if (left) left.style.transform = 'translateX(50%) rotate(0deg)';
+    if (right) right.style.transform = 'translateX(-50%) rotate(0deg)';
+    if (badge) {
+      badge.style.opacity = '1';
+      badge.style.transform = 'translate(-50%, -50%) scale(1)';
+    }
+    return;
   }
+
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+    console.warn('GSAP or ScrollTrigger not loaded');
+    return;
+  }
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: heroStage,
+      start: 'top 85%',
+      end: 'bottom 45%',
+      scrub: 1.2
+    }
+  });
+
+  tl.to('.camcard-hand--left', {
+    xPercent: 50,
+    rotation: 0,
+    ease: 'power2.out'
+  });
+
+  tl.to('.camcard-hand--right', {
+    xPercent: -50,
+    rotation: 0,
+    ease: 'power2.out'
+  }, '<');
+
+  tl.to('#camcard-connect-badge', {
+    opacity: 1,
+    scale: 1,
+    duration: 0.35,
+    ease: 'back.out(1.7)'
+  }, '-=0.25');
 }
+
+initCamCardHandsScroll();
+

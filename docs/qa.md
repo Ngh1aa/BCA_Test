@@ -64,3 +64,20 @@ Required content present:
 - formal WCAG conformance
 - real-device Safari/Android parity
 - usability-test outcomes or conversion uplift
+
+
+## Restored two-hand hero interaction
+
+The Hero hands section was restored from the previous local implementation after the brief-alignment pass.
+
+Verification:
+- GSAP loaded: **yes**
+- ScrollTrigger loaded: **yes**
+- initial badge opacity: **0**
+- after scroll badge opacity: **1**
+- left-hand transform changes during scroll: **yes**
+- right-hand transform changes during scroll: **yes**
+- desktop horizontal overflow after scroll: **0**
+- unsupported NFC / Wallet / OCR copy reintroduced: **no**
+
+The old motion mechanics are retained, while the status label is neutralized to **“CONTACT EXCHANGED”** so the landing does not claim an NFC capability that is not supported by the supplied brief.

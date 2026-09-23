@@ -11,7 +11,7 @@
       if (params.get('figma') === '1') document.documentElement.classList.add('figma-static');
     })();
   </script>
-  <link rel="stylesheet" href="./styles.css?v=builder-studio-1">
+  <link rel="stylesheet" href="./styles.css?v=instacard-composer-1">
 </head>
 <body>
   <header class="site-header" id="top">
@@ -363,92 +363,99 @@
 
     <section class="your-card section" id="your-card" aria-labelledby="your-card-title">
       <div class="container your-card-grid">
-        <div class="studio-builder reveal-once" aria-label="InstaCard visual builder concept">
-          <div class="studio-toolbar">
-            <div class="studio-toolbar__brand">
-              <span class="studio-mark" aria-hidden="true">IC</span>
-              <div>
-                <span>INSTA CARD STUDIO</span>
-                <strong>Profile canvas</strong>
-              </div>
+        <div class="instacard-composer reveal-once" aria-label="InstaCard profile customization preview">
+          <div class="composer-bar">
+            <div class="composer-brand">
+              <img src="./Logo.svg" alt="" width="110" height="20" aria-hidden="true">
+              <span>Card Studio</span>
             </div>
-
-            <div class="studio-toolbar__actions" aria-hidden="true">
-              <span class="studio-live"><i></i> Live</span>
-              <span class="studio-zoom">100%</span>
+            <div class="composer-status" aria-hidden="true">
+              <span><i></i> Live preview</span>
+              <b>Personal</b>
             </div>
           </div>
 
-          <div class="studio-stage">
-            <div class="studio-grid" aria-hidden="true"></div>
+          <div class="composer-stage">
+            <div class="composer-orb composer-orb--one" aria-hidden="true"></div>
+            <div class="composer-orb composer-orb--two" aria-hidden="true"></div>
 
-            <div class="studio-rail" aria-label="Builder sections">
-              <span class="studio-tool is-active" aria-label="Profile">
+            <div class="composer-dock" aria-label="Card editor sections">
+              <span class="composer-tool is-active" aria-label="Profile">
                 <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"></circle><path d="M5 20c.8-4 3.1-6 7-6s6.2 2 7 6"></path></svg>
               </span>
-              <span class="studio-tool" aria-label="Channels">
+              <span class="composer-tool" aria-label="Links">
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 14.5 14.5 9"></path><path d="M7.5 17H6a4 4 0 0 1 0-8h3"></path><path d="M16.5 7H18a4 4 0 0 1 0 8h-3"></path></svg>
               </span>
-              <span class="studio-tool" aria-label="Style">
+              <span class="composer-tool" aria-label="Style">
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4a8 8 0 1 0 0 16h1.2a2 2 0 0 0 0-4h-.8a1.7 1.7 0 0 1 0-3.4H15a5 5 0 0 0 0-10z"></path><circle cx="7.5" cy="10" r="1"></circle><circle cx="9.5" cy="6.8" r="1"></circle><circle cx="14" cy="6.2" r="1"></circle></svg>
               </span>
             </div>
 
-            <div class="studio-context">
-              <span>PROFILE</span>
-              <strong>Alex Vance</strong>
-              <small>Product Designer</small>
-            </div>
-
-            <div class="studio-theme-panel">
+            <div class="composer-style-chip" aria-hidden="true">
               <div>
-                <span>THEME</span>
-                <strong>Clear Blue</strong>
+                <span>STYLE</span>
+                <strong>Insta Blue</strong>
               </div>
-              <div class="studio-swatches" aria-hidden="true">
-                <i class="is-selected"></i><i></i><i></i>
+              <div class="composer-swatches">
+                <i class="is-active"></i><i></i><i></i>
               </div>
             </div>
 
-            <div class="studio-profile-card">
-              <div class="studio-cover">
-                <span class="studio-cover__badge">PERSONAL</span>
-                <span class="studio-cover__mark">IC</span>
+            <div class="composer-card">
+              <div class="composer-cover">
+                <div class="composer-cover__brand">
+                  <img src="./Logo-white.svg" alt="" width="88" height="16" aria-hidden="true">
+                </div>
+                <span class="composer-card-type">PERSONAL</span>
               </div>
 
-              <div class="studio-profile-body">
-                <div class="studio-avatar">AV</div>
-                <div class="studio-identity">
-                  <p>INSTA CARD</p>
+              <div class="composer-card-body">
+                <div class="composer-avatar">AV<span>✓</span></div>
+
+                <div class="composer-identity">
                   <h3>Alex Vance</h3>
-                  <span>Product Designer · Ho Chi Minh City</span>
+                  <p>Product Designer · Ho Chi Minh City</p>
+                  <small>Designing clear, human digital experiences.</small>
                 </div>
 
-                <div class="studio-contact-row">
+                <div class="composer-socials" aria-label="Social channels">
                   <span><b>f</b> Facebook</span>
                   <span><b>◎</b> Instagram</span>
                   <span><b>◉</b> WhatsApp</span>
                 </div>
 
-                <div class="studio-card-footer">
+                <div class="composer-contact-list">
                   <div>
-                    <span>alex@instacard.me</span>
-                    <small>Primary contact</small>
+                    <i>✉</i>
+                    <span><small>Email</small><strong>alex@instacard.io</strong></span>
+                    <b>›</b>
                   </div>
-                  <button type="button">View contact <span aria-hidden="true">↗</span></button>
+                  <div>
+                    <i>↗</i>
+                    <span><small>Website</small><strong>instacard.io/alex</strong></span>
+                    <b>›</b>
+                  </div>
+                </div>
+
+                <div class="composer-card-actions">
+                  <span>Ready to share</span>
+                  <button type="button">Save Contact <b aria-hidden="true">↗</b></button>
                 </div>
               </div>
             </div>
 
-            <div class="studio-share-chip" aria-hidden="true">
-              <span>SHARE READY</span>
-              <b>Profile link copied</b>
+            <div class="composer-share-note" aria-hidden="true">
+              <span>SHARE LINK</span>
+              <strong>instacard.io/alex</strong>
               <i>✓</i>
             </div>
 
-            <div class="studio-canvas-caption" aria-hidden="true">
-              <span>Canvas</span>
-              <span>Desktop profile</span>
+            <div class="composer-caption" aria-hidden="true">
+              <span>Profile</span>
+              <i></i>
+              <span>Links</span>
+              <i></i>
+              <span>Style</span>
             </div>
           </div>
         </div>

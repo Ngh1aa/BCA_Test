@@ -1,0 +1,105 @@
+name: BCA brief visual QA
+
+on:
+  push:
+    branches:
+      - fix/brief-aligned-instacard
+
+permissions:
+  contents: write
+
+jobs:
+  qa:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix/brief-aligned-instacard
+          fetch-depth: 0
+
+      - name: Start static site
+        run: |
+          python3 -m http.server 4173 >/tmp/server.log 2>&1 &
+          for i in {1..20}; do
+            if curl -fsS http://127.0.0.1:4173/ >/dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/server.log
+          exit 1
+
+      - name: Install Playwright
+        run: |
+          npm init -y >/dev/null 2>&1
+          npm install --no-save playwright@1.55.0 >/dev/null
+          npx playwright install --with-deps chromium
+
+      - name: Run brief and responsive QA
+        run: |
+          mkdir -p evidence
+          cat > brief-qa.mjs <<'EOF'
+          import { chromium } from 'playwright';
+          import { writeFileSync } from 'node:fs';
+
+          const browser = await chromium.launch({headless:true});
+          const report = {generated_at:new Date().toISOString(), viewports:[]};
+
+          const assert = (condition, message) => {
+            if (!condition) throw new Error(message);
+          };
+
+          for (const [label,width,height] of [['desktop',1440,1000],['mobile',390,844]]) {
+            const page = await browser.newPage({viewport:{width,height}});
+            const errors = [];
+            page.on('pageerror', e => errors.push(String(e)));
+            await page.goto('http://127.0.0.1:4173/?figma=1', {waitUntil:'networkidle'});
+
+            const data = await page.evaluate(() => {
+              const text = document.body.innerText;
+              const images = [...document.images];
+              return {
+                scrollWidth: document.documentElement.scrollWidth,
+                clientWidth: document.documentElement.clientWidth,
+                brokenImages: images.filter(img => !img.complete || img.naturalWidth === 0).map(img => img.src),
+                emailInputs: document.querySelectorAll('input[type="email"]').length,
+                heroEmail: !!document.querySelector('.early-form--hero input[type="email"]'),
+                footerEmail: !!document.querySelector('.early-form--footer input[type="email"]'),
+                benefits: ['Simple','Accurate','Multilingual','Integrated','Green','Customized'].map(x => [x, text.includes(x)]),
+                unsupported: {
+                  nfc: /\bNFC\b/i.test(text),
+                  wallet: /Apple Wallet|Google Wallet/i.test(text),
+                  scanner: /Smart Scanner|OCR Scanner/i.test(text),
+                  fakeStats: /10,000\+|99% Satisfaction|50\+ Countries/i.test(text)
+                }
+              };
+            });
+
+            assert(errors.length === 0, `${label}: runtime errors: ${errors.join(' | ')}`);
+            assert(data.scrollWidth === data.clientWidth, `${label}: horizontal overflow ${data.scrollWidth} > ${data.clientWidth}`);
+            assert(data.brokenImages.length === 0, `${label}: broken images ${data.brokenImages.join(', ')}`);
+            assert(data.emailInputs === 2 && data.heroEmail && data.footerEmail, `${label}: required email forms missing`);
+            assert(data.benefits.every(([,ok]) => ok), `${label}: benefit missing`);
+            assert(!data.unsupported.nfc && !data.unsupported.wallet && !data.unsupported.scanner && !data.unsupported.fakeStats, `${label}: unsupported content detected`);
+
+            await page.screenshot({
+              path: label === 'desktop' ? 'evidence/desktop-1440.png' : 'evidence/mobile-390.png',
+              fullPage:true
+            });
+
+            report.viewports.push({label,width,height,errors,...data});
+            await page.close();
+          }
+
+          writeFileSync('evidence/brief-qa.json', JSON.stringify(report,null,2)+'\n');
+          console.log(JSON.stringify(report,null,2));
+          await browser.close();
+          EOF
+          node brief-qa.mjs
+
+      - name: Commit evidence
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add evidence/desktop-1440.png evidence/mobile-390.png evidence/brief-qa.json
+          git commit -m "Refresh BCA brief QA evidence [skip ci]" || exit 0
+          git push origin HEAD:fix/brief-aligned-instacard

@@ -383,6 +383,9 @@ input:focus-visible,
   from{transform:translate3d(0,0,0)}
   to{transform:translate3d(calc(-50% - 7px),0,0)}
 }
+.channel-track.is-js-marquee{
+  animation:none!important;
+}
 .share-summary{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -1073,7 +1076,6 @@ input:focus-visible,
 
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .channel-track{animation:none}
   .reveal-once{opacity:1;transform:none;transition:none}
   .button,.benefit-card{transition:none}
   .hand--left,.hand--right{transform:none!important}

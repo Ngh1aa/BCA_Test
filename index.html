@@ -11,7 +11,7 @@
       if (params.get('figma') === '1') document.documentElement.classList.add('figma-static');
     })();
   </script>
-  <link rel="stylesheet" href="./styles.css?v=footer-restore-1">
+  <link rel="stylesheet" href="./styles.css?v=benefits-showcase-1">
 </head>
 <body>
   <header class="site-header" id="top">
@@ -147,110 +147,158 @@
           <p class="eyebrow">Why InstaCard</p>
           <h2 id="benefits-title">Six reasons to leave paper behind.</h2>
         </div>
-        <p>Every required benefit from the brief, turned into a clear product story.</p>
+        <p>Six practical advantages, shown as product moments instead of a wall of generic feature icons.</p>
       </div>
 
-      <ul class="container benefit-grid" aria-label="Six InstaCard benefits">
-        <li class="benefit-card benefit-card--blue">
-          <div class="benefit-topline">
+      <ul class="container benefit-grid benefit-grid--showcase" aria-label="Six InstaCard benefits">
+        <li class="benefit-card benefit-card--showcase benefit-card--simple">
+          <div class="benefit-visual benefit-visual--simple" aria-hidden="true">
+            <div class="benefit-visual__rail"></div>
+            <div class="mini-phone">
+              <span class="mini-phone__notch"></span>
+              <span class="mini-phone__avatar"></span>
+              <span class="mini-phone__line mini-phone__line--wide"></span>
+              <span class="mini-phone__line"></span>
+              <span class="mini-phone__share">Share profile <b>↗</b></span>
+            </div>
+            <span class="benefit-float-chip benefit-float-chip--left">No install</span>
+            <span class="benefit-float-chip benefit-float-chip--right">Open instantly</span>
+          </div>
+          <div class="benefit-body">
             <div class="benefit-meta">
               <span class="benefit-number">01</span>
               <span class="benefit-label">Simple</span>
             </div>
-            <div class="benefit-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="2"></rect><path d="M10 18h4"></path></svg>
+            <div class="benefit-copy">
+              <h3>No app download required</h3>
+              <p>Remove an unnecessary step from the moment you exchange details.</p>
             </div>
           </div>
-          <div class="benefit-copy">
-            <h3>No app download required</h3>
-            <p>Remove an unnecessary step from the moment you exchange details.</p>
-          </div>
-          <span class="benefit-accent" aria-hidden="true"></span>
         </li>
 
-        <li class="benefit-card">
-          <div class="benefit-topline">
+        <li class="benefit-card benefit-card--showcase benefit-card--accurate">
+          <div class="benefit-visual benefit-visual--accurate" aria-hidden="true">
+            <div class="accuracy-sheet">
+              <span class="accuracy-label">Contact name</span>
+              <div class="accuracy-row accuracy-row--wrong">
+                <span>Jhon Carter</span>
+                <b>×</b>
+              </div>
+              <div class="accuracy-row accuracy-row--right">
+                <span>John Carter</span>
+                <b>✓</b>
+              </div>
+              <span class="accuracy-status">Saved exactly as shared</span>
+            </div>
+          </div>
+          <div class="benefit-body">
             <div class="benefit-meta">
               <span class="benefit-number">02</span>
               <span class="benefit-label">Accurate</span>
             </div>
-            <div class="benefit-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="m4 12 5 5L20 6"></path></svg>
+            <div class="benefit-copy">
+              <h3>No typos or OCR errors</h3>
+              <p>Share the information you entered, rather than relying on someone to retype a paper card.</p>
             </div>
           </div>
-          <div class="benefit-copy">
-            <h3>No typos or OCR errors</h3>
-            <p>Share the information you entered, rather than relying on someone to retype a paper card.</p>
-          </div>
-          <span class="benefit-accent" aria-hidden="true"></span>
         </li>
 
-        <li class="benefit-card">
-          <div class="benefit-topline">
+        <li class="benefit-card benefit-card--showcase benefit-card--language">
+          <div class="benefit-visual benefit-visual--language" aria-hidden="true">
+            <div class="language-orbit">
+              <span class="language-core">A<span>文</span></span>
+              <span class="language-chip language-chip--one">English</span>
+              <span class="language-chip language-chip--two">日本語</span>
+              <span class="language-chip language-chip--three">中文</span>
+              <span class="language-chip language-chip--four">한국어</span>
+            </div>
+          </div>
+          <div class="benefit-body">
             <div class="benefit-meta">
               <span class="benefit-number">03</span>
               <span class="benefit-label">Multilingual</span>
             </div>
-            <div class="benefit-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c3 3 4 6 4 9s-1 6-4 9M12 3c-3 3-4 6-4 9s1 6 4 9"></path></svg>
+            <div class="benefit-copy">
+              <h3>Save cards in languages you can’t type</h3>
+              <p>Keep names and details in their original form without manually reproducing unfamiliar characters.</p>
             </div>
           </div>
-          <div class="benefit-copy">
-            <h3>Save cards in languages you can’t type</h3>
-            <p>Keep names and details in their original form without manually reproducing unfamiliar characters.</p>
-          </div>
-          <span class="benefit-accent" aria-hidden="true"></span>
         </li>
 
-        <li class="benefit-card">
-          <div class="benefit-topline">
+        <li class="benefit-card benefit-card--showcase benefit-card--integrated">
+          <div class="benefit-visual benefit-visual--integrated" aria-hidden="true">
+            <div class="sync-map">
+              <span class="sync-line sync-line--a"></span>
+              <span class="sync-line sync-line--b"></span>
+              <span class="sync-line sync-line--c"></span>
+              <span class="sync-node sync-node--center">IC</span>
+              <span class="sync-node sync-node--google">G</span>
+              <span class="sync-node sync-node--microsoft">M</span>
+              <span class="sync-node sync-node--phone">▯</span>
+              <span class="sync-status">Contact ready to sync</span>
+            </div>
+          </div>
+          <div class="benefit-body">
             <div class="benefit-meta">
               <span class="benefit-number">04</span>
               <span class="benefit-label">Integrated</span>
             </div>
-            <div class="benefit-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M8 12h8M12 8v8"></path><rect x="3" y="3" width="18" height="18" rx="5"></rect></svg>
+            <div class="benefit-copy">
+              <h3>Sync to Microsoft, Google or your phone</h3>
+              <p>Keep contact information close to the tools and address books you already use.</p>
             </div>
           </div>
-          <div class="benefit-copy">
-            <h3>Sync to Microsoft, Google or your phone</h3>
-            <p>Keep contact information close to the tools and address books you already use.</p>
-          </div>
-          <span class="benefit-accent" aria-hidden="true"></span>
         </li>
 
-        <li class="benefit-card benefit-card--green">
-          <div class="benefit-topline">
+        <li class="benefit-card benefit-card--showcase benefit-card--green">
+          <div class="benefit-visual benefit-visual--green" aria-hidden="true">
+            <div class="green-counter">
+              <span class="green-counter__eyebrow">LESS PAPER</span>
+              <strong>173</strong>
+              <span class="green-counter__unit">trees / day</span>
+              <div class="green-sprout">
+                <i></i><i></i><b></b>
+              </div>
+            </div>
+          </div>
+          <div class="benefit-body">
             <div class="benefit-meta">
               <span class="benefit-number">05</span>
               <span class="benefit-label">Green</span>
             </div>
-            <div class="benefit-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M19 4C10 4 5 9 5 16c4 0 7-1 9-3"></path><path d="M5 20c2-6 6-10 14-16"></path></svg>
+            <div class="benefit-copy">
+              <h3>Help save 173 trees a day</h3>
+              <p>Choose a digital exchange instead of relying on another printed card.</p>
             </div>
           </div>
-          <div class="benefit-copy">
-            <h3>Help save 173 trees a day</h3>
-            <p>Choose a digital exchange instead of relying on another printed card.</p>
-          </div>
-          <span class="benefit-accent" aria-hidden="true"></span>
         </li>
 
-        <li class="benefit-card">
-          <div class="benefit-topline">
+        <li class="benefit-card benefit-card--showcase benefit-card--custom">
+          <div class="benefit-visual benefit-visual--custom" aria-hidden="true">
+            <div class="theme-stack">
+              <div class="theme-card theme-card--back">
+                <span></span><span></span><span></span>
+              </div>
+              <div class="theme-card theme-card--mid">
+                <span></span><span></span><span></span>
+              </div>
+              <div class="theme-card theme-card--front">
+                <div class="theme-card__avatar"></div>
+                <span></span><span></span>
+                <div class="theme-swatches"><i></i><i></i><i></i></div>
+              </div>
+            </div>
+          </div>
+          <div class="benefit-body">
             <div class="benefit-meta">
               <span class="benefit-number">06</span>
               <span class="benefit-label">Customized</span>
             </div>
-            <div class="benefit-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M4 20h16M14 4l6 6L9 21H3v-6z"></path></svg>
+            <div class="benefit-copy">
+              <h3>Use professional templates or design your own</h3>
+              <p>Choose a polished starting point, then shape the card around your identity.</p>
             </div>
           </div>
-          <div class="benefit-copy">
-            <h3>Use professional templates or design your own</h3>
-            <p>Choose a polished starting point, then shape the card around your identity.</p>
-          </div>
-          <span class="benefit-accent" aria-hidden="true"></span>
         </li>
       </ul>
     </section>

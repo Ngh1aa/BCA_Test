@@ -83,22 +83,29 @@
         </div>
       </div>
 
-      <div class="hands-scroll-shell" data-hands-shell aria-label="Two people bringing their phones together to exchange an InstaCard">
-        <div class="hands-stage">
-          <div class="hands-orbit hands-orbit--one" aria-hidden="true"></div>
-          <div class="hands-orbit hands-orbit--two" aria-hidden="true"></div>
+      <!-- Restored from the previous local implementation: CamCard-style two-hand scroll moment -->
+      <div class="camcard-hands-stage" id="camcard-hands-stage" aria-label="Two people bringing their phones together to exchange an InstaCard">
+        <div class="camcard-hands-glow" aria-hidden="true"></div>
 
-          <div class="share-note share-note--left">
-            <span>YOUR INSTACARD</span>
-            <strong>Share one profile</strong>
-          </div>
-          <div class="share-note share-note--right">
-            <span>THEIR NEXT STEP</span>
-            <strong>Keep the connection</strong>
-          </div>
+        <img
+          src="./assets/images/hand-left.png"
+          alt="Hand holding a phone with an InstaCard sharing view"
+          class="camcard-hand camcard-hand--left"
+          width="1340"
+          height="1354"
+          loading="eager">
 
-          <img class="hand hand--left" src="./assets/images/hand-left.png" alt="Hand holding a phone with an InstaCard sharing view" width="1340" height="1354">
-          <img class="hand hand--right" src="./assets/images/hand-right.png" alt="Hand holding a phone with an InstaCard profile view" width="1340" height="1354">
+        <img
+          src="./assets/images/hand-right.png"
+          alt="Hand holding a phone with an InstaCard profile view"
+          class="camcard-hand camcard-hand--right"
+          width="1340"
+          height="1354"
+          loading="eager">
+
+        <div class="camcard-connect-badge" id="camcard-connect-badge" aria-hidden="true">
+          <span class="pulse-dot"></span>
+          <span>CONTACT EXCHANGED</span>
         </div>
       </div>
     </section>
@@ -360,6 +367,8 @@
     </div>
   </footer>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script src="./script.js"></script>
 </body>
 </html>

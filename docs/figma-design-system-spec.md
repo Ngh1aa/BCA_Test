@@ -211,6 +211,28 @@ Green variant:
 
 ---
 
+
+### Process step card — How it works
+- Desktop layout: 3 equal columns
+- Card min height: 310px
+- Padding: 34px
+- Radius: 26px
+- Background: white
+- Border: `#E4EAF0`
+- Shadow: `0 18px 42px rgba(23,58,92,.08)`
+- Number badge: 68 × 68px, radius 17px, blue gradient
+- Title: Bricolage Grotesque 26px / 700
+- Body: Instrument Sans 15px / 1.7
+- Progress dots: 8 × 8px, 7px gap
+- Active dot: Primary Blue
+- Inactive dot: `#CDD5DE`
+- Step label: 10px / 700 / 8% tracking
+- Desktop connector: 1px horizontal line behind the cards
+- Mobile: single-column stack, connector hidden, card min height 270px
+- Hover: translateY(-5px) + slightly stronger shadow
+
+---
+
 ## 10. Chips / pills
 
 ### Sharing pill
@@ -324,6 +346,7 @@ Document these in Figma:
 - Card / Benefit
 - Card / Builder
 - Card / Profile
+- Card / Process Step
 - Chip / Sharing
 - Chip / Channel
 - Badge / Status

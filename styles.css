@@ -421,53 +421,141 @@ input:focus-visible,
 .benefits{background:var(--surface)}
 .benefit-grid{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:16px;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:18px;
+  margin:0 auto;
+  padding:0;
+  list-style:none;
 }
 .benefit-card{
-  min-height:350px;
+  position:relative;
+  min-height:330px;
   display:flex;
   flex-direction:column;
-  padding:28px;
-  border:1px solid #E0E7ED;
-  border-radius:20px;
+  overflow:hidden;
+  padding:30px;
+  border:1px solid #E1E8EF;
+  border-radius:24px;
   background:#fff;
-  transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;
+  box-shadow:
+    0 14px 32px rgba(23,58,92,.055),
+    0 2px 8px rgba(23,58,92,.025);
+  transition:
+    transform .2s var(--ease),
+    border-color .2s ease,
+    box-shadow .2s var(--ease);
+}
+.benefit-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  border-radius:inherit;
+  background:linear-gradient(145deg,rgba(255,255,255,.5),transparent 34%);
 }
 .benefit-card:hover{
   transform:translateY(-5px);
-  border-color:#C8D8E7;
-  box-shadow:0 18px 34px rgba(23,58,92,.07);
+  border-color:#C9D9E8;
+  box-shadow:
+    0 22px 44px rgba(23,58,92,.085),
+    0 4px 10px rgba(23,58,92,.035);
 }
-.benefit-card--blue{background:#E9F3FF;border-color:#D9E9FC}
-.benefit-card--green{background:var(--green);border-color:#DFE8DD}
+.benefit-card--blue{
+  background:linear-gradient(145deg,#EDF6FF 0%,#E7F2FF 100%);
+  border-color:#D6E8FA;
+}
+.benefit-card--green{
+  background:linear-gradient(145deg,#F2F7F0 0%,#EAF3E8 100%);
+  border-color:#DCE8D8;
+}
+.benefit-topline{
+  position:relative;
+  z-index:1;
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:18px;
+  margin-bottom:54px;
+}
+.benefit-meta{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.benefit-number{
+  color:var(--blue);
+  font-family:"Bricolage Grotesque",sans-serif;
+  font-size:22px;
+  font-weight:700;
+  line-height:1;
+  letter-spacing:-.035em;
+}
+.benefit-label{
+  padding:6px 9px;
+  border:1px solid #D9E4EE;
+  border-radius:999px;
+  background:rgba(255,255,255,.74);
+  color:#5B7285;
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+}
 .benefit-icon{
   width:44px;
   height:44px;
   display:grid;
   place-items:center;
-  margin-bottom:auto;
+  flex:none;
   border:1px solid #CFE0F0;
   border-radius:12px;
-  background:rgba(255,255,255,.7);
+  background:rgba(255,255,255,.82);
   color:var(--blue);
+  box-shadow:0 8px 18px rgba(20,101,217,.05);
 }
-.benefit-icon svg{width:22px}
-.benefit-index{
-  margin:36px 0 10px;
-  color:#71879A;
-  font-size:9px;
-  font-weight:700;
-  letter-spacing:.1em;
+.benefit-icon svg{width:21px}
+.benefit-copy{
+  position:relative;
+  z-index:1;
+  max-width:330px;
 }
 .benefit-card h3{
-  max-width:310px;
-  margin:0 0 12px;
+  margin:0 0 14px;
   font-family:"Bricolage Grotesque",sans-serif;
-  font-size:26px;
-  line-height:1.08;
+  font-size:27px;
+  line-height:1.06;
+  letter-spacing:-.03em;
 }
-.benefit-card>p:last-child{margin:0;color:var(--muted);font-size:14px}
+.benefit-copy p{
+  margin:0;
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.68;
+}
+.benefit-accent{
+  position:relative;
+  z-index:1;
+  width:52px;
+  height:3px;
+  display:block;
+  margin-top:auto;
+  padding-top:28px;
+}
+.benefit-accent::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:52px;
+  height:3px;
+  border-radius:999px;
+  background:linear-gradient(90deg,var(--blue),#76AEFF);
+  transition:width .2s var(--ease);
+}
+.benefit-card--green .benefit-accent::after{
+  background:linear-gradient(90deg,#4B9B58,#8BC998);
+}
+.benefit-card:hover .benefit-accent::after{width:86px}
 
 .how{background:#fff}
 .steps-grid{
@@ -945,8 +1033,16 @@ input:focus-visible,
   .section-heading{margin-bottom:34px}
   .section-heading--center{margin-bottom:34px}
   .channel-pill{min-height:52px;padding:0 16px}
-  .benefit-grid{grid-template-columns:1fr}
-  .benefit-card{min-height:300px}
+  .benefit-grid{
+    grid-template-columns:1fr;
+    gap:14px;
+  }
+  .benefit-card{
+    min-height:285px;
+    padding:26px;
+  }
+  .benefit-topline{margin-bottom:40px}
+  .benefit-card h3{font-size:25px}
   .steps-grid{
     grid-template-columns:1fr;
     gap:16px;

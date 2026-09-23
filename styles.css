@@ -4177,3 +4177,441 @@ html.figma-mobile .camcard-connect-badge{
   -webkit-backdrop-filter:none!important;
   backdrop-filter:none!important;
 }
+
+
+/* =========================================================
+   FIGMA RESPONSIVE EXPORT MATRIX
+   Landing + wireframe across three deterministic artboards.
+   Desktop 1440 / Tablet 768 / Mobile 375.
+   These query modes intentionally do not depend on the
+   converter browser viewport: the artboard width is locked.
+   ========================================================= */
+
+/* ---------- fixed export canvases ---------- */
+html.figma-desktop,
+html.figma-desktop body{
+  width:1440px!important;
+  min-width:1440px!important;
+  max-width:1440px!important;
+}
+html.figma-tablet,
+html.figma-tablet body{
+  width:768px!important;
+  min-width:768px!important;
+  max-width:768px!important;
+}
+html.figma-mobile,
+html.figma-mobile body{
+  width:375px!important;
+  min-width:375px!important;
+  max-width:375px!important;
+}
+html.figma-desktop,
+html.figma-tablet,
+html.figma-mobile{
+  margin:0 auto!important;
+  overflow-x:hidden!important;
+  background:#EEF2F6!important;
+}
+html.figma-desktop body,
+html.figma-tablet body,
+html.figma-mobile body{
+  margin:0!important;
+  overflow-x:hidden!important;
+  background:#FFFFFF!important;
+}
+
+/* ---------- shared export safety ---------- */
+html.figma-desktop .reveal-once,
+html.figma-tablet .reveal-once,
+html.figma-mobile .reveal-once{
+  opacity:1!important;
+  transform:none!important;
+}
+html.figma-desktop .channel-group[aria-hidden="true"],
+html.figma-tablet .channel-group[aria-hidden="true"],
+html.figma-mobile .channel-group[aria-hidden="true"]{
+  display:none!important;
+}
+html.figma-desktop .channel-track,
+html.figma-tablet .channel-track,
+html.figma-mobile .channel-track{
+  animation:none!important;
+  transform:none!important;
+}
+html.figma-desktop .channel-rail,
+html.figma-tablet .channel-rail,
+html.figma-mobile .channel-rail{
+  -webkit-mask-image:none!important;
+  mask-image:none!important;
+  overflow:hidden!important;
+}
+
+/* ---------- DESKTOP / 1440 ---------- */
+html.figma-desktop .container{
+  width:1248px!important;
+  max-width:1248px!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+}
+html.figma-desktop .section{padding:104px 0!important}
+html.figma-desktop .site-header{padding:14px 0 0!important}
+html.figma-desktop .nav-shell{
+  min-height:64px!important;
+  display:grid!important;
+  grid-template-columns:auto 1fr auto!important;
+  gap:28px!important;
+  padding:10px 14px 10px 20px!important;
+}
+html.figma-desktop .desktop-nav{
+  display:flex!important;
+}
+html.figma-desktop .desktop-cta{
+  display:inline-flex!important;
+}
+html.figma-desktop .menu-toggle,
+html.figma-desktop .mobile-nav{
+  display:none!important;
+}
+html.figma-desktop .hero{
+  margin-top:-96px!important;
+  padding-top:172px!important;
+}
+html.figma-desktop .hero-copy h1{
+  max-width:980px!important;
+  font-size:102px!important;
+  line-height:.92!important;
+}
+html.figma-desktop .early-form{
+  grid-template-columns:1fr auto!important;
+}
+html.figma-desktop .camcard-hands-stage{
+  height:680px!important;
+  margin-top:36px!important;
+}
+html.figma-desktop .camcard-hand{
+  width:600px!important;
+}
+html.figma-desktop .section-heading{
+  grid-template-columns:minmax(0,1.15fr) minmax(260px,.6fr)!important;
+  gap:60px!important;
+}
+html.figma-desktop .section-heading--center{
+  grid-template-columns:1fr!important;
+}
+html.figma-desktop .share-summary{
+  grid-template-columns:repeat(3,1fr)!important;
+}
+html.figma-desktop .product-proof__grid{
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+}
+html.figma-desktop .product-proof__grid>div{
+  border-right:1px solid #E7EDF3!important;
+  border-bottom:0!important;
+}
+html.figma-desktop .product-proof__grid>div:last-child{
+  border-right:0!important;
+}
+html.figma-desktop .benefit-grid,
+html.figma-desktop .benefit-grid--showcase{
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+}
+html.figma-desktop .journey-board{
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+}
+html.figma-desktop .journey-step{
+  display:block!important;
+  padding:28px!important;
+  border-right:1px solid #E3EAF0!important;
+  border-bottom:0!important;
+}
+html.figma-desktop .journey-step:last-child{border-right:0!important}
+html.figma-desktop .journey-step__topline{
+  display:inline-flex!important;
+  margin-bottom:20px!important;
+}
+html.figma-desktop .your-card-grid{
+  grid-template-columns:minmax(0,1.18fr) minmax(340px,.82fr)!important;
+  gap:72px!important;
+}
+html.figma-desktop .faq-grid{
+  grid-template-columns:.75fr 1.25fr!important;
+  gap:80px!important;
+}
+html.figma-desktop .footer__form{
+  flex-direction:row!important;
+}
+html.figma-desktop .footer__bottom-container{
+  grid-template-columns:minmax(220px,1fr) auto auto!important;
+}
+
+/* ---------- TABLET / 768 ---------- */
+html.figma-tablet{
+  --container:704px!important;
+  --section:82px!important;
+}
+html.figma-tablet .container{
+  width:704px!important;
+  max-width:704px!important;
+  margin-left:32px!important;
+  margin-right:32px!important;
+}
+html.figma-tablet .section{padding:82px 0!important}
+html.figma-tablet .site-header{
+  padding:12px 0 0!important;
+}
+html.figma-tablet .nav-shell{
+  min-height:60px!important;
+  display:grid!important;
+  grid-template-columns:1fr auto!important;
+  gap:16px!important;
+  padding:8px 9px 8px 16px!important;
+  border-radius:16px!important;
+}
+html.figma-tablet .desktop-nav,
+html.figma-tablet .desktop-cta{
+  display:none!important;
+}
+html.figma-tablet .menu-toggle{
+  display:block!important;
+}
+html.figma-tablet .mobile-nav{
+  width:704px!important;
+  margin:8px 32px 0!important;
+}
+html.figma-tablet .hero{
+  margin-top:-88px!important;
+  padding-top:148px!important;
+}
+html.figma-tablet .hero-copy h1{
+  max-width:680px!important;
+  font-size:68px!important;
+  line-height:.94!important;
+}
+html.figma-tablet .hero-lede{font-size:21px!important}
+html.figma-tablet .hero-support{
+  max-width:560px!important;
+  font-size:16px!important;
+}
+html.figma-tablet .early-form{
+  width:min(100%,640px)!important;
+  grid-template-columns:1fr auto!important;
+  gap:10px!important;
+}
+html.figma-tablet .camcard-hands-stage{
+  height:520px!important;
+  margin-top:24px!important;
+  overflow:hidden!important;
+}
+html.figma-tablet .camcard-hand{
+  width:420px!important;
+  bottom:-8px!important;
+}
+html.figma-tablet .camcard-hand--left{
+  left:50%!important;
+  margin-left:-435px!important;
+}
+html.figma-tablet .camcard-hand--right{
+  left:50%!important;
+  right:auto!important;
+  margin-left:18px!important;
+}
+html.figma-tablet h2{
+  font-size:46px!important;
+}
+html.figma-tablet .section-heading,
+html.figma-tablet .section-heading--center{
+  grid-template-columns:1fr!important;
+  gap:16px!important;
+  margin-bottom:42px!important;
+}
+html.figma-tablet .share-summary{
+  grid-template-columns:1fr!important;
+}
+html.figma-tablet .product-proof__grid{
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+}
+html.figma-tablet .product-proof__grid>div{
+  border-right:1px solid #E7EDF3!important;
+  border-bottom:1px solid #E7EDF3!important;
+}
+html.figma-tablet .product-proof__grid>div:nth-child(2n){
+  border-right:0!important;
+}
+html.figma-tablet .product-proof__grid>div:nth-last-child(-n+2){
+  border-bottom:0!important;
+}
+html.figma-tablet .benefit-grid,
+html.figma-tablet .benefit-grid--showcase{
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:16px!important;
+}
+html.figma-tablet .benefit-card{
+  min-height:0!important;
+}
+html.figma-tablet .benefit-visual{
+  min-height:245px!important;
+}
+html.figma-tablet .journey-board{
+  grid-template-columns:1fr!important;
+}
+html.figma-tablet .journey-board::before{display:none!important}
+html.figma-tablet .journey-step{
+  display:grid!important;
+  grid-template-columns:64px 220px minmax(0,1fr)!important;
+  align-items:center!important;
+  gap:18px!important;
+  padding:24px!important;
+  border-right:0!important;
+  border-bottom:1px solid #E3EAF0!important;
+}
+html.figma-tablet .journey-step:last-child{border-bottom:0!important}
+html.figma-tablet .journey-step__topline{
+  display:grid!important;
+  justify-items:start!important;
+  margin:0!important;
+}
+html.figma-tablet .journey-visual{
+  width:100%!important;
+  min-height:180px!important;
+  margin:0!important;
+}
+html.figma-tablet .your-card-grid{
+  grid-template-columns:1fr!important;
+  gap:46px!important;
+}
+html.figma-tablet .your-card-copy{
+  max-width:660px!important;
+}
+html.figma-tablet .composer-stage{
+  min-height:560px!important;
+}
+html.figma-tablet .composer-card{
+  width:min(62%,390px)!important;
+}
+html.figma-tablet .faq-grid{
+  grid-template-columns:1fr!important;
+  gap:34px!important;
+}
+html.figma-tablet .footer__form{
+  flex-direction:row!important;
+}
+html.figma-tablet .footer__bottom-container{
+  grid-template-columns:1fr auto!important;
+  gap:36px!important;
+}
+html.figma-tablet .footer__links{
+  gap:36px!important;
+}
+html.figma-tablet .footer__social{
+  grid-column:1/-1!important;
+  justify-content:flex-start!important;
+}
+
+/* ---------- MOBILE / 375 ---------- */
+html.figma-mobile{
+  --container:343px!important;
+  --section:68px!important;
+}
+html.figma-mobile .container{
+  width:343px!important;
+  max-width:343px!important;
+  margin-left:16px!important;
+  margin-right:16px!important;
+}
+html.figma-mobile .hero-copy h1{
+  max-width:343px!important;
+  font-size:44px!important;
+}
+html.figma-mobile .hero-support{
+  max-width:335px!important;
+}
+html.figma-mobile .camcard-hands-stage{
+  height:420px!important;
+}
+html.figma-mobile .camcard-hand{
+  width:300px!important;
+}
+html.figma-mobile .camcard-hand--left{
+  margin-left:-282px!important;
+}
+html.figma-mobile .camcard-hand--right{
+  margin-left:-18px!important;
+}
+html.figma-mobile h2{
+  font-size:36px!important;
+}
+html.figma-mobile .benefit-visual{
+  min-height:220px!important;
+}
+html.figma-mobile .journey-visual{
+  min-height:220px!important;
+}
+html.figma-mobile .footer__cta-title{
+  font-size:36px!important;
+}
+html.figma-mobile .footer__links{
+  grid-template-columns:1fr 1fr!important;
+  gap:24px!important;
+}
+
+/* ---------- WIREFRAME + TABLET ---------- */
+html.figma-wireframe.figma-tablet .wireframe-device-pair{
+  gap:34px!important;
+  padding:44px 24px 38px!important;
+}
+html.figma-wireframe.figma-tablet .wireframe-device{
+  width:205px!important;
+  height:350px!important;
+}
+html.figma-wireframe.figma-tablet .benefit-visual,
+html.figma-wireframe.figma-tablet .journey-visual{
+  min-height:190px!important;
+}
+html.figma-wireframe.figma-tablet .composer-card{
+  width:min(58%,370px)!important;
+  transform:translate(-47%,-50%)!important;
+}
+
+/* ---------- WIREFRAME + MOBILE ---------- */
+html.figma-wireframe.figma-mobile .wireframe-device-pair{
+  gap:12px!important;
+  padding:34px 12px 30px!important;
+}
+html.figma-wireframe.figma-mobile .wireframe-device{
+  width:148px!important;
+  height:282px!important;
+  padding:30px 12px 14px!important;
+  border-radius:16px!important;
+}
+html.figma-wireframe.figma-mobile .wireframe-device--left{
+  transform:rotate(-4deg)!important;
+}
+html.figma-wireframe.figma-mobile .wireframe-device--right{
+  transform:rotate(4deg)!important;
+}
+html.figma-wireframe.figma-mobile .wireframe-device__block--hero{
+  height:92px!important;
+}
+html.figma-wireframe.figma-mobile .wireframe-device__row{
+  height:32px!important;
+}
+html.figma-wireframe.figma-mobile .wireframe-device__button{
+  height:36px!important;
+  margin-top:14px!important;
+}
+html.figma-wireframe.figma-mobile .benefit-visual,
+html.figma-wireframe.figma-mobile .journey-visual{
+  min-height:180px!important;
+}
+html.figma-wireframe.figma-mobile .instacard-composer{
+  min-height:520px!important;
+}
+html.figma-wireframe.figma-mobile .composer-card{
+  width:calc(100% - 32px)!important;
+  max-width:320px!important;
+  transform:translate(-50%,-50%)!important;
+}
+
+/* Wireframe keeps the same responsive information architecture as final UI.
+   Only fidelity/color/placeholder treatment differs. */

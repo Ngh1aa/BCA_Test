@@ -85,6 +85,14 @@ jobs:
               path: label === 'desktop' ? 'evidence/desktop-1440.png' : 'evidence/mobile-390.png',
               fullPage:true
             });
+            if (label === 'desktop') {
+              await page.screenshot({
+                path:'evidence/desktop-preview.jpg',
+                type:'jpeg',
+                quality:65,
+                fullPage:true
+              });
+            }
 
             report.viewports.push({label,width,height,errors,...data});
             await page.close();
@@ -100,6 +108,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add evidence/desktop-1440.png evidence/mobile-390.png evidence/brief-qa.json
+          git add evidence/desktop-1440.png evidence/mobile-390.png evidence/desktop-preview.jpg evidence/brief-qa.json
           git commit -m "Refresh BCA brief QA evidence [skip ci]" || exit 0
           git push origin HEAD:fix/brief-aligned-instacard

@@ -250,21 +250,6 @@ input:focus-visible,
   color:#506A80;
   font-size:12px;
 }
-.hero-reassurance{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:10px 18px;
-  margin-top:15px;
-  color:#486174;
-  font-size:12px;
-}
-.hero-reassurance span{
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
-}
-.hero-reassurance svg{width:16px;color:var(--blue)}
 
 .hands-scroll-shell{
   position:relative;
@@ -1013,7 +998,6 @@ input:focus-visible,
     gap:9px;
   }
   .early-form .button{width:100%}
-  .hero-reassurance{max-width:360px}
   .hands-scroll-shell{height:690px}
   .hands-stage{top:74px;height:510px}
   .hand{

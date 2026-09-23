@@ -350,23 +350,14 @@ input:focus-visible,
   -webkit-mask-image:linear-gradient(to right,transparent,#000 7%,#000 93%,transparent);
   mask-image:linear-gradient(to right,transparent,#000 7%,#000 93%,transparent);
 }
-.channel-rail:focus{outline:none}
-.channel-rail:focus-visible{
-  outline:2px solid rgba(20,101,217,.28);
-  outline-offset:6px;
-}
 .channel-track{
   width:max-content;
   display:flex;
   gap:14px;
   transform:translate3d(0,0,0);
   will-change:transform;
-  animation:channel-marquee 16s linear infinite;
-}
-.channel-rail:hover .channel-track,
-.channel-rail:focus .channel-track,
-.channel-rail:focus-within .channel-track{
-  animation-play-state:paused;
+  animation:channel-marquee 12s linear infinite;
+  animation-play-state:running;
 }
 .channel-group{display:flex;gap:14px;flex:none}
 .channel-pill{

@@ -31,10 +31,12 @@ jobs:
           await page.goto('http://127.0.0.1:4173/',{waitUntil:'networkidle'});
           await page.waitForTimeout(900);
 
-          const stageTop=await page.evaluate(()=>{
-            const el=document.querySelector('#camcard-hands-stage');
-            return scrollY+el.getBoundingClientRect().top;
+          const range=await page.evaluate(()=>{
+            const trigger=ScrollTrigger.getAll().find(t=>t.trigger?.id==='camcard-hands-stage');
+            if(!trigger) return null;
+            return {start:trigger.start,end:trigger.end};
           });
+          if(!range) throw new Error('hands ScrollTrigger not found');
 
           const get=()=>page.evaluate(()=>({
             rootClass:document.documentElement.className,
@@ -46,15 +48,15 @@ jobs:
             scrollTrigger:!!window.ScrollTrigger
           }));
 
-          await page.evaluate(y=>scrollTo(0,y),Math.max(0,stageTop-500));
+          await page.evaluate(y=>scrollTo(0,y),Math.max(0,range.start-40));
           await page.waitForTimeout(800);
           const start=await get();
 
-          await page.evaluate(y=>scrollTo(0,y),stageTop+250);
+          await page.evaluate(y=>scrollTo(0,y),(range.start+range.end)/2);
           await page.waitForTimeout(1200);
           const mid=await get();
 
-          await page.evaluate(y=>scrollTo(0,y),stageTop+520);
+          await page.evaluate(y=>scrollTo(0,y),range.end+40);
           await page.waitForTimeout(1200);
           const end=await get();
 
@@ -64,7 +66,7 @@ jobs:
           if(start.right===mid.right || mid.right===end.right) throw new Error('right hand not scrubbed');
           if(start.overflow[0]!==start.overflow[1] || end.overflow[0]!==end.overflow[1]) throw new Error('overflow');
 
-          console.log(JSON.stringify({start,mid,end},null,2));
+          console.log(JSON.stringify({range,start,mid,end},null,2));
           await browser.close();
           EOF
           node qa.mjs

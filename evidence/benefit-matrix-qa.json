@@ -1,0 +1,70 @@
+{
+  "desktop": {
+    "errors": [],
+    "state": {
+      "cards": 6,
+      "numbers": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "labels": [
+        "Simple",
+        "Accurate",
+        "Multilingual",
+        "Integrated",
+        "Green",
+        "Customized"
+      ],
+      "titles": [
+        "No app download required",
+        "No typos or OCR errors",
+        "Save cards in languages you can’t type",
+        "Sync to Microsoft, Google or your phone",
+        "Help save 173 trees a day",
+        "Use professional templates or design your own"
+      ],
+      "overflow": [
+        1440,
+        1440
+      ]
+    }
+  },
+  "mobile": {
+    "errors": [],
+    "state": {
+      "cards": 6,
+      "numbers": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "labels": [
+        "Simple",
+        "Accurate",
+        "Multilingual",
+        "Integrated",
+        "Green",
+        "Customized"
+      ],
+      "titles": [
+        "No app download required",
+        "No typos or OCR errors",
+        "Save cards in languages you can’t type",
+        "Sync to Microsoft, Google or your phone",
+        "Help save 173 trees a day",
+        "Use professional templates or design your own"
+      ],
+      "overflow": [
+        390,
+        390
+      ]
+    }
+  }
+}

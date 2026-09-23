@@ -81,3 +81,25 @@ Verification:
 - unsupported NFC / Wallet / OCR copy reintroduced: **no**
 
 The old motion mechanics are retained, while the status label is neutralized to **“CONTACT EXCHANGED”** so the landing does not claim an NFC capability that is not supported by the supplied brief.
+
+
+## Benefit Feature Matrix
+
+The six-benefit section was redesigned as an equal-priority feature matrix rather than a bento hierarchy.
+
+Verified at:
+- Desktop: 1440 × 1000
+- Mobile: 390 × 844
+
+Checks:
+- six cards present: **6 / 6**
+- numbering: **01 → 06**
+- labels: **Simple / Accurate / Multilingual / Integrated / Green / Customized**
+- required benefit titles preserved: **yes**
+- horizontal overflow: **0**
+- mobile layout: **single-column stack**
+
+Evidence:
+- `evidence/benefit-matrix-desktop.png`
+- `evidence/benefit-matrix-mobile.png`
+- `evidence/benefit-matrix-qa.json`

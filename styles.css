@@ -1800,3 +1800,15 @@ html.figma-static .camcard-connect-badge {
     gap:24px;
   }
 }
+
+
+/* Benefit showcase guardrails against legacy responsive card rules */
+@media(max-width:760px){
+  .benefit-card.benefit-card--showcase{
+    min-height:0;
+    padding:0;
+  }
+  .benefit-card.benefit-card--showcase h3{
+    font-size:24px;
+  }
+}

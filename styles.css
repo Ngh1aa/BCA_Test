@@ -1878,10 +1878,72 @@ input:focus-visible,
   .hand--left,.hand--right{transform:none!important}
 }
 
-html.figma-static .channel-track{animation:none!important;transform:none!important}
-html.figma-static .reveal-once{opacity:1!important;transform:none!important;transition:none!important}
+/* Figma conversion-safe mode.
+   Use ?figma=1 when importing the page into HTML-to-Figma tools.
+   The normal website is unchanged. This mode keeps visible copy as semantic
+   HTML text and removes CSS effects that commonly force converters to flatten
+   text-containing groups into bitmap layers. */
+html.figma-static{
+  scroll-behavior:auto!important;
+}
+html.figma-static *,
+html.figma-static *::before,
+html.figma-static *::after{
+  animation:none!important;
+  transition:none!important;
+}
+html.figma-static .reveal-once{
+  opacity:1!important;
+  transform:none!important;
+}
+html.figma-static .channel-track{
+  animation:none!important;
+  transform:none!important;
+}
+html.figma-static .channel-group[aria-hidden="true"]{
+  display:none!important;
+}
+html.figma-static .channel-rail{
+  -webkit-mask-image:none!important;
+  mask-image:none!important;
+}
+html.figma-static .site-header,
+html.figma-static .share-note,
+html.figma-static .composer-dock,
+html.figma-static .composer-style-chip,
+html.figma-static .composer-share-note,
+html.figma-static .camcard-connect-badge{
+  -webkit-backdrop-filter:none!important;
+  backdrop-filter:none!important;
+}
+html.figma-static .camcard-hands-glow,
+html.figma-static .composer-orb,
+html.figma-static .composer-stage::before{
+  filter:none!important;
+  -webkit-filter:none!important;
+}
+html.figma-static .camcard-hand{
+  filter:none!important;
+  -webkit-filter:none!important;
+  will-change:auto!important;
+}
 html.figma-static .hand--left,
-html.figma-static .hand--right{transform:none!important}
+html.figma-static .hand--right{
+  transform:none!important;
+  will-change:auto!important;
+}
+html.figma-static .benefit-visual::before,
+html.figma-static .composer-stage::before{
+  -webkit-mask-image:none!important;
+  mask-image:none!important;
+}
+html.figma-static .site-header{
+  position:relative!important;
+  top:auto!important;
+}
+html.figma-static .camcard-connect-badge{
+  opacity:1!important;
+}
 
 
 /* Restored previous two-hand hero stage */

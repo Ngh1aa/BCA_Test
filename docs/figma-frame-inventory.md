@@ -10,9 +10,12 @@ The goal is a **short recruiter-facing case presentation**, not a long portfolio
 | # | Figma frame | Purpose | Source |
 |---|---|---|---|
 | **01** | **Project Overview** | Brief, product, role, scope, deliverables | `docs/ux-strategy.md` + retained brief context |
-| **02** | **Problem & Consumer Insight** | Pain points, JTBD, core insight; clearly marked as hypotheses | `docs/ux-research.md` + `docs/ux-strategy.md` |
+| **02** | **Research Summary** | Desk research evidence and category patterns | `figma-html/02-research-insights.html` |
+| **02A** | **Consumer Insights** | Pain point → insight → landing implication; clearly marked as hypotheses | `figma-html/02a-consumer-insights.html` |
+| **02B** | **Competitor Benchmark** | Bizz Card, WorldCard Mobile, Linktree → positioning opportunity | `figma-html/02b-competitor-benchmark.html` |
 | **03** | **Competitive Landscape & Design Implications** | Bizz Card, WorldCard Mobile, Linktree → opportunity → landing decisions | `docs/ux-research.md` |
-| **04** | **Sitemap** | Proposed information architecture for public site, owner area and recipient card | `docs/ux-strategy.md` |
+| **04A** | **Product Sitemap** | Proposed full platform: public site, owner area, recipient card and supporting routes | `figma-html/04a-product-sitemap.html` |
+| **04B** | **Landing Information Architecture** | Single-page section hierarchy and conversion logic | `figma-html/04-information-architecture.html` |
 | **05** | **User Flow — Early Access** | Landing → evaluate → email intent → validation/confirmation concept | `docs/ux-strategy.md` |
 | **06** | **User Flow — Core Product** | Create → customize → preview/share → recipient opens → save contact | `docs/ux-strategy.md` |
 | **07** | **Concept & Visual Direction** | “Less exchanging. More connecting.”, Clear/Personal/Effortless, art direction and visual rationale | `docs/design-contract.md` + `docs/ux-strategy.md` |

@@ -49,7 +49,7 @@ Logo SVG gốc được giữ nguyên. Xanh đậm dùng cho hành động, xanh
 | FAQs | Còn rào cản nào? | App cho người nhận, chia sẻ, social, customization, Early Access |
 | Early access / Footer | Tôi làm gì tiếp? | Lặp form/CTA sau khi đã đánh giá sản phẩm |
 
-Điều chỉnh brief: sửa “Eortless” → “Effortless”; thêm How it works, customization và FAQ; đổi claim 173 cây/ngày thành giảm giấy vì thiếu nguồn. Tính năng sync Google/Microsoft được ghi “planned for launch”, không giả định đã tích hợp. Không đưa giá Premium/in card từ screenshot vào landing vì chưa xác minh điều kiện hiện tại.
+Điều chỉnh brief: sửa “Eortless” → “Effortless”; thêm How it works, customization và FAQ. Claim “Help save 173 trees a day” được giữ nguyên vì đây là một marketing claim cụ thể do brief cung cấp; case study ghi rõ nguồn là brief và không tự tuyên bố đã xác minh phép tính môi trường. Với “Integrated”, copy tách rõ hai cơ chế trong brief: **sync với Microsoft/Google** và **store directly on your phone**; không diễn giải local storage như một dạng account sync. Không đưa giá Premium/in card từ screenshot vào landing vì chưa xác minh điều kiện hiện tại.
 
 ## 6. Sitemap toàn sản phẩm — đề xuất
 **Đã thiết kế UI:** Landing và các section. **Chỉ đề xuất UX:** toàn bộ đường dẫn app bên dưới; đây không phải các trang đang chạy. Account/settings/privacy là các bề mặt cần thiết được đề xuất thêm; Premium/print dựa trên ảnh brief.

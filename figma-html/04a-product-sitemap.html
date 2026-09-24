@@ -1,0 +1,53 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>04A Product Sitemap</title><link rel="stylesheet" href="shared.css?v=figma-text-safe-2"><style>
+.site-map{display:grid;gap:18px}.site-root{max-width:360px;margin:auto;text-align:center}.site-cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.site-branch{padding:20px;border:1px solid var(--line);border-radius:18px;background:#fff}.site-branch.blue{background:#F3F8FE;border-color:#D6E6F5}.site-branch h3{font-size:20px}.site-list{display:grid;gap:8px;margin-top:14px}.site-item{padding:9px 10px;border:1px solid #E1EAF1;border-radius:10px;background:#FAFCFE;font-size:10px;line-height:1.35}.site-item b{display:block;font-size:10px}.site-item span{color:var(--muted);font-size:9px}.scope-key{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+</style></head><body><main class="frame tall">
+<div class="pad">
+  <div class="page-top"><div><div class="crumb">InstaCard · BCA UI/UX Test</div></div><div class="page-tag"><i></i>04A · PRODUCT SITEMAP · Proposed full platform</div></div>
+  <span class="eyebrow">Beyond the landing page</span>
+  <h1 class="title">The sitemap covers the product ecosystem: public website, owner workspace and recipient card.</h1>
+  <p class="lede">Only the landing page is designed to final UI in this test. The routes below are a proposed product structure derived from the brief and supplied screens, so they are clearly separated from the landing-page information architecture.</p>
+
+  <div class="section site-map">
+    <div class="card blue site-root"><div class="meta">Root</div><h3 style="margin-top:8px">InstaCard Platform</h3><p class="copy">Public acquisition + owner creation/management + recipient experience</p></div>
+    <div class="site-cols">
+      <div class="site-branch blue"><div class="meta">Public website</div><h3 style="margin-top:8px">Marketing & access</h3><div class="site-list">
+        <div class="site-item"><b>/</b><span>Landing · Hero · Benefits · How it works · Card Studio · FAQ</span></div>
+        <div class="site-item"><b>/#early-access</b><span>Early Access signup</span></div>
+        <div class="site-item"><b>/early-access/confirmation</b><span>Confirmation / retry concept</span></div>
+        <div class="site-item"><b>/help · /privacy · /terms</b><span>Support / legal surfaces</span></div>
+      </div></div>
+      <div class="site-branch"><div class="meta">Owner workspace</div><h3 style="margin-top:8px">Create & manage cards</h3><div class="site-list">
+        <div class="site-item"><b>/sign-in · /sign-up · /reset-password</b><span>Account access</span></div>
+        <div class="site-item"><b>/app/cards</b><span>My Cards / empty state</span></div>
+        <div class="site-item"><b>/app/cards/new</b><span>Create card · contact · social links</span></div>
+        <div class="site-item"><b>/app/cards/:id/edit</b><span>Edit content / field privacy</span></div>
+        <div class="site-item"><b>/app/cards/:id/design</b><span>Template · color · type</span></div>
+        <div class="site-item"><b>/app/cards/:id/preview</b><span>Preview · QR · share link</span></div>
+        <div class="site-item"><b>/app/premium · /app/settings</b><span>Plan / account / privacy</span></div>
+      </div></div>
+      <div class="site-branch"><div class="meta">Recipient + optional commerce</div><h3 style="margin-top:8px">Open, save, print</h3><div class="site-list">
+        <div class="site-item"><b>/c/:slug</b><span>Public card · contact · social links</span></div>
+        <div class="site-item"><b>Save contact / vCard</b><span>No recipient login required</span></div>
+        <div class="site-item"><b>Share link</b><span>Recipient can re-share</span></div>
+        <div class="site-item"><b>/app/cards/:id/print</b><span>Print setup concept from brief screens</span></div>
+        <div class="site-item"><b>/app/orders/review · /app/orders/:id</b><span>Order review / status concept</span></div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="scope-key">
+    <span class="pill">Final UI in test · Landing only</span>
+    <span class="pill">UX proposed · Owner area</span>
+    <span class="pill">UX proposed · Recipient / commerce</span>
+  </div>
+
+  <div class="section">
+    <div class="section-head"><h2>Scope rule</h2><p>A sitemap is useful here because InstaCard is a platform, even though the visual-design deliverable is one landing page.</p></div>
+    <table class="matrix">
+      <tr><th>Surface</th><th>Why it exists</th><th>Status in this test</th></tr>
+      <tr><td><strong>Public website</strong></td><td>Explain value and convert Early Access interest.</td><td>Landing final UI + responsive variants.</td></tr>
+      <tr><td><strong>Owner workspace</strong></td><td>Create, customize, preview and share cards.</td><td>Product UX proposal / flow, not full final UI.</td></tr>
+      <tr><td><strong>Recipient card</strong></td><td>Open identity, contact or social link, save locally.</td><td>Core recipient flow + product moments.</td></tr>
+    </table>
+  </div>
+</div></main></body></html>

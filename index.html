@@ -37,7 +37,7 @@
       if (classes) document.documentElement.classList.add(...classes);
     })();
   </script>
-  <link rel="stylesheet" href="./styles.css?v=figma-responsive-matrix-6">
+  <link rel="stylesheet" href="./styles.css?v=benefit-scenes-2">
 </head>
 <body>
   <svg class="icon-sprite" aria-hidden="true" focusable="false">
@@ -306,16 +306,27 @@
         <li class="benefit-card benefit-card--showcase benefit-card--simple">
           <div class="benefit-visual benefit-visual--simple" aria-hidden="true">
             <span class="wireframe-only wireframe-visual-label">FEATURE VISUAL</span>
-            <div class="benefit-visual__rail"></div>
-            <div class="mini-phone">
-              <span class="mini-phone__notch"></span>
-              <span class="mini-phone__avatar"></span>
-              <span class="mini-phone__line mini-phone__line--wide"></span>
-              <span class="mini-phone__line"></span>
-              <span class="mini-phone__share">Share profile <b><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#hg-share"></use></svg></b></span>
+            <div class="feature-demo feature-demo--browser">
+              <div class="micro-browser">
+                <div class="micro-browser__bar">
+                  <span class="micro-browser__dots"><i></i><i></i><i></i></span>
+                  <span class="micro-browser__url"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#hg-link"></use></svg> instacard.io/alex</span>
+                </div>
+                <div class="micro-browser__profile">
+                  <span class="micro-avatar">AV</span>
+                  <div class="micro-browser__identity">
+                    <strong>Alex Vance</strong>
+                    <span>Product Designer</span>
+                  </div>
+                  <div class="micro-browser__actions">
+                    <span><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#hg-user-add"></use></svg> Save contact</span>
+                    <b><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#hg-share"></use></svg></b>
+                  </div>
+                </div>
+              </div>
+              <div class="micro-proof-chip"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#hg-browser"></use></svg> Opens in browser</div>
+              <div class="micro-proof-chip micro-proof-chip--right">No install</div>
             </div>
-            <span class="benefit-float-chip benefit-float-chip--left">No install</span>
-            <span class="benefit-float-chip benefit-float-chip--right">Open instantly</span>
           </div>
           <div class="benefit-body">
             <div class="benefit-meta">
@@ -332,17 +343,25 @@
         <li class="benefit-card benefit-card--showcase benefit-card--accurate">
           <div class="benefit-visual benefit-visual--accurate" aria-hidden="true">
             <span class="wireframe-only wireframe-visual-label">FEATURE VISUAL</span>
-            <div class="accuracy-sheet">
-              <span class="accuracy-label">Contact name</span>
-              <div class="accuracy-row accuracy-row--wrong">
-                <span>Jhon Carter</span>
-                <b><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#hg-cancel"></use></svg></b>
+            <div class="feature-demo feature-demo--transfer">
+              <div class="contact-payload contact-payload--source">
+                <small>SHARED PROFILE</small>
+                <strong>John Carter</strong>
+                <span>john@northstar.co</span>
+                <span>+1 415 555 0138</span>
               </div>
-              <div class="accuracy-row accuracy-row--right">
-                <span>John Carter</span>
-                <b><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#hg-tick"></use></svg></b>
+              <div class="contact-transfer">
+                <span></span>
+                <b><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#hg-arrow-right"></use></svg></b>
+                <small>1:1</small>
               </div>
-              <span class="accuracy-status">Saved exactly as shared</span>
+              <div class="contact-payload contact-payload--saved">
+                <small>SAVED CONTACT</small>
+                <strong>John Carter</strong>
+                <span>john@northstar.co</span>
+                <span>+1 415 555 0138</span>
+                <i><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#hg-tick"></use></svg> Exact match</i>
+              </div>
             </div>
           </div>
           <div class="benefit-body">
@@ -360,12 +379,19 @@
         <li class="benefit-card benefit-card--showcase benefit-card--language">
           <div class="benefit-visual benefit-visual--language" aria-hidden="true">
             <span class="wireframe-only wireframe-visual-label">FEATURE VISUAL</span>
-            <div class="language-orbit">
-              <span class="language-core">A<span>文</span></span>
-              <span class="language-chip language-chip--one">English</span>
-              <span class="language-chip language-chip--two">日本語</span>
-              <span class="language-chip language-chip--three">中文</span>
-              <span class="language-chip language-chip--four">한국어</span>
+            <div class="feature-demo feature-demo--language">
+              <div class="locale-tabs">
+                <span>EN</span><span class="is-active">日本語</span><span>中文</span>
+              </div>
+              <div class="native-contact">
+                <small>CONTACT NAME</small>
+                <strong>山田 太郎</strong>
+                <span>Taro Yamada</span>
+                <div class="native-contact__meta">
+                  <b><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#hg-language"></use></svg> Original script</b>
+                  <i><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#hg-tick"></use></svg> Preserved</i>
+                </div>
+              </div>
             </div>
           </div>
           <div class="benefit-body">
@@ -383,15 +409,18 @@
         <li class="benefit-card benefit-card--showcase benefit-card--integrated">
           <div class="benefit-visual benefit-visual--integrated" aria-hidden="true">
             <span class="wireframe-only wireframe-visual-label">FEATURE VISUAL</span>
-            <div class="sync-map">
-              <span class="sync-line sync-line--a"></span>
-              <span class="sync-line sync-line--b"></span>
-              <span class="sync-line sync-line--c"></span>
-              <span class="sync-node sync-node--center">IC</span>
-              <span class="sync-node sync-node--google"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#hg-google"></use></svg></span>
-              <span class="sync-node sync-node--microsoft"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#hg-microsoft"></use></svg></span>
-              <span class="sync-node sync-node--phone"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#hg-phone"></use></svg></span>
-              <span class="sync-status">Contact ready to sync</span>
+            <div class="feature-demo feature-demo--sync">
+              <div class="sync-profile-card">
+                <span class="micro-avatar">AV</span>
+                <div><strong>Alex Vance</strong><small>Contact ready</small></div>
+              </div>
+              <span class="sync-route sync-route--one"></span>
+              <span class="sync-route sync-route--two"></span>
+              <span class="sync-route sync-route--three"></span>
+              <div class="sync-destination sync-destination--google"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#hg-google"></use></svg><span>Google</span></div>
+              <div class="sync-destination sync-destination--microsoft"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#hg-microsoft"></use></svg><span>Outlook</span></div>
+              <div class="sync-destination sync-destination--phone"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#hg-phone"></use></svg><span>Phone</span></div>
+              <div class="sync-complete"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#hg-tick"></use></svg> Synced</div>
             </div>
           </div>
           <div class="benefit-body">
@@ -409,12 +438,21 @@
         <li class="benefit-card benefit-card--showcase benefit-card--green">
           <div class="benefit-visual benefit-visual--green" aria-hidden="true">
             <span class="wireframe-only wireframe-visual-label">FEATURE VISUAL</span>
-            <div class="green-counter">
-              <span class="green-counter__eyebrow">PAPERLESS BY DEFAULT</span>
-              <strong>0</strong>
-              <span class="green-counter__unit">cards to print</span>
-              <div class="green-sprout">
-                <i></i><i></i><b></b>
+            <div class="feature-demo feature-demo--paperless">
+              <div class="paper-stack" aria-hidden="true">
+                <span class="paper-card paper-card--one"></span>
+                <span class="paper-card paper-card--two"></span>
+                <span class="paper-card paper-card--three"></span>
+              </div>
+              <div class="paperless-arrow"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#hg-arrow-right"></use></svg></div>
+              <div class="digital-card-mini">
+                <span class="digital-card-mini__avatar">AV</span>
+                <div><strong>Alex Vance</strong><small>instacard.io/alex</small></div>
+                <b><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#hg-share"></use></svg></b>
+              </div>
+              <div class="paperless-metric">
+                <strong>0</strong>
+                <span>reprints needed</span>
               </div>
             </div>
           </div>
@@ -433,17 +471,26 @@
         <li class="benefit-card benefit-card--showcase benefit-card--custom">
           <div class="benefit-visual benefit-visual--custom" aria-hidden="true">
             <span class="wireframe-only wireframe-visual-label">FEATURE VISUAL</span>
-            <div class="theme-stack">
-              <div class="theme-card theme-card--back">
-                <span></span><span></span><span></span>
+            <div class="feature-demo feature-demo--customizer">
+              <div class="customizer-panel">
+                <small>STYLE</small>
+                <span class="customizer-option is-active"><i></i> Indigo</span>
+                <span class="customizer-option"><i></i> Slate</span>
+                <span class="customizer-option"><i></i> Mint</span>
               </div>
-              <div class="theme-card theme-card--mid">
-                <span></span><span></span><span></span>
+              <div class="customizer-preview">
+                <div class="customizer-preview__top">
+                  <span class="micro-avatar">AV</span>
+                  <b>Live preview</b>
+                </div>
+                <strong>Alex Vance</strong>
+                <span>Product Designer</span>
+                <div class="customizer-preview__links">
+                  <i></i><i></i><i></i>
+                </div>
               </div>
-              <div class="theme-card theme-card--front">
-                <div class="theme-card__avatar"></div>
-                <span></span><span></span>
-                <div class="theme-swatches"><i></i><i></i><i></i></div>
+              <div class="customizer-thumbs">
+                <span class="is-active"></span><span></span><span></span>
               </div>
             </div>
           </div>

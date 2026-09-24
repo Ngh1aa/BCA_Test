@@ -116,7 +116,8 @@ Do **not** present the following as verified facts without a cited source:
 - “10,000+ professionals”
 - “50+ countries”
 - “99% satisfaction”
-- “173 trees saved per day”
+- “Help save 173 trees a day” — preserved as a **brief-provided marketing claim**; not independently validated in this study.
+- “Sync to Microsoft, Google or store directly on your phone” — treat **cloud sync** and **local device storage** as two distinct user benefits.
 - current competitor pricing, download requirements, or feature limitations unless independently verified
 
 The final BCA submission deliberately avoids fake social proof and unsupported market statistics.

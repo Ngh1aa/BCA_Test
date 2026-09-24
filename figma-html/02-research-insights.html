@@ -1,37 +1,23 @@
 <!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>02 Research & Insights</title><link rel="stylesheet" href="shared.css?v=figma-text-safe-2"></head><body><main class="frame">
-<div class="pad" style="background:#F8FBFE;min-height:1120px">
-  <div class="page-top"><div><div class="crumb">InstaCard · BCA UI/UX Test</div></div><div class="page-tag"><i></i>02 · RESEARCH & INSIGHTS · Desk research</div></div>
+<div class="pad" style="background:#F8FBFE;min-height:1080px">
+  <div class="page-top"><div><div class="crumb">InstaCard · BCA UI/UX Test</div></div><div class="page-tag"><i></i>02 · RESEARCH FRAME · Desk research</div></div>
   <span class="eyebrow">Evidence before assumptions</span>
-  <h1 class="title">What the category already teaches users to expect.</h1>
-  <p class="lede">This board uses current official competitor/help documentation as benchmark evidence. It does <b>not</b> claim primary user interviews were conducted.</p>
-
-  <div class="section">
-    <div class="section-head"><h2>Benchmark pattern scan</h2><p>Focus on interaction expectations, not “winner/loser” scoring.</p></div>
-    <table class="matrix">
-      <tr><th>Pattern</th><th>HiHello</th><th>Popl</th><th>Blinq</th><th>Implication for InstaCard</th></tr>
-      <tr><td><strong>Recipient without app</strong></td><td>Browser viewing/saving supported.</td><td>Sharing can be received without recipient app in common flows.</td><td>NameDrop flow can save without Blinq app.</td><td><strong>Make “no app required” an early proof point.</strong></td></tr>
-      <tr><td><strong>Multiple share modes</strong></td><td>QR, link, email/text, wallet, NFC, offline.</td><td>QR, link, social, wallet, NFC and offline options.</td><td>NameDrop plus cross-platform QR/link/NFC options.</td><td><strong>Explain one profile as the source behind many sharing methods.</strong></td></tr>
-      <tr><td><strong>Live profile editing</strong></td><td>Card content updates remain available via the live card.</td><td>Editing + preview are core card-management patterns.</td><td>Digital card remains the reusable identity object.</td><td><strong>Show the card as a living profile, not a static image.</strong></td></tr>
+  <h1 class="title">I separated what the brief states, what the market shows, and what still needs validation.</h1>
+  <p class="lede">The research phase is split into two visible deep dives: <strong>Consumer Insight Hypotheses</strong> and <strong>Competitive Positioning</strong>. This keeps the bonus-point reasoning easy to scan instead of hiding it inside a generic research board.</p>
+  <div class="section"><div class="section-head"><h2>Research stack</h2><p>Three evidence levels, kept deliberately separate.</p></div><div class="grid g3">
+    <div class="card blue"><div class="meta">01 · Supplied brief</div><h3 style="margin-top:10px">What must be communicated</h3><p class="copy">Simple, Accurate, Multilingual, Integrated, Green and Customized — plus sitemap, user flows and one responsive landing-page direction.</p></div>
+    <div class="card"><div class="meta">02 · Desk research</div><h3 style="margin-top:10px">What users already see in the category</h3><p class="copy">Digital-card sharing, QR/NFC/link patterns, OCR-based card capture, link-in-bio profiles, contact saving and wallet-style access.</p></div>
+    <div class="card green"><div class="meta">03 · Hypotheses</div><h3 style="margin-top:10px">What I would validate next</h3><p class="copy">Whether no-app receiving, exact contact saving and a three-step Create → Share → Save model are the strongest comprehension drivers.</p></div>
+  </div></div>
+  <div class="section"><div class="section-head"><h2>Two deep-dive boards</h2><p>Both are intentionally separate from this overview so a reviewer can find the reasoning in seconds.</p></div><div class="grid g2">
+    <a class="card blue" href="02a-consumer-insights.html"><div class="num">02A</div><h3 style="margin-top:10px">Consumer Insight Hypotheses</h3><p class="copy">Moment → friction → underlying need → design response. Clearly labeled as hypotheses, not invented interviews.</p><div class="pill" style="margin-top:16px">Open board →</div></a>
+    <a class="card" href="02b-competitor-benchmark.html"><div class="num">02B</div><h3 style="margin-top:10px">Competitive Positioning</h3><p class="copy">Bizz Card · WorldCard Mobile · Linktree → what each model teaches and where InstaCard can focus.</p><div class="pill" style="margin-top:16px">Open board →</div></a>
+  </div></div>
+  <div class="section"><div class="section-head"><h2>Key synthesis</h2><p>The opportunity is not “another profile page”; it is a smoother handoff between two people.</p></div>
+    <table class="matrix"><tr><th>Observed category pattern</th><th>Risk for InstaCard</th><th>Design response</th></tr>
+      <tr><td>Digital-card products can become feature catalogues.</td><td>Visitors understand features but not the core job.</td><td><strong>Lead with the exchange moment, not customization.</strong></td></tr>
+      <tr><td>OCR products solve paper-to-digital capture.</td><td>Accuracy still depends on recognition and correction.</td><td><strong>Share structured source data directly — no OCR handoff.</strong></td></tr>
+      <tr><td>Link hubs are familiar but broad.</td><td>The professional contact outcome can get diluted among content links.</td><td><strong>Keep contact identity + selected social channels, but make Save Contact a first-class outcome.</strong></td></tr>
     </table>
-  </div>
-
-  <div class="section">
-    <div class="section-head"><h2>Consumer insight hypotheses</h2><p>These are design hypotheses inferred from the brief and category patterns; they should be validated in future research.</p></div>
-    <div class="grid g2">
-      <div class="card"><div class="num">H1</div><h3 style="margin-top:10px">“Don’t make this introduction feel like setup.”</h3><p class="copy">The exchange happens during a live conversation. Any download, account requirement or long form risks breaking the social moment.</p><div class="pill" style="margin-top:16px">Design implication · recipient-first</div></div>
-      <div class="card"><div class="num">H2</div><h3 style="margin-top:10px">“I want one identity, not five usernames.”</h3><p class="copy">Contact details and social channels feel more useful when intentionally grouped under one recognizable profile.</p><div class="pill" style="margin-top:16px">Design implication · one profile model</div></div>
-      <div class="card"><div class="num">H3</div><h3 style="margin-top:10px">“Professional doesn’t have to mean generic.”</h3><p class="copy">A business card is also a personal-brand surface, so the UI must balance trust with room for visual customization.</p><div class="pill" style="margin-top:16px">Design implication · templates + identity</div></div>
-      <div class="card"><div class="num">H4</div><h3 style="margin-top:10px">“The useful moment is what happens after the scan.”</h3><p class="copy">A share is only successful when the recipient can understand, keep and use the details afterwards.</p><div class="pill" style="margin-top:16px">Design implication · save/contact state</div></div>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="section-head"><h2>Research sources</h2><p>Current official sources used for the benchmark scan.</p></div>
-    <div class="grid g4">
-      <div class="source"><b>HiHello FAQ</b><p>Sharing methods, no-app recipient, wallet/offline support.</p><code>hihello.com/faq</code></div>
-      <div class="source"><b>Popl Help Center</b><p>QR/link/NFC/social sharing and mobile card workflow.</p><code>support.popl.co</code></div>
-      <div class="source"><b>Blinq Help Center</b><p>NameDrop and recipient save behavior.</p><code>support.blinq.me</code></div>
-      <div class="source"><b>NN/g</b><p>Case-study storytelling: explain design, process and impact.</p><code>nngroup.com</code></div>
-    </div>
   </div>
 </div></main></body></html>

@@ -10,34 +10,43 @@
       const params = new URLSearchParams(location.search);
       const rawMode = (params.get('figma') || '').toLowerCase();
 
-      const modeMap = {
-        '1': ['figma-static', 'figma-desktop', 'figma-landing'],
+      const canonicalModes = {
         'landing-desktop': ['figma-static', 'figma-desktop', 'figma-landing'],
-        'desktop': ['figma-static', 'figma-desktop', 'figma-landing'],
-
-        '2': ['figma-static', 'figma-wireframe', 'figma-desktop'],
-        'wireframe-desktop': ['figma-static', 'figma-wireframe', 'figma-desktop'],
-
-        '3': ['figma-static', 'figma-mobile', 'figma-landing'],
-        'landing-mobile': ['figma-static', 'figma-mobile', 'figma-landing'],
-        'mobile': ['figma-static', 'figma-mobile', 'figma-landing'],
-
-        '4': ['figma-static', 'figma-tablet', 'figma-landing'],
         'landing-tablet': ['figma-static', 'figma-tablet', 'figma-landing'],
-        'tablet': ['figma-static', 'figma-tablet', 'figma-landing'],
-
-        '5': ['figma-static', 'figma-wireframe', 'figma-tablet'],
+        'landing-mobile': ['figma-static', 'figma-mobile', 'figma-landing'],
+        'wireframe-desktop': ['figma-static', 'figma-wireframe', 'figma-desktop'],
         'wireframe-tablet': ['figma-static', 'figma-wireframe', 'figma-tablet'],
-
-        '6': ['figma-static', 'figma-wireframe', 'figma-mobile'],
         'wireframe-mobile': ['figma-static', 'figma-wireframe', 'figma-mobile']
       };
 
-      const classes = modeMap[rawMode];
-      if (classes) document.documentElement.classList.add(...classes);
+      const aliases = {
+        '1': 'landing-desktop',
+        'desktop': 'landing-desktop',
+        '4': 'landing-tablet',
+        'tablet': 'landing-tablet',
+        '3': 'landing-mobile',
+        'mobile': 'landing-mobile',
+        '2': 'wireframe-desktop',
+        '5': 'wireframe-tablet',
+        '6': 'wireframe-mobile'
+      };
+
+      const canonicalMode = canonicalModes[rawMode] ? rawMode : aliases[rawMode];
+      const classes = canonicalModes[canonicalMode];
+
+      if (classes) {
+        document.documentElement.classList.add(...classes);
+        document.documentElement.dataset.figmaExport = canonicalMode;
+
+        if (rawMode !== canonicalMode) {
+          params.set('figma', canonicalMode);
+          const normalizedUrl = location.pathname + '?' + params.toString() + location.hash;
+          history.replaceState(null, '', normalizedUrl);
+        }
+      }
     })();
   </script>
-  <link rel="stylesheet" href="./styles.css?v=editable-text-runs-7">
+  <link rel="stylesheet" href="./styles.css?v=figma-links-normalized-8">
 </head>
 <body>
   <svg class="icon-sprite" aria-hidden="true" focusable="false">

@@ -1,0 +1,30 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>14 Key Decisions & Trade-offs</title><link rel="stylesheet" href="shared.css?v=figma-text-safe-2"></head><body><main class="frame tall">
+<div class="pad">
+  <div class="page-top"><div><div class="crumb">InstaCard · BCA UI/UX Test</div></div><div class="page-tag"><i></i>14 · KEY DECISIONS & TRADE-OFFS · Senior evidence</div></div>
+  <span class="eyebrow">Design judgment under constraints</span>
+  <h1 class="title">The final page is the result of choices — not the accumulation of every possible feature.</h1>
+  <p class="lede">For each important decision, I compared viable alternatives, chose the option that best supported the core exchange journey, and accepted a trade-off rather than pretending every goal could be maximized at once.</p>
+
+  <div class="section">
+    <div class="section-head"><h2>Five decisions that shaped the page</h2><p>The strongest senior-level evidence is not the final frame itself, but the reasoning behind what stayed, moved or was removed.</p></div>
+    <table class="matrix">
+      <tr><th>Decision</th><th>Alternatives considered</th><th>Chosen direction</th><th>Reason</th><th>Trade-off accepted</th></tr>
+      <tr><td><strong>D1 · Lead with exchange friction</strong></td><td>A: Customization first<br>B: Integrations first</td><td><strong>No-app / effortless exchange first</strong></td><td>Recipient setup is the clearest barrier to a fast exchange moment.</td><td>Customization appears later, so the hero is less visually feature-rich.</td></tr>
+      <tr><td><strong>D2 · One dominant CTA</strong></td><td>A: Try demo + pricing + signup<br>B: Multiple feature CTAs</td><td><strong>Early Access as primary action</strong></td><td>The test has one conversion objective and no live product purchase flow.</td><td>Users seeking pricing or product depth get less immediate navigation.</td></tr>
+      <tr><td><strong>D3 · Product moments over generic icons</strong></td><td>A: Illustration-only cards<br>B: Large lifestyle photography</td><td><strong>Micro UI scenes</strong></td><td>Concrete save/share/sync moments explain capability faster than symbolic art.</td><td>More layout complexity and more responsive QA are required.</td></tr>
+      <tr><td><strong>D4 · Three-step journey</strong></td><td>A: 5–6 detailed onboarding steps<br>B: No process section</td><td><strong>Create → Share → Save</strong></td><td>A short mental model is easier to remember and keeps focus on the exchange outcome.</td><td>Advanced setup details are intentionally omitted from the landing page.</td></tr>
+      <tr><td><strong>D5 · Responsive reflow, not scaling</strong></td><td>A: Shrink desktop grid<br>B: Separate unrelated mobile design</td><td><strong>Same IA, breakpoint-specific composition</strong></td><td>Content priority stays stable while interaction density changes by device.</td><td>Tablet/mobile require dedicated layout decisions instead of automatic resize.</td></tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <div class="section-head"><h2>What I deliberately did not optimize for</h2><p>Scope control is part of product judgment.</p></div>
+    <div class="grid g3">
+      <div class="card"><div class="meta">Not now</div><h3 style="margin-top:10px">Full feature catalogue</h3><p class="copy">Analytics, CRM depth and team admin could be relevant later, but they weaken the clarity of this first-value story.</p></div>
+      <div class="card"><div class="meta">Not now</div><h3 style="margin-top:10px">Aggressive motion</h3><p class="copy">Animation is treated as enhancement, not a requirement for understanding the product or completing the CTA.</p></div>
+      <div class="card"><div class="meta">Not now</div><h3 style="margin-top:10px">Invented proof</h3><p class="copy">No fake conversion uplift, usability score or customer quote is used to make the concept look more validated than it is.</p></div>
+    </div>
+  </div>
+
+  <div class="note good" style="margin-top:30px"><b>Decision principle:</b> if an idea makes the interface more impressive but makes the product story harder to explain, I remove or postpone it.</div>
+</div></main></body></html>

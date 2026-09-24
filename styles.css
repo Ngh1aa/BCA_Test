@@ -4965,3 +4965,25 @@ html.figma-inter h3::after{
   -webkit-filter:none!important;
   mix-blend-mode:normal!important;
 }
+
+
+/* Brief-alignment polish: make the environmental claim and phone-local storage
+   legible in the benefit micro-scenes without changing the section layout. */
+.paperless-metric{
+  right:6px;
+  bottom:0;
+  align-items:flex-end;
+  gap:4px;
+}
+.paperless-metric strong{
+  font-size:32px;
+  line-height:.9;
+  letter-spacing:-.04em;
+}
+.paperless-metric span{
+  max-width:62px;
+  line-height:1.1;
+}
+.sync-destination--phone{
+  min-width:92px;
+}

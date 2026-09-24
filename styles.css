@@ -4965,3 +4965,11 @@ html.figma-inter h3::after{
   -webkit-filter:none!important;
   mix-blend-mode:normal!important;
 }
+
+
+/* Brief alignment: make sync-vs-local storage explicit in the Integrated visual. */
+.sync-destination{white-space:nowrap}
+.sync-destination--google{left:0}
+.sync-destination--microsoft{right:0}
+.sync-destination--phone{right:0}
+.paperless-metric strong{font-size:24px}

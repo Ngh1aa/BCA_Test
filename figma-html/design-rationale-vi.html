@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Design Rationale — Quy trình UX → UI</title>
+  <link rel="stylesheet" href="shared.css?v=figma-text-safe-2">
+  <style>
+    .rationale-frame{min-height:1220px}
+    .ratio-bar{display:grid;grid-template-columns:2fr 1fr;height:42px;margin-top:34px;overflow:hidden;border:1px solid var(--line);border-radius:12px}
+    .ratio-bar span{display:flex;align-items:center;padding:0 16px;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+    .ratio-bar .ux{background:#EAF4FF;color:var(--blue)}
+    .ratio-bar .ui{background:#F1F4F7;color:#53697C;border-left:1px solid var(--line)}
+    .phase-head{display:flex;align-items:center;justify-content:space-between;gap:20px;margin:34px 0 14px}
+    .phase-head h2{font-size:28px}
+    .phase-head p{max-width:620px;color:var(--muted);font-size:12px;line-height:1.5;text-align:right}
+    .steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+    .step{min-height:132px;padding:17px;border:1px solid var(--line);border-radius:16px;background:#fff}
+    .step.ux{background:#F7FBFF;border-color:#D7E7F5}
+    .step.ui{background:#FAFBFC}
+    .step-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+    .step-no{color:var(--blue);font-size:11px;font-weight:700;letter-spacing:.08em}
+    .step-type{padding:4px 7px;border-radius:999px;background:#EAF4FF;color:#53799E;font-size:8px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+    .step.ui .step-type{background:#EEF1F4;color:#6B7884}
+    .step h3{margin-top:11px;font-size:17px;line-height:1.12}
+    .step p{margin-top:7px;color:var(--muted);font-size:10.5px;line-height:1.48}
+    .decision-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+    .decision{padding:16px 17px;border-top:2px solid var(--blue);background:#F8FBFE}
+    .decision b{display:block;font-size:12px}
+    .decision p{margin-top:6px;color:var(--muted);font-size:10.5px;line-height:1.45}
+    .quote{margin-top:28px;padding:18px 20px;border-radius:16px;background:#102538;color:#fff}
+    .quote strong{display:block;font-size:15px}
+    .quote p{margin-top:6px;color:#C9D8E4;font-size:11px;line-height:1.5}
+  </style>
+</head>
+<body>
+<main class="frame rationale-frame">
+  <div class="pad">
+    <div class="page-top">
+      <div><div class="crumb">InstaCard · BCA UI/UX Test</div></div>
+      <div class="page-tag"><i></i>DESIGN RATIONALE · UX → UI · Vietnamese</div>
+    </div>
+
+    <span class="eyebrow">Lý do em thiết kế landing page theo cấu trúc này</span>
+    <h1 class="title" style="max-width:1160px">Em bắt đầu từ vấn đề UX, không bắt đầu từ việc “làm giao diện cho đẹp”.</h1>
+    <p class="lede" style="max-width:1080px">
+      Mục tiêu đầu tiên của em là giúp người xem hiểu InstaCard trong vài giây: đây là sản phẩm gì, giải quyết sự bất tiện nào khi trao đổi thông tin liên hệ, và bước tiếp theo họ nên làm là gì. Chỉ sau khi luồng thông tin, mức độ ưu tiên và hành vi chính đã rõ, em mới chuyển sang UI để tăng độ tin cậy, cảm xúc và khả năng ghi nhớ thương hiệu.
+    </p>
+
+    <div class="ratio-bar" aria-label="UX first, UI second">
+      <span class="ux">UX trước · hiểu vấn đề → cấu trúc → luồng → wireframe</span>
+      <span class="ui">UI sau · art direction → system → polish</span>
+    </div>
+
+    <div class="phase-head">
+      <h2>01 — Quy trình UX: em làm rõ “vì sao” trước khi quyết định “trông như thế nào”</h2>
+      <p>Em tách rõ dữ liệu từ brief / desk research với giả định thiết kế. Những điều chưa có kiểm chứng người dùng được giữ ở mức hypothesis, không trình bày như insight đã xác thực.</p>
+    </div>
+
+    <div class="steps">
+      <div class="step ux"><div class="step-top"><span class="step-no">01</span><span class="step-type">Brief</span></div><h3>Tách yêu cầu thành mục tiêu</h3><p>Em đọc brief, ghi riêng business goal, user goal, deliverables, giới hạn thời gian và CTA cần ưu tiên.</p></div>
+      <div class="step ux"><div class="step-top"><span class="step-no">02</span><span class="step-type">Actors</span></div><h3>Xác định hai phía của trao đổi</h3><p>Em không chỉ nhìn người gửi. Em tách sender và recipient để thấy rõ nhu cầu chia sẻ nhanh và nhu cầu nhận/lưu không phiền.</p></div>
+      <div class="step ux"><div class="step-top"><span class="step-no">03</span><span class="step-type">Pain point</span></div><h3>Liệt kê ma sát nhỏ nhất</h3><p>Cài app, gõ lại số điện thoại, tìm social link, sai chính tả, thất lạc card giấy, không biết nên lưu thông tin nào.</p></div>
+      <div class="step ux"><div class="step-top"><span class="step-no">04</span><span class="step-type">Research</span></div><h3>Benchmark theo pattern, không copy visual</h3><p>Em xem các sản phẩm digital card để học cách họ giải thích share / save / customization, rồi chọn pattern phù hợp với brief.</p></div>
+
+      <div class="step ux"><div class="step-top"><span class="step-no">05</span><span class="step-type">JTBD</span></div><h3>Chốt job-to-be-done</h3><p>“Khi em gặp một người mới, giúp em chia sẻ đúng thông tin thật nhanh; khi nhận card, giúp em hiểu và lưu lại mà không phải setup.”</p></div>
+      <div class="step ux"><div class="step-top"><span class="step-no">06</span><span class="step-type">Priority</span></div><h3>Xếp thứ tự nội dung</h3><p>Em ưu tiên: hiểu sản phẩm → thấy bằng chứng ít ma sát → hiểu lợi ích → hiểu cách dùng → thấy khả năng cá nhân hoá → giải đáp lo ngại → CTA.</p></div>
+      <div class="step ux"><div class="step-top"><span class="step-no">07</span><span class="step-type">Flow</span></div><h3>Thiết kế luồng đọc và CTA</h3><p>Mỗi section phải trả lời đúng một câu hỏi. CTA Early Access được lặp lại có chủ đích nhưng không cạnh tranh với nhiều hành động phụ.</p></div>
+      <div class="step ux"><div class="step-top"><span class="step-no">08</span><span class="step-type">Wireframe</span></div><h3>Kiểm tra cấu trúc trước visual</h3><p>Em dựng low-fi desktop → tablet → mobile để kiểm tra hierarchy, thứ tự đọc, reflow và điểm nào cần product proof trước khi trang trí.</p></div>
+    </div>
+
+    <div class="phase-head">
+      <h2>02 — Chỉ sau khi UX ổn, em mới chuyển sang UI</h2>
+      <p>UI được dùng để tăng clarity và trust cho quyết định UX đã có — không dùng decoration để che một cấu trúc chưa rõ.</p>
+    </div>
+
+    <div class="steps">
+      <div class="step ui"><div class="step-top"><span class="step-no">09</span><span class="step-type">Direction</span></div><h3>Chốt art direction</h3><p>Em chọn cảm giác clean, friendly, professional; màu xanh tạo trust, nền sáng để product UI và CTA dễ đọc.</p></div>
+      <div class="step ui"><div class="step-top"><span class="step-no">10</span><span class="step-type">System</span></div><h3>Xây system trước khi polish</h3><p>Typography, spacing, grid, radius, button, form, card và states được thống nhất để toàn trang có cùng logic thị giác.</p></div>
+      <div class="step ui"><div class="step-top"><span class="step-no">11</span><span class="step-type">Product proof</span></div><h3>Ưu tiên micro product scene</h3><p>Thay vì icon chung chung, em dùng browser, save-contact, sync, language và customizer để người xem “thấy” giá trị sản phẩm.</p></div>
+      <div class="step ui"><div class="step-top"><span class="step-no">12</span><span class="step-type">QA</span></div><h3>Responsive, accessibility, handoff</h3><p>Em kiểm tra 1440 / 768 / 375, độ tương phản, touch target, text wrapping, trạng thái form và khả năng convert sang Figma.</p></div>
+    </div>
+
+    <div class="phase-head" style="margin-top:38px">
+      <h2>03 — Vì sao landing page được chia thành các phần này?</h2>
+      <p>Mỗi section tồn tại để giảm một loại uncertainty cụ thể trong hành trình ra quyết định.</p>
+    </div>
+
+    <div class="decision-grid">
+      <div class="decision"><b>Hero → hiểu ngay sản phẩm</b><p>Trả lời nhanh: InstaCard là gì, lợi ích chính là gì, và hành động tiếp theo là gì.</p></div>
+      <div class="decision"><b>Share / Proof → giảm cảm giác “phiền”</b><p>Đưa “không cần app”, lưu contact, giữ nguyên tên và nhiều kênh chia sẻ lên sớm để xử lý objection.</p></div>
+      <div class="decision"><b>Benefits → chuyển claim thành bằng chứng</b><p>Mỗi lợi ích đi kèm một micro product moment để người xem không phải tự tưởng tượng tính năng hoạt động ra sao.</p></div>
+      <div class="decision"><b>How it works → tạo mental model 3 bước</b><p>Create → Share → Saved giúp sản phẩm dễ nhớ và giảm cognitive load trước khi người dùng quyết định đăng ký.</p></div>
+      <div class="decision"><b>Your Card → chứng minh khả năng cá nhân hoá</b><p>Chỉ sau khi core value đã rõ, em mới đưa customization vào để không làm thông điệp chính bị loãng.</p></div>
+      <div class="decision"><b>FAQ + CTA → xử lý do dự cuối</b><p>FAQ trả lời các câu hỏi có thể cản conversion; CTA cuối lặp lại hành động chính khi người xem đã đủ context.</p></div>
+    </div>
+
+    <div class="quote">
+      <strong>Nguyên tắc em dùng xuyên suốt: “Clarity before decoration.”</strong>
+      <p>Em xem landing page như một chuỗi quyết định UX: mỗi phần phải giúp người dùng hiểu thêm một điều hoặc bớt đi một nghi ngại. UI là lớp cuối cùng giúp chuỗi quyết định đó trở nên rõ, đáng tin và có cảm xúc hơn.</p>
+    </div>
+  </div>
+</main>
+</body>
+</html>

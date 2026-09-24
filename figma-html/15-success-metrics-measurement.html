@@ -1,0 +1,43 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>15 Success Metrics & Measurement</title><link rel="stylesheet" href="shared.css?v=figma-text-safe-2"></head><body><main class="frame tall">
+<div class="pad">
+  <div class="page-top"><div><div class="crumb">InstaCard · BCA UI/UX Test</div></div><div class="page-tag"><i></i>15 · SUCCESS METRICS & MEASUREMENT · Senior evidence</div></div>
+  <span class="eyebrow">How I would know the design is working</span>
+  <h1 class="title">I would measure the full path from understanding the proposition to successfully saving a contact.</h1>
+  <p class="lede">Because this is a design test and not a launched product, I do not claim performance numbers. Instead, I define the measurement model, events and failure signals I would use after launch or during validation.</p>
+
+  <div class="section">
+    <div class="section-head"><h2>Measurement funnel</h2><p>Each stage answers a different question: understand → act → complete → receive value.</p></div>
+    <div class="flow">
+      <div class="flow-node primary"><b>01 · Understand</b><span>5-second comprehension</span></div><div class="arrow">→</div>
+      <div class="flow-node"><b>02 · Engage</b><span>Primary CTA click</span></div><div class="arrow">→</div>
+      <div class="flow-node"><b>03 · Convert</b><span>Early Access completion</span></div><div class="arrow">→</div>
+      <div class="flow-node"><b>04 · Exchange</b><span>Open shared profile</span></div><div class="arrow">→</div>
+      <div class="flow-node success"><b>05 · Outcome</b><span>Save contact completed</span></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head"><h2>Metrics I would track</h2><p>Behavioral metrics are paired with comprehension and quality signals so conversion alone does not hide UX problems.</p></div>
+    <table class="matrix">
+      <tr><th>Metric</th><th>What it tells me</th><th>How I would capture it</th><th>Design question</th></tr>
+      <tr><td><strong>5-second comprehension</strong></td><td>Whether the proposition is understood before deep reading.</td><td>Moderated/unmoderated first-impression test.</td><td>Does the hero explain product + value clearly?</td></tr>
+      <tr><td><strong>Primary CTA click-through</strong></td><td>Whether interest translates into intent.</td><td>Analytics event on Early Access CTA.</td><td>Is the action visible and compelling?</td></tr>
+      <tr><td><strong>Signup completion / abandonment</strong></td><td>Whether the form introduces avoidable friction.</td><td>Form-start, error and submit-success events.</td><td>Are fields, errors and expectations clear?</td></tr>
+      <tr><td><strong>Recipient save-contact completion</strong></td><td>Whether the exchange delivers its promised outcome.</td><td>Profile-open → save-action → save-success funnel.</td><td>Does “no app required” hold up in practice?</td></tr>
+      <tr><td><strong>Time to understand / time on task</strong></td><td>How much effort is required to grasp or complete the flow.</td><td>Usability test timing + session analytics.</td><td>Where is cognitive or interaction friction concentrated?</td></tr>
+      <tr><td><strong>Form error rate</strong></td><td>Whether users are blocked by input/validation design.</td><td>Field-level validation event logging.</td><td>Which inputs need clearer copy or constraints?</td></tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <div class="section-head"><h2>Instrumentation plan</h2><p>Event naming should map to user intent, not arbitrary UI clicks.</p></div>
+    <div class="grid g4">
+      <div class="card"><div class="meta">Event</div><h4 style="margin-top:8px">cta_early_access_clicked</h4><p class="copy">Source section: hero / mid-page / footer.</p></div>
+      <div class="card"><div class="meta">Event</div><h4 style="margin-top:8px">signup_completed</h4><p class="copy">Completion and validation-error context.</p></div>
+      <div class="card"><div class="meta">Event</div><h4 style="margin-top:8px">profile_opened</h4><p class="copy">Share channel + device context.</p></div>
+      <div class="card"><div class="meta">Event</div><h4 style="margin-top:8px">contact_saved</h4><p class="copy">Recipient outcome and failure reason if blocked.</p></div>
+    </div>
+  </div>
+
+  <div class="note warn" style="margin-top:30px"><b>No fabricated targets:</b> I would set numeric targets only after baseline data or research benchmarks exist. Until then, the responsible artifact is the measurement plan, not invented percentages.</div>
+</div></main></body></html>

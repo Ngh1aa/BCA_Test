@@ -1,51 +1,53 @@
 # Figma Conversion Matrix
 
-This project exposes six deterministic, conversion-safe views for HTML → Figma workflows.
+Use the six named URLs below as the **canonical HTML → Figma export links**. They all include the editable-text fixes and deterministic viewport classes.
 
-## Artboards
+## Final landing page
 
-| Output | Width | URL |
+| Device | Artboard | Canonical URL |
 | --- | ---: | --- |
-| Landing — Desktop | 1440px | `/?figma=landing-desktop` |
-| Landing — Tablet | 768px | `/?figma=landing-tablet` |
-| Landing — Mobile | 375px | `/?figma=landing-mobile` |
-| Wireframe — Desktop | 1440px | `/?figma=wireframe-desktop` |
-| Wireframe — Tablet | 768px | `/?figma=wireframe-tablet` |
-| Wireframe — Mobile | 375px | `/?figma=wireframe-mobile` |
+| Desktop | 1440px | https://ngh1aa.github.io/BCA_Test/?figma=landing-desktop |
+| Tablet | 768px | https://ngh1aa.github.io/BCA_Test/?figma=landing-tablet |
+| Mobile | 375px | https://ngh1aa.github.io/BCA_Test/?figma=landing-mobile |
 
-Numeric compatibility routes remain available:
+## Wireframe
 
-- `?figma=1` → landing desktop
-- `?figma=2` → wireframe desktop
-- `?figma=3` → landing mobile
-- `?figma=4` → landing tablet
-- `?figma=5` → wireframe tablet
-- `?figma=6` → wireframe mobile
+| Device | Artboard | Canonical URL |
+| --- | ---: | --- |
+| Desktop | 1440px | https://ngh1aa.github.io/BCA_Test/?figma=wireframe-desktop |
+| Tablet | 768px | https://ngh1aa.github.io/BCA_Test/?figma=wireframe-tablet |
+| Mobile | 375px | https://ngh1aa.github.io/BCA_Test/?figma=wireframe-mobile |
 
-## Responsive rules
+## Compatibility aliases
 
-The export routes lock the page width in CSS instead of relying on the importer browser viewport. This makes repeated HTML → Figma imports deterministic.
+Old numeric/short links still work, but the page normalizes them to the canonical named URL without reloading:
 
-- Desktop keeps full navigation, 3-column feature grids, 4-column proof, 3-step journey, two-column product preview and FAQ.
-- Tablet reflows navigation to hamburger, benefits to 2 columns, proof to 2×2, journey to horizontal step rows, and long two-column sections to a single column.
-- Mobile uses a single-column reading order, stacked form controls, one-column proof/features/journey/product/FAQ, and touch-friendly controls.
-- Wireframe views inherit the same responsive information architecture as the corresponding final landing view. Wireframe mode changes fidelity and styling, not content order.
+- `?figma=1` or `?figma=desktop` → `?figma=landing-desktop`
+- `?figma=4` or `?figma=tablet` → `?figma=landing-tablet`
+- `?figma=3` or `?figma=mobile` → `?figma=landing-mobile`
+- `?figma=2` → `?figma=wireframe-desktop`
+- `?figma=5` → `?figma=wireframe-tablet`
+- `?figma=6` → `?figma=wireframe-mobile`
 
-## Conversion-safety rules
+## Responsive behavior
 
-All six routes inherit `.figma-static`:
+The export mode is applied before the stylesheet loads, so the importer receives the correct layout on first paint rather than a desktop layout that reflows afterward.
+
+- **Desktop 1440:** full navigation, 4-column proof, 3-column benefits, 3-step journey, 2-column product preview and FAQ.
+- **Tablet 768:** hamburger navigation, 2×2 proof, 2-column benefits, horizontal journey rows, stacked product preview and FAQ.
+- **Mobile 375:** single-column content order, stacked forms, 1-column proof/benefits/journey/product/FAQ, touch-friendly controls.
+- **Wireframes:** use the exact same responsive information architecture as their matching final UI breakpoint; only fidelity and visual styling change.
+
+## Figma conversion safety
+
+All six canonical modes inherit `.figma-static`:
 
 - animations and transitions are disabled;
-- marquee cloning is disabled;
+- duplicated marquee content is removed;
 - reveal content is forced visible;
-- masks/backdrop filters likely to rasterize text groups are removed;
-- visible copy remains semantic HTML text;
-- no canvas or SVG text is used for page copy.
+- masks/backdrop filters likely to rasterize groups are disabled;
+- mixed inline text has been split into explicit text elements;
+- visible page copy remains semantic HTML text;
+- no canvas or SVG `<text>` is used for page copy.
 
-The only text that cannot become editable Figma text is text already baked into bitmap product imagery.
-
-## Research basis
-
-- `uiux-ai-workspace/checklist-prototype-ui-ux.md`: validate responsive layouts at roughly 375 / 768 / 1440, keep mobile touch targets ≥44px, preserve content priority.
-- Figma responsive guidance: model desktop/tablet/mobile as explicit breakpoints and use reflow/Auto Layout principles rather than simple scaling.
-- 21st.dev landing/bento guidance: desktop grids should recompose on narrow screens; do not shrink a desktop multi-column layout until it becomes unreadable.
+The only non-editable text is text physically baked into bitmap assets such as product/hand imagery.

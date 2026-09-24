@@ -51,3 +51,35 @@ All six canonical modes inherit `.figma-static`:
 - no canvas or SVG `<text>` is used for page copy.
 
 The only non-editable text is text physically baked into bitmap assets such as product/hand imagery.
+
+
+## Inter ultra-safe exports — recommended when headings become image layers
+
+These are separate versions made specifically for problematic HTML → Figma converters. They use a self-hosted official **Inter** font for every visible text element, including large and small headings, while retaining the same desktop/tablet/mobile layouts.
+
+### Final landing page — Inter
+
+| Device | Artboard | URL |
+| --- | ---: | --- |
+| Desktop | 1440px | https://ngh1aa.github.io/BCA_Test/?figma=inter-landing-desktop |
+| Tablet | 768px | https://ngh1aa.github.io/BCA_Test/?figma=inter-landing-tablet |
+| Mobile | 375px | https://ngh1aa.github.io/BCA_Test/?figma=inter-landing-mobile |
+
+### Wireframe — Inter
+
+| Device | Artboard | URL |
+| --- | ---: | --- |
+| Desktop | 1440px | https://ngh1aa.github.io/BCA_Test/?figma=inter-wireframe-desktop |
+| Tablet | 768px | https://ngh1aa.github.io/BCA_Test/?figma=inter-wireframe-tablet |
+| Mobile | 375px | https://ngh1aa.github.io/BCA_Test/?figma=inter-wireframe-mobile |
+
+### Why this mode exists
+
+- every visible text element is forced to the same `Inter` family;
+- the font is self-hosted from `assets/fonts/Inter-Variable.ttf`, not requested from Google Fonts at capture time;
+- custom display fonts are completely bypassed;
+- OpenType/variation overrides are normalized;
+- text masks, text shadows, filters, blend modes and background-clipped text are disabled;
+- all previous explicit text-node fixes remain active because Inter routes still inherit `.figma-static`.
+
+Use these six **Inter** URLs first when importing into dMaya/html-to-Figma style tools.

@@ -4854,3 +4854,114 @@ html.figma-static .figma-text-run{
   -webkit-mask-image:none!important;
   mask-image:none!important;
 }
+
+
+/* =========================================================
+   INTER FIGMA ULTRA-SAFE MODE
+   New export-only mode. Production UI and existing export
+   modes remain unchanged. Uses the official self-hosted Inter
+   family and strips typographic features that commonly trigger
+   raster fallback in HTML→Figma converters.
+   ========================================================= */
+@font-face{
+  font-family:"Inter";
+  src:url("./assets/fonts/Inter-Variable.ttf") format("truetype");
+  font-style:normal;
+  font-weight:100 900;
+  font-display:block;
+}
+
+html.figma-inter body,
+html.figma-inter body *,
+html.figma-inter input,
+html.figma-inter button,
+html.figma-inter textarea,
+html.figma-inter select{
+  font-family:"Inter",Arial,Helvetica,sans-serif!important;
+  font-optical-sizing:none!important;
+  font-variation-settings:normal!important;
+  font-feature-settings:normal!important;
+  font-kerning:auto!important;
+  font-synthesis:none!important;
+}
+
+html.figma-inter h1,
+html.figma-inter h2,
+html.figma-inter h3,
+html.figma-inter h4,
+html.figma-inter h5,
+html.figma-inter h6,
+html.figma-inter .eyebrow,
+html.figma-inter .benefit-number,
+html.figma-inter .benefit-label,
+html.figma-inter .footer__eyebrow,
+html.figma-inter .footer__link-heading,
+html.figma-inter .figma-text-run{
+  font-family:"Inter",Arial,Helvetica,sans-serif!important;
+  font-variation-settings:normal!important;
+  font-feature-settings:normal!important;
+  text-rendering:auto!important;
+}
+
+html.figma-inter h1,
+html.figma-inter h2,
+html.figma-inter h3,
+html.figma-inter h4,
+html.figma-inter h5,
+html.figma-inter h6{
+  letter-spacing:-0.02em!important;
+}
+
+html.figma-inter .eyebrow,
+html.figma-inter .benefit-label,
+html.figma-inter .footer__eyebrow{
+  letter-spacing:.08em!important;
+}
+
+html.figma-inter .hero-title-line,
+html.figma-inter .figma-text-run{
+  display:inline;
+  filter:none!important;
+  -webkit-filter:none!important;
+  transform:none!important;
+  opacity:1!important;
+  mix-blend-mode:normal!important;
+  -webkit-background-clip:border-box!important;
+  background-clip:border-box!important;
+  -webkit-text-fill-color:currentColor!important;
+}
+
+html.figma-inter .hero-title-line{
+  display:block!important;
+}
+
+html.figma-inter h1,
+html.figma-inter h2,
+html.figma-inter h3,
+html.figma-inter h4,
+html.figma-inter h5,
+html.figma-inter h6,
+html.figma-inter p,
+html.figma-inter a,
+html.figma-inter button,
+html.figma-inter label,
+html.figma-inter strong,
+html.figma-inter small,
+html.figma-inter summary,
+html.figma-inter span{
+  text-shadow:none!important;
+  -webkit-mask-image:none!important;
+  mask-image:none!important;
+}
+
+/* Do not let pseudo-element decorative effects become part of a text layer. */
+html.figma-inter h1::before,
+html.figma-inter h1::after,
+html.figma-inter h2::before,
+html.figma-inter h2::after,
+html.figma-inter h3::before,
+html.figma-inter h3::after{
+  filter:none!important;
+  -webkit-filter:none!important;
+  mix-blend-mode:normal!important;
+}

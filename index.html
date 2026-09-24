@@ -16,7 +16,14 @@
         'landing-mobile': ['figma-static', 'figma-mobile', 'figma-landing'],
         'wireframe-desktop': ['figma-static', 'figma-wireframe', 'figma-desktop'],
         'wireframe-tablet': ['figma-static', 'figma-wireframe', 'figma-tablet'],
-        'wireframe-mobile': ['figma-static', 'figma-wireframe', 'figma-mobile']
+        'wireframe-mobile': ['figma-static', 'figma-wireframe', 'figma-mobile'],
+
+        'inter-landing-desktop': ['figma-static', 'figma-inter', 'figma-desktop', 'figma-landing'],
+        'inter-landing-tablet': ['figma-static', 'figma-inter', 'figma-tablet', 'figma-landing'],
+        'inter-landing-mobile': ['figma-static', 'figma-inter', 'figma-mobile', 'figma-landing'],
+        'inter-wireframe-desktop': ['figma-static', 'figma-inter', 'figma-wireframe', 'figma-desktop'],
+        'inter-wireframe-tablet': ['figma-static', 'figma-inter', 'figma-wireframe', 'figma-tablet'],
+        'inter-wireframe-mobile': ['figma-static', 'figma-inter', 'figma-wireframe', 'figma-mobile']
       };
 
       const aliases = {
@@ -34,6 +41,16 @@
       const canonicalMode = canonicalModes[rawMode] ? rawMode : aliases[rawMode];
       const classes = canonicalModes[canonicalMode];
 
+      if (canonicalMode && canonicalMode.startsWith('inter-')) {
+        const preload = document.createElement('link');
+        preload.rel = 'preload';
+        preload.as = 'font';
+        preload.type = 'font/ttf';
+        preload.href = './assets/fonts/Inter-Variable.ttf';
+        preload.crossOrigin = 'anonymous';
+        document.head.appendChild(preload);
+      }
+
       if (classes) {
         document.documentElement.classList.add(...classes);
         document.documentElement.dataset.figmaExport = canonicalMode;
@@ -46,7 +63,7 @@
       }
     })();
   </script>
-  <link rel="stylesheet" href="./styles.css?v=figma-links-normalized-8">
+  <link rel="stylesheet" href="./styles.css?v=inter-figma-safe-9">
 </head>
 <body>
   <svg class="icon-sprite" aria-hidden="true" focusable="false">

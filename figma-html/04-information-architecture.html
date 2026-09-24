@@ -1,39 +1,17 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>04 Information Architecture</title><link rel="stylesheet" href="shared.css?v=figma-text-safe-2"></head><body><main class="frame">
-<div class="pad">
-  <div class="page-top"><div><div class="crumb">InstaCard · BCA UI/UX Test</div></div><div class="page-tag"><i></i>04 · INFORMATION ARCHITECTURE · Case study artifact</div></div>
-  <span class="eyebrow">Structure the decision, not just the page</span>
-  <h1 class="title">Every section answers one question that blocks conversion.</h1>
-  <p class="lede">Because this is an Early Access landing page, the IA is intentionally single-page: visitors can move from understanding → confidence → signup without branching into unnecessary pages.</p>
-
-  <div class="section tree-wrap">
-    <div class="tree-line"></div>
-    <div class="tree">
-      <div class="card blue tree-root"><div class="meta">Root</div><h3 style="margin-top:8px">InstaCard Landing</h3><p class="copy">One-page conversion journey</p></div>
-      <div class="tree-row">
-        <div class="card tree-child"><div class="num">01</div><h4>Hero</h4><p class="copy">What is this?<br>Why now?</p></div>
-        <div class="card tree-child"><div class="num">02</div><h4>Share your way</h4><p class="copy">What does one profile contain?</p></div>
-        <div class="card tree-child"><div class="num">03</div><h4>Proof + Benefits</h4><p class="copy">Why is this better than my current behavior?</p></div>
-        <div class="card tree-child"><div class="num">04</div><h4>How it works</h4><p class="copy">Is it complicated?</p></div>
-      </div>
-      <div class="tree-row">
-        <div class="card tree-child"><div class="num">05</div><h4>Card Studio</h4><p class="copy">Will it look professional?</p></div>
-        <div class="card tree-child"><div class="num">06</div><h4>FAQ</h4><p class="copy">What could stop me?</p></div>
-        <div class="card tree-child"><div class="num">07</div><h4>Final CTA</h4><p class="copy">What should I do next?</p></div>
-        <div class="card tree-child"><div class="num">08</div><h4>Footer</h4><p class="copy">Closure + product identity</p></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="section-head"><h2>Content hierarchy</h2><p>Section order is driven by visitor questions, not by the order features appeared in the brief.</p></div>
-    <table class="matrix">
-      <tr><th>Stage</th><th>User question</th><th>Section answer</th><th>CTA role</th></tr>
-      <tr><td><strong>Orient</strong></td><td>“What is InstaCard?”</td><td>Hero promise + two-phone exchange moment</td><td>Primary signup visible immediately</td></tr>
-      <tr><td><strong>Understand</strong></td><td>“What am I actually sharing?”</td><td>Profile + social-channel rail + summary</td><td>No new competing CTA</td></tr>
-      <tr><td><strong>Believe</strong></td><td>“Why switch from paper / manual sharing?”</td><td>Proof strip + six concrete benefits</td><td>Value reinforcement</td></tr>
-      <tr><td><strong>Learn</strong></td><td>“How does it work?”</td><td>Create → Share → Saved product journey</td><td>Reduce perceived effort</td></tr>
-      <tr><td><strong>Desire</strong></td><td>“Can it feel like me?”</td><td>Card Studio customization preview</td><td>Secondary signup point</td></tr>
-      <tr><td><strong>Resolve</strong></td><td>“What about my final concerns?”</td><td>FAQ + final Early Access CTA</td><td>Convert</td></tr>
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>04B Landing Information Architecture</title><link rel="stylesheet" href="shared.css?v=figma-text-safe-2"></head><body><main class="frame"><div class="pad">
+  <div class="page-top"><div><div class="crumb">InstaCard · BCA UI/UX Test</div></div><div class="page-tag"><i></i>04B · LANDING INFORMATION ARCHITECTURE · Separate from sitemap</div></div>
+  <span class="eyebrow">Now zoom into the marketing page</span>
+  <h1 class="title">The product sitemap defines the ecosystem. This IA defines the landing-page decision sequence.</h1>
+  <p class="lede">Once the whole-product sitemap is established in 04A, this board focuses only on the single-page marketing hierarchy: what a first-time visitor needs to understand, in what order, before Early Access feels like a reasonable next step.</p>
+  <div class="section tree-wrap"><div class="tree-line"></div><div class="tree"><div class="card blue tree-root"><div class="meta">Landing root</div><h3 style="margin-top:8px">Understand → Believe → Act</h3><p class="copy">One-page conversion journey</p></div>
+    <div class="tree-row"><div class="card tree-child"><div class="num">01</div><h4>Hero</h4><p class="copy">What is this?<br>Why should I care?</p></div><div class="card tree-child"><div class="num">02</div><h4>Share your way</h4><p class="copy">What does one profile contain?</p></div><div class="card tree-child"><div class="num">03</div><h4>Proof + Benefits</h4><p class="copy">Why is it better than paper / retyping?</p></div><div class="card tree-child"><div class="num">04</div><h4>How it works</h4><p class="copy">Is this unfamiliar product hard to use?</p></div></div>
+    <div class="tree-row"><div class="card tree-child"><div class="num">05</div><h4>Card Studio</h4><p class="copy">Will it look professional and personal?</p></div><div class="card tree-child"><div class="num">06</div><h4>FAQ</h4><p class="copy">What objections remain?</p></div><div class="card tree-child"><div class="num">07</div><h4>Final CTA</h4><p class="copy">What should I do next?</p></div><div class="card tree-child"><div class="num">08</div><h4>Footer</h4><p class="copy">Closure + product identity</p></div></div>
+  </div></div>
+  <div class="section"><div class="section-head"><h2>Why the extra marketing sections exist</h2><p>These were intentionally added beyond the minimum feature bullets.</p></div>
+    <table class="matrix"><tr><th>Section</th><th>UX uncertainty it resolves</th><th>Reason for adding it</th></tr>
+      <tr><td><strong>How it works</strong></td><td>“What actually happens when I use this?”</td><td>A digital-card exchange may be unfamiliar; Create → Share → Save supplies a simple mental model before asking for signup.</td></tr>
+      <tr><td><strong>Card Studio preview</strong></td><td>“Will this look credible and feel like mine?”</td><td>The brief includes customization; a live-style product preview turns that feature into tangible proof instead of another claim.</td></tr>
+      <tr><td><strong>FAQ</strong></td><td>“Do I need an app? Can I save it? What can I customize?”</td><td>Late-stage objections can block conversion even after the benefit is understood, so they are answered immediately before the final CTA.</td></tr>
     </table>
   </div>
 </div></main></body></html>

@@ -257,7 +257,11 @@ input:focus-visible,
   font-size:clamp(62px,7.1vw,102px);
   line-height:.92;
 }
-.hero-copy h1 span{color:var(--blue)}
+.hero-title-line{
+  display:block;
+  color:inherit;
+}
+.hero-title-line--accent{color:var(--blue)}
 .hero-lede{
   margin:0 0 6px;
   color:var(--ink);
@@ -4794,4 +4798,59 @@ html.figma-wireframe.figma-desktop .footer__cta-section,
 html.figma-wireframe.figma-tablet .footer__cta-section,
 html.figma-wireframe.figma-mobile .footer__cta-section{
   background:var(--wf-gray-100)!important;
+}
+
+
+/* Figma text-run hardening.
+   HTML→Figma converters are most reliable when visible copy is represented
+   by explicit element text nodes rather than anonymous text mixed with
+   <br>, SVGs or differently styled inline children. */
+.figma-text-run{
+  display:inline;
+  color:inherit;
+  font:inherit;
+  letter-spacing:inherit;
+  line-height:inherit;
+  text-decoration:inherit;
+}
+.copy-points>span{
+  display:flex;
+}
+.copy-points>span>.figma-text-run{
+  display:inline!important;
+  padding:0;
+  border:0;
+}
+.composer-socials>span{
+  display:inline-flex;
+}
+.composer-socials>span>.figma-text-run{
+  display:inline!important;
+  min-height:0;
+  padding:0;
+  border:0;
+  background:transparent;
+}
+html.figma-static .hero-title-line,
+html.figma-static .figma-text-run{
+  filter:none!important;
+  -webkit-filter:none!important;
+  transform:none!important;
+  opacity:1!important;
+  mix-blend-mode:normal!important;
+}
+html.figma-static h1,
+html.figma-static h2,
+html.figma-static h3,
+html.figma-static p,
+html.figma-static a,
+html.figma-static button,
+html.figma-static label,
+html.figma-static strong,
+html.figma-static small,
+html.figma-static summary,
+html.figma-static .figma-text-run{
+  text-shadow:none!important;
+  -webkit-mask-image:none!important;
+  mask-image:none!important;
 }
